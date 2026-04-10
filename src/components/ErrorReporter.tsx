@@ -113,7 +113,7 @@ export default function ErrorReporter({ error, reset }: ReporterProps) {
                 <summary className="cursor-pointer text-sm text-muted-foreground hover:text-foreground">
                   Error details
                 </summary>
-                <pre className="mt-2 text-xs bg-muted p-2 rounded overflow-auto">
+                <pre className="mt-2 text-xs bg-muted p-2 rounded-none overflow-auto">
                   {error.message}
                   {error.stack && (
                     <div className="mt-2 text-muted-foreground">

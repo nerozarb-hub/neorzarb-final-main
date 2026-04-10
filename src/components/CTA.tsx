@@ -7,8 +7,8 @@ const CTA: React.FC = () => {
       <div className="w-full max-w-4xl relative">
         <div className="absolute inset-0 bg-primary/20 blur-3xl opacity-20"></div>
 
-        <div className="relative bg-onyx border-2 border-primary/50 shadow-glow-card p-1">
-          <div className="border-2 border-zinc-700 p-8 md:p-12 lg:p-16 flex flex-col md:flex-row items-center justify-between gap-12 relative overflow-hidden">
+        <div className="relative bg-onyx border-2 border-primary/50 shadow-glow-card p-1 rounded-none">
+          <div className="border-2 border-zinc-700 p-8 md:p-12 lg:p-16 flex flex-col md:flex-row items-center justify-between gap-12 relative overflow-hidden rounded-none">
             <div className="absolute top-0 left-0 w-4 h-4 border-t border-l border-primary"></div>
             <div className="absolute top-0 right-0 w-4 h-4 border-t border-r border-primary"></div>
             <div className="absolute bottom-0 left-0 w-4 h-4 border-b border-l border-primary"></div>

@@ -8,7 +8,7 @@ const NotFoundPage: React.FC = () => {
         <section className="relative min-h-screen flex flex-col items-center justify-center bg-[#030303] px-6 text-center overflow-hidden">
             {/* Background glow */}
             <motion.div
-                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full pointer-events-none"
+                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-none pointer-events-none"
                 style={{
                     background: 'radial-gradient(ellipse at center, rgba(63, 106, 36, 0.15) 0%, transparent 70%)',
                     filter: 'blur(80px)',

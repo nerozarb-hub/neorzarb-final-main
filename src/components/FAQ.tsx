@@ -94,7 +94,7 @@ const FAQ: React.FC = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.08, ease: [0.16, 1, 0.3, 1] }}
               viewport={{ once: true }}
-              className={`border-2 ${openIndex === index ? 'border-primary/30 bg-primary/5' : 'border-zinc-700 bg-white/[0.02] hover:bg-white/[0.04]'} transition-all duration-300 overflow-hidden relative group`}
+              className={`border-2 ${openIndex === index ? 'border-primary/30 bg-primary/5' : 'border-zinc-700 bg-white/[0.02] hover:bg-white/[0.04]'} transition-all duration-300 overflow-hidden relative group rounded-none`}
             >
               {/* Hover gradient — CSS only, no state needed */}
               <div className={`absolute inset-0 bg-gradient-to-r from-primary/5 to-transparent pointer-events-none opacity-0 ${openIndex !== index ? 'group-hover:opacity-100' : ''} transition-opacity duration-300`} />

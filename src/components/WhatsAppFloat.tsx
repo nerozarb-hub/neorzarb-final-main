@@ -36,14 +36,14 @@ const WhatsAppFloat: React.FC = () => {
             </AnimatePresence>
 
             <motion.div
-                className="relative w-14 h-14 bg-[#25D366] flex items-center justify-center shadow-lg"
+                className="relative w-14 h-14 bg-[#25D366] flex items-center justify-center shadow-lg rounded-none"
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.95 }}
                 transition={{ type: 'spring', stiffness: 300 }}
             >
                 {/* Pulse ring — CSS only */}
                 <span
-                    className="absolute inset-0 bg-[#25D366] opacity-40 rounded-sm animate-whatsapp-pulse pointer-events-none"
+                    className="absolute inset-0 bg-[#25D366] opacity-40 rounded-none animate-whatsapp-pulse pointer-events-none"
                 />
                 <i className="fab fa-whatsapp text-white text-2xl relative z-10" />
             </motion.div>

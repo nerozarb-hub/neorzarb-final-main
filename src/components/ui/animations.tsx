@@ -21,8 +21,8 @@ export const staggerContainer = {
 
 export const staggerItem = {
   initial: { opacity: 0, y: 20 },
-  animate: { 
-    opacity: 1, 
+  animate: {
+    opacity: 1,
     y: 0,
     transition: { duration: 0.5, ease: [0.33, 1, 0.68, 1] }
   }
@@ -35,12 +35,12 @@ interface RevealProps extends HTMLMotionProps<'div'> {
   className?: string;
 }
 
-export const Reveal = memo(function Reveal({ 
-  children, 
-  delay = 0, 
-  direction = 'up', 
+export const Reveal = memo(function Reveal({
+  children,
+  delay = 0,
+  direction = 'up',
   className,
-  ...props 
+  ...props
 }: RevealProps) {
   const directions = {
     up: { y: 30 },
@@ -50,14 +50,14 @@ export const Reveal = memo(function Reveal({
   };
 
   return (
-      <motion.div
-        initial={{ opacity: 0, ...directions[direction] }}
-        whileInView={{ opacity: 1, x: 0, y: 0 }}
-        viewport={{ once: true, margin: "-20px" }}
-        transition={{ duration: 0.5, delay, ease: [0.33, 1, 0.68, 1] }}
-        className={className}
-        {...props}
-      >
+    <motion.div
+      initial={{ opacity: 0, ...directions[direction] }}
+      whileInView={{ opacity: 1, x: 0, y: 0 }}
+      viewport={{ once: true, margin: "-20px" }}
+      transition={{ duration: 0.5, delay, ease: [0.33, 1, 0.68, 1] }}
+      className={className}
+      {...props}
+    >
       {children}
     </motion.div>
   );
@@ -71,12 +71,12 @@ interface CountUpProps {
   className?: string;
 }
 
-export const CountUp = memo(function CountUp({ 
-  end, 
-  duration = 1.5, 
-  suffix = '', 
+export const CountUp = memo(function CountUp({
+  end,
+  duration = 1.5,
+  suffix = '',
   prefix = '',
-  className 
+  className
 }: CountUpProps) {
   const ref = useRef<HTMLSpanElement>(null);
   const [count, setCount] = useState(0);
@@ -110,7 +110,7 @@ export const CountUp = memo(function CountUp({
       const elapsed = currentTime - startTime;
       const progress = Math.min(elapsed / durationMs, 1);
       const easeOut = 1 - Math.pow(1 - progress, 3);
-      
+
       setCount(Math.floor(end * easeOut));
 
       if (progress < 1) {
@@ -136,16 +136,16 @@ interface FloatingOrbProps {
   delay?: number;
 }
 
-export const FloatingOrb = memo(function FloatingOrb({ 
-  className, 
-  size = 400, 
+export const FloatingOrb = memo(function FloatingOrb({
+  className,
+  size = 400,
   color = 'rgba(63, 106, 36, 0.15)',
   duration = 20,
   delay = 0
 }: FloatingOrbProps) {
   return (
     <div
-      className={cn('absolute rounded-full blur-[100px] pointer-events-none animate-float-slow', className)}
+      className={cn('absolute rounded-none blur-[100px] pointer-events-none animate-float-slow', className)}
       style={{
         width: size,
         height: size,
@@ -179,10 +179,10 @@ export const MagneticButton = memo(function MagneticButton({ children, className
     const rect = ref.current.getBoundingClientRect();
     const centerX = rect.left + rect.width / 2;
     const centerY = rect.top + rect.height / 2;
-    
+
     const x = (e.clientX - centerX) * strength;
     const y = (e.clientY - centerY) * strength;
-    
+
     ref.current.style.transform = `translate(${x}px, ${y}px)`;
   };
 
@@ -211,23 +211,23 @@ interface PulseGridProps {
 export const PulseGrid = memo(function PulseGrid({ className }: PulseGridProps) {
   return (
     <div className={cn('absolute inset-0 overflow-hidden pointer-events-none', className)}>
-      <div className="absolute w-2 h-2 bg-primary/30 rounded-full animate-pulse-dot" style={{ left: '20%', top: '30%', animationDelay: '0s' }} />
-      <div className="absolute w-2 h-2 bg-primary/30 rounded-full animate-pulse-dot" style={{ left: '70%', top: '50%', animationDelay: '1s' }} />
-      <div className="absolute w-2 h-2 bg-primary/30 rounded-full animate-pulse-dot" style={{ left: '40%', top: '70%', animationDelay: '2s' }} />
-      <div className="absolute w-2 h-2 bg-primary/30 rounded-full animate-pulse-dot" style={{ left: '80%', top: '20%', animationDelay: '3s' }} />
+      <div className="absolute w-2 h-2 bg-primary/30 rounded-none animate-pulse-dot" style={{ left: '20%', top: '30%', animationDelay: '0s' }} />
+      <div className="absolute w-2 h-2 bg-primary/30 rounded-none animate-pulse-dot" style={{ left: '70%', top: '50%', animationDelay: '1s' }} />
+      <div className="absolute w-2 h-2 bg-primary/30 rounded-none animate-pulse-dot" style={{ left: '40%', top: '70%', animationDelay: '2s' }} />
+      <div className="absolute w-2 h-2 bg-primary/30 rounded-none animate-pulse-dot" style={{ left: '80%', top: '20%', animationDelay: '3s' }} />
     </div>
   );
 });
 
 export const SmoothReveal = memo(function SmoothReveal({ children, className, delay = 0 }: { children: ReactNode; className?: string; delay?: number }) {
-    return (
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-20px" }}
-        transition={{ duration: 0.5, delay, ease: [0.33, 1, 0.68, 1] }}
-        className={className}
-      >
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-20px" }}
+      transition={{ duration: 0.5, delay, ease: [0.33, 1, 0.68, 1] }}
+      className={className}
+    >
       {children}
     </motion.div>
   );

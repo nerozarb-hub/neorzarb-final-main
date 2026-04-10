@@ -212,28 +212,28 @@ const Portfolio: React.FC = () => {
 
                 {/* Number badge */}
                 <div className="absolute top-4 right-4 z-10 opacity-70 group-hover:opacity-100 -translate-y-1 group-hover:translate-y-0 transition-all duration-300">
-                  <span className="text-[10px] font-mono text-gray-500 uppercase tracking-widest bg-black/50 px-2 py-1 border border-zinc-700">
+                  <span className="text-[10px] font-mono text-gray-500 uppercase tracking-widest bg-black/50 px-2 py-1 border border-zinc-700 rounded-none">
                     {String(index + 1).padStart(2, '0')}
                   </span>
                 </div>
 
                 <div className="absolute bottom-0 left-0 p-6 md:p-8 w-full z-10">
-                  <p className="text-xs text-primary font-bold uppercase tracking-widest mb-2 drop-shadow-md group-hover:translate-x-[5px] transition-transform duration-300">
+                  <p className="text-xs text-primary font-bold uppercase tracking-widest mb-2 drop-shadow-md group-hover:translate-x-[5px] transition-transform duration-500">
                     {project.category}
                   </p>
-                  <h3 className="text-xl md:text-2xl font-bold uppercase mb-2 text-white drop-shadow-md group-hover:translate-x-[5px] transition-transform duration-300 delay-[50ms]">
+                  <h3 className="text-xl md:text-2xl font-bold uppercase mb-2 text-white drop-shadow-md group-hover:translate-x-[5px] transition-transform duration-500 delay-[50ms]">
                     {project.title}
                   </h3>
 
-                  <p className="text-sm text-gray-300 mb-4 max-w-xs opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">
+                  <p className="text-sm text-gray-300 mb-4 max-w-xs opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500">
                     {project.description}
                   </p>
 
-                  <div className="flex gap-4 opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 delay-100">
+                  <div className="flex gap-4 opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 delay-100">
                     {project.stats.map((stat, i) => (
                       <div
                         key={i}
-                        className="border-l border-primary/50 pl-3 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300"
+                        className="border-l border-primary/50 pl-3 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-500 rounded-none"
                         style={{ transitionDelay: `${100 + i * 50}ms` }}
                       >
                         <span className="block text-lg font-black text-white">{stat.value}</span>
@@ -244,7 +244,7 @@ const Portfolio: React.FC = () => {
                 </div>
 
                 {/* Border highlight on hover */}
-                <div className="absolute inset-0 border-2 border-primary pointer-events-none opacity-0 group-hover:opacity-30 transition-opacity duration-300" />
+                <div className="absolute inset-0 border-2 border-primary pointer-events-none opacity-0 group-hover:opacity-20 transition-opacity duration-500 rounded-none" />
               </motion.div>
             ))}
           </div>

@@ -103,9 +103,9 @@ const AboutUs: React.FC = () => {
                   <motion.div
                     key={index}
                     variants={itemVariants}
-                    className="group flex gap-4 p-6 border-2 border-zinc-700 hover:border-primary/30 hover:bg-white/[0.02] transition-all duration-300"
+                    className="group flex gap-4 p-6 border-2 border-zinc-700 hover:border-primary/30 hover:bg-white/[0.02] transition-all duration-500 rounded-none cursor-default"
                   >
-                    <div className="w-10 h-10 border-2 border-zinc-700 flex items-center justify-center flex-shrink-0 group-hover:border-primary/30 transition-colors">
+                    <div className="w-10 h-10 border-2 border-zinc-700 flex items-center justify-center flex-shrink-0 group-hover:border-primary/30 transition-colors rounded-none">
                       <i className={`fas ${value.icon} text-gray-500 group-hover:text-primary transition-colors`} />
                     </div>
                     <div>
@@ -119,7 +119,7 @@ const AboutUs: React.FC = () => {
 
             <motion.div
               variants={itemVariants}
-              className="p-8 lg:p-12 bg-[#080808]"
+              className="p-8 lg:p-12 bg-[#080808] border-t border-zinc-700 rounded-none"
             >
               <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
                 <div>

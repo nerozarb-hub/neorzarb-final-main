@@ -117,16 +117,16 @@ const Hero: React.FC = () => {
           initial={{ opacity: 0, y: 20, scale: 0.9 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
           transition={{ duration: 0.6, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-          className="inline-flex items-center gap-2 px-4 py-2 mb-8 border border-primary/30 bg-primary/5 backdrop-blur-sm group cursor-pointer hover:bg-primary/10 hover:border-primary/50 transition-all duration-300"
+          className="inline-flex items-center gap-2 px-4 py-2 mb-8 border border-primary/30 bg-primary/5 backdrop-blur-sm group cursor-pointer hover:bg-primary/10 hover:border-primary/50 transition-all duration-300 rounded-none"
         >
           <span className="relative flex h-2 w-2">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75" />
-            <span className="relative inline-flex rounded-full h-2 w-2 bg-primary" />
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-none bg-primary opacity-75" />
+            <span className="relative inline-flex rounded-none h-2 w-2 bg-primary" />
           </span>
-          <span className="text-xs font-medium text-gray-300 uppercase tracking-wider">
+          <span className="text-xs font-medium text-gray-300 uppercase tracking-widest">
             AI-Powered Growth Systems
           </span>
-          <i className="fas fa-arrow-right text-sm text-primary group-hover:translate-x-1 transition-transform" />
+          <i className="fas fa-arrow-right text-sm text-primary group-hover:translate-x-1.5 transition-transform duration-300" />
         </motion.div>
 
         <motion.div

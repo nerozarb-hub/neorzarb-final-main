@@ -117,7 +117,7 @@ const Navbar: React.FC = () => {
               href="https://wa.me/923XXXXXXXXXX?text=Hi%20NEROZARB%2C%20I%20want%20to%20book%20a%20strategy%20call"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 bg-primary hover:bg-primary/90 px-3 py-2 sm:px-5 sm:py-2.5 transition-all duration-300 group"
+              className="flex items-center gap-2 bg-primary hover:bg-primary/90 px-3 py-2 sm:px-5 sm:py-2.5 transition-all duration-300 group rounded-none"
             >
               <i className="fas fa-crosshairs text-white/80 group-hover:text-white text-sm" />
               <span className="text-[10px] sm:text-xs font-bold tracking-wider text-white uppercase">
@@ -153,7 +153,7 @@ const Navbar: React.FC = () => {
               <span className="font-display font-black tracking-tighter text-lg text-white">NEROZARB</span>
               <button
                 onClick={() => setMobileMenuOpen(false)}
-                className="p-2 border border-white/10 hover:bg-primary hover:border-primary hover:text-white transition-colors"
+                className="p-2 border border-white/10 hover:bg-primary hover:border-primary hover:text-white transition-colors rounded-none"
                 aria-label="Close mobile menu"
               >
                 <i className="fas fa-times text-xl" />
@@ -204,12 +204,12 @@ const Navbar: React.FC = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => setMobileMenuOpen(false)}
-                className="flex items-center justify-center gap-2 w-full bg-primary hover:bg-primary/90 px-6 py-4 transition-all duration-300"
+                className="flex items-center justify-center gap-2 w-full bg-primary hover:bg-primary/90 px-6 py-4 transition-all duration-500 rounded-none group"
               >
                 <span className="text-sm font-bold tracking-wider text-white uppercase">
                   Initialize Strategy
                 </span>
-                <i className="fas fa-arrow-right text-white" />
+                <i className="fas fa-arrow-right text-white group-hover:translate-x-1 transition-transform" />
               </a>
             </div>
           </motion.div>

@@ -122,8 +122,8 @@ const Pricing: React.FC = () => {
 
   return (
     <section className="relative py-24 bg-[#070707] overflow-hidden" id="offers">
-      <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-primary/10 rounded-full blur-[100px] pointer-events-none" />
-      <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-primary/5 rounded-full blur-[80px] pointer-events-none" />
+      <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-primary/10 rounded-none blur-[100px] pointer-events-none" />
+      <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-primary/5 rounded-none blur-[80px] pointer-events-none" />
 
       <div className="mx-auto w-full max-w-6xl px-6 lg:px-12 relative z-10">
         <motion.div
