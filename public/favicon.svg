@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none">
+  <!-- Background -->
+  <rect width="32" height="32" fill="#030303"/>
+  <!-- Green accent lines (top-left bracket) -->
+  <rect x="2" y="2" width="8" height="2" fill="#3F6A24"/>
+  <rect x="2" y="2" width="2" height="8" fill="#3F6A24"/>
+  <!-- Green accent lines (bottom-right bracket) -->
+  <rect x="22" y="28" width="8" height="2" fill="#3F6A24"/>
+  <rect x="28" y="22" width="2" height="8" fill="#3F6A24"/>
+  <!-- N letterform -->
+  <rect x="7" y="9" width="2.5" height="14" fill="white"/>
+  <rect x="22.5" y="9" width="2.5" height="14" fill="white"/>
+  <!-- Diagonal bar of N -->
+  <polygon points="9.5,9 12.5,9 22.5,21.5 22.5,23 19.5,23 9.5,10.5" fill="white"/>
+</svg>

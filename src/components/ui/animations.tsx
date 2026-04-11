@@ -1,5 +1,3 @@
-'use client';
-
 import { motion, HTMLMotionProps } from 'framer-motion';
 import { useRef, useEffect, useState, ReactNode, memo } from 'react';
 import { cn } from '@/lib/utils';
@@ -53,7 +51,7 @@ export const Reveal = memo(function Reveal({
     <motion.div
       initial={{ opacity: 0, ...directions[direction] }}
       whileInView={{ opacity: 1, x: 0, y: 0 }}
-      viewport={{ once: true, margin: "-20px" }}
+      viewport={{ once: true, margin: '-20px' }}
       transition={{ duration: 0.5, delay, ease: [0.33, 1, 0.68, 1] }}
       className={className}
       {...props}
@@ -80,7 +78,7 @@ export const CountUp = memo(function CountUp({
 }: CountUpProps) {
   const ref = useRef<HTMLSpanElement>(null);
   const [count, setCount] = useState(0);
-  const [hasStarted, setHasStarted] = useState(false);
+  const hasStartedRef = useRef(false);
 
   useEffect(() => {
     const element = ref.current;
@@ -88,9 +86,28 @@ export const CountUp = memo(function CountUp({
 
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting && !hasStarted) {
-          setHasStarted(true);
+        if (entry.isIntersecting && !hasStartedRef.current) {
+          hasStartedRef.current = true;
           observer.unobserve(element);
+
+          const startTime = performance.now();
+          const durationMs = duration * 1000;
+
+          const animate = (currentTime: number) => {
+            const elapsed = currentTime - startTime;
+            const progress = Math.min(elapsed / durationMs, 1);
+            const easeOut = 1 - Math.pow(1 - progress, 3);
+
+            setCount(Math.floor(end * easeOut));
+
+            if (progress < 1) {
+              requestAnimationFrame(animate);
+            } else {
+              setCount(end); // ensure exact final value
+            }
+          };
+
+          requestAnimationFrame(animate);
         }
       },
       { threshold: 0.5 }
@@ -98,28 +115,7 @@ export const CountUp = memo(function CountUp({
 
     observer.observe(element);
     return () => observer.disconnect();
-  }, [hasStarted]);
-
-  useEffect(() => {
-    if (!hasStarted) return;
-
-    const startTime = performance.now();
-    const durationMs = duration * 1000;
-
-    const animate = (currentTime: number) => {
-      const elapsed = currentTime - startTime;
-      const progress = Math.min(elapsed / durationMs, 1);
-      const easeOut = 1 - Math.pow(1 - progress, 3);
-
-      setCount(Math.floor(end * easeOut));
-
-      if (progress < 1) {
-        requestAnimationFrame(animate);
-      }
-    };
-
-    requestAnimationFrame(animate);
-  }, [hasStarted, end, duration]);
+  }, [end, duration]);
 
   return (
     <span ref={ref} className={className}>
@@ -145,13 +141,15 @@ export const FloatingOrb = memo(function FloatingOrb({
 }: FloatingOrbProps) {
   return (
     <div
-      className={cn('absolute rounded-none blur-[100px] pointer-events-none animate-float-slow', className)}
+      className={cn('absolute blur-[100px] pointer-events-none animate-float-slow', className)}
       style={{
         width: size,
         height: size,
         background: `radial-gradient(circle, ${color} 0%, transparent 70%)`,
         animationDelay: `${delay}s`,
         animationDuration: `${duration}s`,
+        contentVisibility: 'auto',
+        containIntrinsicSize: `${size}px`,
       }}
     />
   );
@@ -177,25 +175,19 @@ export const MagneticButton = memo(function MagneticButton({ children, className
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!ref.current) return;
     const rect = ref.current.getBoundingClientRect();
-    const centerX = rect.left + rect.width / 2;
-    const centerY = rect.top + rect.height / 2;
-
-    const x = (e.clientX - centerX) * strength;
-    const y = (e.clientY - centerY) * strength;
-
+    const x = (e.clientX - rect.left - rect.width / 2) * strength;
+    const y = (e.clientY - rect.top - rect.height / 2) * strength;
     ref.current.style.transform = `translate(${x}px, ${y}px)`;
   };
 
   const handleMouseLeave = () => {
-    if (ref.current) {
-      ref.current.style.transform = 'translate(0, 0)';
-    }
+    if (ref.current) ref.current.style.transform = 'translate(0, 0)';
   };
 
   return (
     <div
       ref={ref}
-      className={cn('transition-transform duration-200', className)}
+      className={cn('transition-transform duration-200 ease-out', className)}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
     >
@@ -210,21 +202,29 @@ interface PulseGridProps {
 
 export const PulseGrid = memo(function PulseGrid({ className }: PulseGridProps) {
   return (
-    <div className={cn('absolute inset-0 overflow-hidden pointer-events-none', className)}>
-      <div className="absolute w-2 h-2 bg-primary/30 rounded-none animate-pulse-dot" style={{ left: '20%', top: '30%', animationDelay: '0s' }} />
-      <div className="absolute w-2 h-2 bg-primary/30 rounded-none animate-pulse-dot" style={{ left: '70%', top: '50%', animationDelay: '1s' }} />
-      <div className="absolute w-2 h-2 bg-primary/30 rounded-none animate-pulse-dot" style={{ left: '40%', top: '70%', animationDelay: '2s' }} />
-      <div className="absolute w-2 h-2 bg-primary/30 rounded-none animate-pulse-dot" style={{ left: '80%', top: '20%', animationDelay: '3s' }} />
+    <div className={cn('absolute inset-0 overflow-hidden pointer-events-none', className)} style={{ willChange: 'opacity' }}>
+      <div className="absolute w-1.5 h-1.5 bg-primary/40 animate-pulse-dot" style={{ left: '20%', top: '30%', animationDelay: '0s' }} />
+      <div className="absolute w-1.5 h-1.5 bg-primary/40 animate-pulse-dot" style={{ left: '70%', top: '50%', animationDelay: '1s' }} />
+      <div className="absolute w-1.5 h-1.5 bg-primary/40 animate-pulse-dot" style={{ left: '40%', top: '70%', animationDelay: '2s' }} />
+      <div className="absolute w-1.5 h-1.5 bg-primary/40 animate-pulse-dot" style={{ left: '80%', top: '20%', animationDelay: '3s' }} />
     </div>
   );
 });
 
-export const SmoothReveal = memo(function SmoothReveal({ children, className, delay = 0 }: { children: ReactNode; className?: string; delay?: number }) {
+export const SmoothReveal = memo(function SmoothReveal({
+  children,
+  className,
+  delay = 0,
+}: {
+  children: ReactNode;
+  className?: string;
+  delay?: number;
+}) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-20px" }}
+      viewport={{ once: true, margin: '-20px' }}
       transition={{ duration: 0.5, delay, ease: [0.33, 1, 0.68, 1] }}
       className={className}
     >

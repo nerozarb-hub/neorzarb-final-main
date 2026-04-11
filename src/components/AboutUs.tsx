@@ -1,4 +1,3 @@
-'use client';
 import React from 'react';
 import { motion } from 'framer-motion';
 
@@ -58,7 +57,7 @@ const AboutUs: React.FC = () => {
             className="p-8 lg:p-16 border-b lg:border-b-0 lg:border-r border-zinc-700"
           >
             <span className="text-primary text-xs font-bold tracking-widest uppercase mb-6 block">About Nerozarb</span>
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black uppercase tracking-tightest leading-none mb-8">
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-black uppercase tracking-tightest leading-none mb-8">
               We Don't Just<br />
               <span className="text-gray-500">Market.</span><br />
               We Build Growth<br />
@@ -96,7 +95,7 @@ const AboutUs: React.FC = () => {
               className="p-8 lg:p-12 border-b border-zinc-700 flex-1"
             >
               <span className="text-xs font-mono text-gray-600 uppercase tracking-widest mb-6 block">Why We Are Different</span>
-              <h3 className="text-3xl font-bold uppercase tracking-tight mb-6">The Nerozarb Difference</h3>
+              <h3 className="text-xl md:text-2xl font-bold uppercase tracking-tight mb-6">The Nerozarb Difference</h3>
 
               <div className="grid grid-cols-1 gap-6">
                 {values.map((value, index) => (

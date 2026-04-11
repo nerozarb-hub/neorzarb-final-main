@@ -9,7 +9,7 @@ import WhatsAppFloat from './components/WhatsAppFloat';
 const App: React.FC = () => {
   return (
     <BrowserRouter>
-      <main className="relative w-full flex flex-col pt-16 border-l border-r border-grid-line max-w-[1440px] mx-auto min-h-screen">
+      <main className="relative w-full flex flex-col pt-20 max-w-[1440px] mx-auto min-h-screen overflow-x-hidden">
         <Navbar />
         <Routes>
           <Route path="/" element={<HomePage />} />

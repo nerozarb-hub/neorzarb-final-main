@@ -1,6 +1,11 @@
-'use client';
 import React, { lazy, Suspense } from 'react';
 import Hero from '../components/Hero';
+import {
+  PainPointsSkeleton,
+  PortfolioSkeleton,
+  PricingSkeleton,
+  GenericSectionSkeleton,
+} from '../components/ui/SkeletonLoader';
 
 // Lazy-load below-the-fold sections for faster initial load
 const PainPoints = lazy(() => import('../components/PainPoints'));
@@ -14,25 +19,38 @@ const Testimonials = lazy(() => import('../components/Testimonials'));
 const CTA = lazy(() => import('../components/CTA'));
 const Footer = lazy(() => import('../components/Footer'));
 
-// Minimal loading placeholder that matches site background
-const SectionFallback = () => (
-  <div className="min-h-[50vh] bg-[#050505]" />
-);
-
 export function HomePage() {
   return (
     <>
       <Hero />
-      <Suspense fallback={<SectionFallback />}>
+      <Suspense fallback={<PainPointsSkeleton />}>
         <PainPoints />
+      </Suspense>
+      <Suspense fallback={<GenericSectionSkeleton minHeight="400px" />}>
         <NeroEngine />
+      </Suspense>
+      <Suspense fallback={<PortfolioSkeleton />}>
         <Portfolio />
+      </Suspense>
+      <Suspense fallback={<GenericSectionSkeleton minHeight="500px" />}>
         <Process />
+      </Suspense>
+      <Suspense fallback={<PricingSkeleton />}>
         <Pricing />
+      </Suspense>
+      <Suspense fallback={<GenericSectionSkeleton minHeight="400px" />}>
         <AboutUs />
+      </Suspense>
+      <Suspense fallback={<GenericSectionSkeleton minHeight="300px" />}>
         <FAQ />
+      </Suspense>
+      <Suspense fallback={<GenericSectionSkeleton minHeight="400px" />}>
         <Testimonials />
+      </Suspense>
+      <Suspense fallback={<GenericSectionSkeleton minHeight="200px" />}>
         <CTA />
+      </Suspense>
+      <Suspense fallback={<GenericSectionSkeleton minHeight="300px" />}>
         <Footer />
       </Suspense>
     </>

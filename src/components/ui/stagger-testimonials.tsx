@@ -1,4 +1,4 @@
-"use client"
+
 
 import React, { useState, useEffect } from 'react';
 import { cn } from '@/lib/utils';
@@ -94,7 +94,7 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
       )}
       style={{
         width: cardSize,
-        height: cardSize,
+        minHeight: cardSize,
         clipPath: `polygon(50px 0%, calc(100% - 50px) 0%, 100% 50px, 100% 100%, calc(100% - 50px) 100%, 50px 100%, 0 100%, 0 0)`,
         transform: `
           translate(-50%, -50%) 
@@ -123,7 +123,7 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
         }}
       />
       <p className={cn(
-        "text-lg sm:text-xl font-medium leading-relaxed",
+        "text-base sm:text-lg font-medium leading-relaxed line-clamp-5",
         isCenter ? "text-white" : "text-gray-300"
       )}>
         "{testimonial.testimonial}"
@@ -185,7 +185,7 @@ export const StaggerTestimonials: React.FC = () => {
   return (
     <div
       className="relative w-full overflow-hidden bg-onyx"
-      style={{ height: 600 }}
+      style={{ minHeight: 500 }}
     >
       {testimonialsList.map((testimonial, index) => {
         const position = testimonialsList.length % 2

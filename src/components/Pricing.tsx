@@ -1,5 +1,4 @@
-'use client';
-import React, { useState } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 import { BorderTrail } from './ui/border-trail';
 import BentoButton from './ui/BentoButton';
@@ -43,7 +42,7 @@ const Pricing: React.FC = () => {
         className="h-full"
       >
         <div
-          className={`relative bg-[#0a0a0a] border-2 ${isPrimary ? 'border-primary/50' : 'border-zinc-700 hover:border-white/20'} p-8 flex flex-col overflow-hidden h-full group hover:-translate-y-2 transition-all duration-300`}
+          className={`relative bg-[#0a0a0a] border-2 ${isPrimary ? 'border-primary/60 shadow-[0_0_30px_rgba(63,106,36,0.15)]' : 'border-zinc-800 hover:border-white/20'} p-8 md:p-10 lg:p-12 flex flex-col overflow-visible h-full group hover:-translate-y-1 transition-all duration-300`}
         >
           {/* Non-primary hover glow — CSS only */}
           {!isPrimary && (
@@ -57,7 +56,7 @@ const Pricing: React.FC = () => {
 
           {isPrimary && (
             <>
-              <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-primary text-white text-[9px] font-bold px-3 py-1 uppercase tracking-widest">
+              <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-primary text-white text-[10px] font-black px-5 py-1.5 uppercase tracking-[0.2em] shadow-lg z-20 whitespace-nowrap">
                 Most Popular
               </div>
               <BorderTrail
@@ -69,41 +68,41 @@ const Pricing: React.FC = () => {
             </>
           )}
 
-          <div className="flex items-center gap-3 mb-4 relative z-10">
-            <i className={`fas ${icon} ${isPrimary ? 'text-primary' : 'text-gray-500'} group-hover:scale-110 transition-transform duration-300`} />
-            <span className={`text-[10px] ${isPrimary ? 'text-primary' : 'text-gray-500'} font-mono uppercase tracking-wider`}>{tier}</span>
+          <div className="flex items-center gap-3 mb-6 relative z-10">
+            <i className={`fas ${icon} ${isPrimary ? 'text-primary' : 'text-gray-500'} text-xl group-hover:scale-110 transition-transform duration-300`} />
+            <span className={`text-xs ${isPrimary ? 'text-primary' : 'text-gray-400'} font-mono uppercase tracking-widest font-bold`}>{tier}</span>
           </div>
 
-          <h3 className="text-xl font-bold uppercase mb-1 relative z-10">{title}</h3>
+          <h3 className="text-xl md:text-2xl font-black uppercase mb-3 relative z-10">{title}</h3>
 
           {originalPrice && (
-            <div className="flex items-baseline gap-2 mb-1 relative z-10">
-              <span className="text-sm text-gray-600 line-through">{originalPrice}</span>
+            <div className="mb-1 relative z-10">
+              <span className="text-sm text-gray-500 line-through decoration-red-500/50">{originalPrice}</span>
             </div>
           )}
-          <div className="flex items-baseline gap-2 mb-2 relative z-10">
-            <span className="text-3xl font-black text-white">{price}</span>
-            <span className="text-xs text-gray-600 font-mono uppercase">{priceLabel}</span>
+          <div className="flex items-baseline gap-3 mb-5 relative z-10">
+            <span className="text-3xl md:text-4xl font-black text-white leading-none">{price}</span>
+            <span className="text-xs text-gray-500 font-mono uppercase tracking-wider border-l border-zinc-700 pl-3">{priceLabel}</span>
           </div>
 
           {isPrimary && (
-            <p className="text-[10px] text-primary uppercase tracking-wider mb-4 relative z-10">Complete Nero Engine Deployment</p>
+            <p className="text-xs text-primary font-bold uppercase tracking-[0.1em] mb-4 md:mb-6 relative z-10 bg-primary/10 inline-block px-3 py-1 border border-primary/20 self-start">Complete Nero Engine Deployment</p>
           )}
 
-          <p className={`text-sm ${isPrimary ? 'text-gray-300' : 'text-gray-400'} mb-6 italic leading-relaxed relative z-10`}>
+          <p className={`text-sm ${isPrimary ? 'text-gray-300' : 'text-gray-400'} mb-6 leading-relaxed relative z-10`}>
             {description}
           </p>
 
-          <div className="space-y-5 mb-8 flex-grow relative z-10">
+          <div className="space-y-5 flex-grow relative z-10">
             {features.map((group, groupIndex) => (
               <div key={groupIndex}>
                 {group.label && (
-                  <span className="text-[10px] font-medium text-gray-500 uppercase tracking-wider block mb-2">{group.label}</span>
+                  <span className="text-[11px] font-bold text-white uppercase tracking-wider block mb-3 border-b border-zinc-800 pb-2">{group.label}</span>
                 )}
-                <ul className="space-y-2">
+                <ul className="space-y-2.5">
                   {group.items.map((item, itemIndex) => (
-                    <li key={itemIndex} className="flex items-start gap-3 text-base text-gray-300">
-                      <i className="fas fa-check text-primary flex-shrink-0 mt-1" />
+                    <li key={itemIndex} className="flex items-start gap-3 text-sm text-gray-300">
+                      <i className="fas fa-check text-primary text-xs flex-shrink-0 mt-1" />
                       <span>{item}</span>
                     </li>
                   ))}
@@ -112,9 +111,13 @@ const Pricing: React.FC = () => {
             ))}
           </div>
 
-          <BentoButton href={href} variant={isPrimary ? 'primary' : 'secondary'}>
-            {buttonText}
-          </BentoButton>
+          {/* Separator + Button pinned to bottom */}
+          <div className="mt-auto pt-8 relative z-10">
+            <div className="border-t border-zinc-800 mb-6" />
+            <BentoButton href={href} variant={isPrimary ? 'primary' : 'secondary'}>
+              {buttonText}
+            </BentoButton>
+          </div>
         </div>
       </motion.div>
     );
@@ -136,7 +139,7 @@ const Pricing: React.FC = () => {
           <span className="text-primary text-[10px] font-bold tracking-[0.2em] uppercase">
             Investment Tiers
           </span>
-          <h2 className="text-4xl md:text-5xl font-black uppercase tracking-tightest leading-none">
+          <h2 className="text-2xl md:text-3xl lg:text-4xl font-black uppercase tracking-tightest leading-none">
             <span className="block">Simple Pricing.</span>
             <span className="block">Real Results.</span>
           </h2>
@@ -197,7 +200,7 @@ const Pricing: React.FC = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
           viewport={{ once: true }}
-          className="mt-10 border border-primary/30 bg-primary/5 p-6 flex items-start gap-4"
+          className="mt-10 border-2 border-primary/30 bg-primary/5 p-6 flex items-center gap-4"
         >
           <i className="fas fa-lock text-primary text-xl mt-0.5 flex-shrink-0" />
           <div>
@@ -219,7 +222,7 @@ const Pricing: React.FC = () => {
             <span className="w-1.5 h-1.5 bg-primary animate-pulse" />
             <span>All packages include free strategy call + onboarding</span>
           </div>
-          <p className="text-sm text-gray-400">Not sure which package fits? <a href="#contact" className="text-primary hover:underline transition-colors">Let's talk</a> — free consultation, zero pressure.</p>
+          <p className="text-sm text-gray-400">Not sure which package fits? <a href={`https://wa.me/923XXXXXXXXXX?text=${encodeURIComponent("Hi NEROZARB, I want to find the right package for my business")}`} target="_blank" rel="noopener noreferrer" className="text-primary hover:underline transition-colors">Let's talk</a> — free consultation, zero pressure.</p>
         </motion.div>
       </div>
     </section>

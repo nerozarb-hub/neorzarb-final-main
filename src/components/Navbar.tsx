@@ -1,41 +1,45 @@
-'use client';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link, useLocation } from 'react-router-dom';
+
+const WHATSAPP_STRATEGY = 'https://wa.me/923XXXXXXXXXX?text=Hi%20NEROZARB%2C%20I%20want%20to%20book%20a%20strategy%20call';
 
 const Navbar: React.FC = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [time, setTime] = useState('');
   const location = useLocation();
   const isAboutPage = location.pathname === '/about';
+  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
   useEffect(() => {
     const updateTime = () => {
-      const now = new Date();
       try {
-        setTime(now.toLocaleTimeString('en-US', {
+        setTime(new Date().toLocaleTimeString('en-US', {
           timeZone: 'Asia/Karachi',
           hour12: false,
           hour: '2-digit',
-          minute: '2-digit'
+          minute: '2-digit',
         }));
       } catch {
-        setTime(now.toLocaleTimeString('en-US', { hour12: false, hour: '2-digit', minute: '2-digit' }));
+        setTime(new Date().toLocaleTimeString('en-US', { hour12: false, hour: '2-digit', minute: '2-digit' }));
       }
     };
+
     updateTime();
 
-    // Calculate delay to next minute for precise updates
+    // Sync to the next minute boundary, then run every 60s
     const now = new Date();
     const delay = (60 - now.getSeconds()) * 1000 - now.getMilliseconds();
 
-    const timeout = setTimeout(() => {
+    const timeoutId = setTimeout(() => {
       updateTime();
-      const interval = setInterval(updateTime, 60000);
-      return () => clearInterval(interval);
+      intervalRef.current = setInterval(updateTime, 60_000);
     }, delay);
 
-    return () => clearTimeout(timeout);
+    return () => {
+      clearTimeout(timeoutId);
+      if (intervalRef.current) clearInterval(intervalRef.current);
+    };
   }, []);
 
   const navLinks = [
@@ -50,6 +54,7 @@ const Navbar: React.FC = () => {
       <header className="fixed top-0 left-0 right-0 z-50 bg-[#030303] border-b border-white/10 h-20">
         <div className="max-w-[1440px] mx-auto h-full grid grid-cols-[auto_1fr_auto] relative">
 
+          {/* Logo */}
           <Link
             to="/"
             className="flex items-center px-6 md:px-8 border-r border-white/10 h-full relative group cursor-pointer"
@@ -63,17 +68,18 @@ const Navbar: React.FC = () => {
                 />
                 <div className="absolute inset-0 bg-primary/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </div>
-              <div className="flex flex-col justify-center h-full">
+              <div className="flex flex-col justify-center">
                 <span className="font-display font-black tracking-tighter text-lg leading-none text-white">
                   NEROZARB
                 </span>
-                <span className="font-mono text-[10px] text-text-dim tracking-widest uppercase leading-none mt-1 group-hover:text-primary transition-colors">
+                <span className="font-mono text-[10px] text-gray-500 tracking-widest uppercase leading-none mt-1 group-hover:text-primary transition-colors">
                   Growth Engine
                 </span>
               </div>
             </div>
           </Link>
 
+          {/* Desktop Nav */}
           <div className="hidden md:flex items-center justify-between px-8 h-full">
             <nav className="flex items-center gap-6 lg:gap-8">
               {navLinks.map((link) => (
@@ -81,8 +87,9 @@ const Navbar: React.FC = () => {
                   <Link
                     key={link.href}
                     to={link.href}
-                    className={`relative text-sm font-medium uppercase tracking-wider transition-colors group py-2 ${isAboutPage ? 'text-primary' : 'text-gray-400 hover:text-white'
-                      }`}
+                    className={`relative text-sm font-medium uppercase tracking-wider transition-colors group py-2 ${
+                      isAboutPage ? 'text-primary' : 'text-gray-400 hover:text-white'
+                    }`}
                   >
                     <span className="opacity-0 -ml-2 group-hover:opacity-100 group-hover:ml-0 transition-all text-primary duration-300 mr-1">[</span>
                     {link.label}
@@ -102,9 +109,10 @@ const Navbar: React.FC = () => {
               ))}
             </nav>
 
-            <div className="flex items-center gap-6 text-[10px] font-mono text-text-dim uppercase tracking-widest hidden lg:flex">
+            {/* Status + Time */}
+            <div className="flex items-center gap-6 text-[10px] font-mono text-gray-500 uppercase tracking-widest hidden lg:flex">
               <div className="flex items-center gap-2">
-                <span className="w-1.5 h-1.5 bg-primary animate-[pulse_2s_ease-in-out_infinite]" />
+                <span className="w-1.5 h-1.5 bg-primary animate-pulse-glow" />
                 <span>System Online</span>
               </div>
               <div className="border-l border-white/10 h-4 mx-2" />
@@ -112,9 +120,10 @@ const Navbar: React.FC = () => {
             </div>
           </div>
 
-          <div className="flex items-center px-6 md:px-8 border-l border-white/10 h-full bg-onyx/30">
+          {/* CTA + Hamburger */}
+          <div className="flex items-center px-6 md:px-8 border-l border-white/10 h-full bg-[#030303]/30">
             <a
-              href="https://wa.me/923XXXXXXXXXX?text=Hi%20NEROZARB%2C%20I%20want%20to%20book%20a%20strategy%20call"
+              href={WHATSAPP_STRATEGY}
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 bg-primary hover:bg-primary/90 px-3 py-2 sm:px-5 sm:py-2.5 transition-all duration-300 group rounded-none"
@@ -128,25 +137,22 @@ const Navbar: React.FC = () => {
             <button
               className="md:hidden ml-4 p-2 text-white hover:text-primary transition-colors"
               onClick={() => setMobileMenuOpen(true)}
-              aria-label="Toggle mobile menu"
+              aria-label="Open navigation menu"
             >
               <i className="fas fa-bars text-xl" />
             </button>
           </div>
-
-          <div className="absolute top-full left-[250px] -translate-x-1/2 -translate-y-1/2 text-white/20 hidden md:block pointer-events-none">
-            <div className="w-3 h-3 border-t border-l border-white/10" />
-          </div>
         </div>
       </header>
 
+      {/* Mobile Menu */}
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div
             initial={{ y: '-100%' }}
             animate={{ y: 0 }}
             exit={{ y: '-100%' }}
-            transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
             className="fixed inset-0 z-[60] bg-[#050505] flex flex-col"
           >
             <div className="h-20 border-b border-white/10 flex items-center justify-between px-6">
@@ -154,7 +160,7 @@ const Navbar: React.FC = () => {
               <button
                 onClick={() => setMobileMenuOpen(false)}
                 className="p-2 border border-white/10 hover:bg-primary hover:border-primary hover:text-white transition-colors rounded-none"
-                aria-label="Close mobile menu"
+                aria-label="Close navigation menu"
               >
                 <i className="fas fa-times text-xl" />
               </button>
@@ -167,12 +173,13 @@ const Navbar: React.FC = () => {
                     key={link.href}
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.1 + (i * 0.1) }}
+                    transition={{ delay: 0.05 + i * 0.08 }}
                   >
                     <Link
                       to={link.href}
-                      className={`text-4xl font-black uppercase tracking-tight hover:text-primary transition-colors ${isAboutPage ? 'text-primary' : 'text-white'
-                        }`}
+                      className={`text-4xl font-black uppercase tracking-tight hover:text-primary transition-colors ${
+                        isAboutPage ? 'text-primary' : 'text-white'
+                      }`}
                       onClick={() => setMobileMenuOpen(false)}
                     >
                       {link.label}
@@ -184,7 +191,7 @@ const Navbar: React.FC = () => {
                     href={link.href}
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.1 + (i * 0.1) }}
+                    transition={{ delay: 0.05 + i * 0.08 }}
                     className="text-4xl font-black uppercase text-white hover:text-primary transition-colors tracking-tight"
                     onClick={() => setMobileMenuOpen(false)}
                   >
@@ -194,20 +201,20 @@ const Navbar: React.FC = () => {
               ))}
             </div>
 
-            <div className="mt-auto p-6 border-t border-white/10 bg-onyx">
+            <div className="mt-auto p-6 border-t border-white/10 bg-[#0a0a0a]">
               <div className="flex items-center gap-2 mb-4 text-primary text-xs font-mono uppercase tracking-widest">
                 <i className="fas fa-bolt" />
                 <span>Limited Sprint Slots This Month</span>
               </div>
               <a
-                href="https://wa.me/923XXXXXXXXXX?text=Hi%20NEROZARB%2C%20I%20want%20to%20book%20a%20strategy%20call"
+                href={WHATSAPP_STRATEGY}
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => setMobileMenuOpen(false)}
-                className="flex items-center justify-center gap-2 w-full bg-primary hover:bg-primary/90 px-6 py-4 transition-all duration-500 rounded-none group"
+                className="flex items-center justify-center gap-2 w-full bg-primary hover:bg-primary/90 px-6 py-4 transition-all duration-300 rounded-none group"
               >
                 <span className="text-sm font-bold tracking-wider text-white uppercase">
-                  Initialize Strategy
+                  Book Strategy Call
                 </span>
                 <i className="fas fa-arrow-right text-white group-hover:translate-x-1 transition-transform" />
               </a>

@@ -1,4 +1,4 @@
-'use client';
+
 import React from 'react';
 import { motion } from 'framer-motion';
 import { StaggerTestimonials } from './ui/stagger-testimonials';
@@ -18,7 +18,7 @@ const Testimonials: React.FC = () => {
       >
         <div className="flex flex-col items-center text-center">
           <span className="text-primary text-xs font-bold tracking-widest uppercase mb-2 block">What Our Clients Say</span>
-          <h2 className="text-4xl md:text-5xl font-black uppercase tracking-tightest leading-none mb-4">Don't Take Our Word For It.</h2>
+          <h2 className="text-2xl md:text-3xl lg:text-4xl font-black uppercase tracking-tightest leading-none mb-4">Don't Take Our Word For It.</h2>
           <p className="text-gray-400 text-base max-w-md">Real results from real businesses who trusted the Nero Engine.</p>
         </div>
       </motion.div>
