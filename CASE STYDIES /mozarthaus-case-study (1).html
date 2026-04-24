@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MOZARTHAUS × NEROZARB — Case Study</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&family=Inter:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --onyx: #0A0A0A;
+    --white: #FFFFFF;
+    --olive: #3F6A24;
+    --olive-mist: rgba(63,106,36,0.12);
+    --olive-glow: rgba(63,106,36,0.35);
+    --platinum: #C0C0C0;
+    --sage: #A8C69F;
+    --dim: rgba(255,255,255,0.08);
+    --border: rgba(255,255,255,0.07);
+  }
+
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--onyx);
+    color: var(--white);
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    line-height: 1.75;
+    overflow-x: hidden;
+  }
+
+  /* AMBIENT RADIAL LIGHT */
+  body::before {
+    content: '';
+    position: fixed;
+    top: -20%;
+    left: -10%;
+    width: 70vw;
+    height: 70vw;
+    background: radial-gradient(ellipse, rgba(63,106,36,0.08) 0%, transparent 65%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ── HEADER ── */
+  header {
+    position: relative;
+    padding: 80px 80px 60px;
+    border-bottom: 1px solid var(--border);
+    z-index: 1;
+  }
+
+  .logo-tag {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    color: var(--olive);
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+
+  .agency-name {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+    font-weight: 900;
+    letter-spacing: 0.25em;
+    color: var(--platinum);
+    text-transform: uppercase;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    position: relative;
+    padding: 100px 80px 80px;
+    z-index: 1;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .case-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: var(--olive);
+    text-transform: uppercase;
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .case-label::before {
+    content: '';
+    width: 32px;
+    height: 1px;
+    background: var(--olive);
+  }
+
+  .hero-title {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: clamp(52px, 7vw, 96px);
+    line-height: 0.95;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+    max-width: 900px;
+    margin-bottom: 40px;
+  }
+
+  .hero-title span {
+    color: var(--olive);
+  }
+
+  .hero-sub {
+    font-size: 17px;
+    font-weight: 400;
+    color: var(--platinum);
+    max-width: 560px;
+    line-height: 1.65;
+    margin-bottom: 60px;
+  }
+
+  /* STAT STRIP */
+  .stat-strip {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    max-width: 860px;
+  }
+
+  .stat-item {
+    background: var(--onyx);
+    padding: 32px 28px;
+    position: relative;
+    transition: background 0.25s;
+  }
+
+  .stat-item:hover { background: rgba(63,106,36,0.06); }
+
+  .stat-num {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 38px;
+    color: var(--white);
+    line-height: 1;
+    margin-bottom: 6px;
+    letter-spacing: -0.02em;
+  }
+
+  .stat-num .accent { color: var(--olive); }
+
+  .stat-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    color: var(--platinum);
+    text-transform: uppercase;
+  }
+
+  /* ── SECTION WRAPPER ── */
+  section {
+    position: relative;
+    padding: 80px 80px;
+    border-bottom: 1px solid var(--border);
+    z-index: 1;
+  }
+
+  .section-tag {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    color: var(--olive);
+    text-transform: uppercase;
+    margin-bottom: 40px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .section-tag::after {
+    content: '';
+    flex: 1;
+    max-width: 40px;
+    height: 1px;
+    background: var(--olive);
+  }
+
+  .section-headline {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: clamp(28px, 3.5vw, 44px);
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+    line-height: 1.05;
+    margin-bottom: 28px;
+    max-width: 700px;
+  }
+
+  .section-body {
+    font-size: 16px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.75);
+    max-width: 600px;
+    line-height: 1.8;
+  }
+
+  /* ── PROBLEM SECTION ── */
+  .problem-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    margin-top: 52px;
+  }
+
+  .problem-block {
+    padding: 36px;
+    border: 1px solid var(--border);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .problem-block::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 3px; height: 100%;
+    background: #C0392B;
+  }
+
+  .solution-block::before {
+    background: var(--olive) !important;
+  }
+
+  .block-title {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+
+  .block-title.red { color: #C0392B; }
+  .block-title.green { color: var(--olive); }
+
+  .problem-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .problem-list li {
+    font-size: 15px;
+    font-weight: 400;
+    color: rgba(255,255,255,0.78);
+    padding-left: 18px;
+    position: relative;
+    line-height: 1.5;
+  }
+
+  .problem-list li::before {
+    content: '×';
+    position: absolute;
+    left: 0;
+    color: #C0392B;
+    font-weight: 700;
+  }
+
+  .solution-list li::before {
+    content: '→';
+    color: var(--sage) !important;
+  }
+
+  /* ── DELIVERABLES ── */
+  .deliverable-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--border);
+    margin-top: 52px;
+    border: 1px solid var(--border);
+  }
+
+  .deliverable-card {
+    background: var(--onyx);
+    padding: 40px 32px;
+    position: relative;
+    overflow: hidden;
+    transition: background 0.25s;
+  }
+
+  .deliverable-card:hover { background: rgba(63,106,36,0.05); }
+
+  .d-number {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 60px;
+    color: rgba(63,106,36,0.15);
+    line-height: 1;
+    position: absolute;
+    top: 20px;
+    right: 24px;
+    letter-spacing: -0.04em;
+  }
+
+  .d-icon {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    color: var(--olive);
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+
+  .d-title {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 18px;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    margin-bottom: 14px;
+    line-height: 1.2;
+  }
+
+  .d-body {
+    font-size: 14px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.65);
+    line-height: 1.7;
+  }
+
+  /* ── NUMBERS SECTION ── */
+  .metrics-large {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    margin-top: 52px;
+  }
+
+  .metric-hero {
+    padding: 52px 44px;
+    border: 1px solid var(--olive-glow);
+    background: rgba(63,106,36,0.04);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .metric-hero::after {
+    content: '';
+    position: absolute;
+    bottom: -60px; right: -60px;
+    width: 180px; height: 180px;
+    background: radial-gradient(circle, rgba(63,106,36,0.18), transparent 70%);
+    pointer-events: none;
+  }
+
+  .metric-big {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 72px;
+    line-height: 1;
+    letter-spacing: -0.03em;
+    margin-bottom: 10px;
+    color: var(--white);
+  }
+
+  .metric-big .plus { color: var(--olive); }
+
+  .metric-context {
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--sage);
+    margin-bottom: 20px;
+    font-family: 'Space Mono', monospace;
+    letter-spacing: 0.05em;
+    font-size: 11px;
+    text-transform: uppercase;
+  }
+
+  .metric-desc {
+    font-size: 15px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.65);
+    line-height: 1.7;
+  }
+
+  .metrics-secondary {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+  }
+
+  .metric-row {
+    background: var(--onyx);
+    padding: 28px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: background 0.2s;
+  }
+
+  .metric-row:hover { background: rgba(63,106,36,0.04); }
+
+  .metric-row-label {
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--platinum);
+  }
+
+  .metric-row-val {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 24px;
+    color: var(--white);
+    letter-spacing: -0.01em;
+  }
+
+  .metric-row-val .accent { color: var(--olive); }
+
+  /* ── QUOTE BLOCK ── */
+  .quote-section {
+    background: rgba(63,106,36,0.04);
+    border-left: 3px solid var(--olive);
+    padding: 52px 80px;
+  }
+
+  .quote-text {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: clamp(20px, 2.5vw, 30px);
+    text-transform: uppercase;
+    line-height: 1.25;
+    max-width: 720px;
+    letter-spacing: -0.01em;
+    margin-bottom: 24px;
+  }
+
+  .quote-sub {
+    font-size: 14px;
+    font-weight: 300;
+    color: var(--platinum);
+    font-family: 'Space Mono', monospace;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  /* ── STORY SECTION ── */
+  .story-layout {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 80px;
+    margin-top: 52px;
+    align-items: start;
+  }
+
+  .story-sidebar {
+    position: sticky;
+    top: 40px;
+  }
+
+  .story-sidebar-title {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--platinum);
+    margin-bottom: 20px;
+  }
+
+  .timeline-item {
+    padding: 16px 0;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    gap: 16px;
+  }
+
+  .timeline-dot {
+    width: 6px;
+    height: 6px;
+    background: var(--olive);
+    border-radius: 50%;
+    margin-top: 8px;
+    flex-shrink: 0;
+  }
+
+  .timeline-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    color: var(--olive);
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .timeline-text {
+    font-size: 14px;
+    color: rgba(255,255,255,0.65);
+    font-weight: 300;
+  }
+
+  .story-body p {
+    font-size: 16px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.78);
+    line-height: 1.85;
+    margin-bottom: 28px;
+  }
+
+  .story-body strong {
+    color: var(--white);
+    font-weight: 500;
+  }
+
+  /* ── FOOTER CTA ── */
+  .case-footer {
+    padding: 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 40px;
+  }
+
+  .footer-left .label {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    color: var(--olive);
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+
+  .footer-cta-head {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: clamp(24px, 3vw, 40px);
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+    line-height: 1.1;
+    max-width: 480px;
+    margin-bottom: 24px;
+  }
+
+  .footer-cta-sub {
+    font-size: 14px;
+    font-weight: 300;
+    color: var(--platinum);
+  }
+
+  .cta-btn {
+    display: inline-block;
+    padding: 18px 36px;
+    background: var(--olive);
+    color: var(--white);
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.15s;
+    margin-top: 32px;
+  }
+
+  .cta-btn:hover { background: #4d8a2c; transform: translateY(-2px); }
+
+  .nerozarb-sig {
+    text-align: right;
+  }
+
+  .sig-logo {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 28px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--white);
+  }
+
+  .sig-sub {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    color: var(--olive);
+    text-transform: uppercase;
+    margin-top: 6px;
+  }
+
+  /* ── DIVIDER ── */
+  hr.rule {
+    border: none;
+    border-top: 1px solid var(--border);
+  }
+
+  /* ── FADE IN ANIMATION ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .fade-up {
+    animation: fadeUp 0.7s ease forwards;
+  }
+
+  .fade-up-delay { animation-delay: 0.15s; opacity: 0; }
+  .fade-up-delay-2 { animation-delay: 0.3s; opacity: 0; }
+
+  @media (max-width: 900px) {
+    header, .hero, section, .case-footer { padding: 48px 32px; }
+    .problem-grid, .metrics-large, .story-layout { grid-template-columns: 1fr; }
+    .deliverable-grid { grid-template-columns: 1fr; }
+    .stat-strip { grid-template-columns: 1fr 1fr; }
+    .case-footer { flex-direction: column; align-items: flex-start; }
+    .nerozarb-sig { text-align: left; }
+    .quote-section { padding: 48px 32px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="logo-tag">CASE STUDY — 001</div>
+  <div class="agency-name">NEROZARB × MOZARTHAUS</div>
+</header>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="case-label fade-up">Cultural Institution · Lahore · 60-Day Sprint</div>
+  <h1 class="hero-title fade-up fade-up-delay">
+    FROM<br><span>INVISIBLE</span><br>TO 100,000.
+  </h1>
+  <p class="hero-sub fade-up fade-up-delay-2">
+    MozartHaus had the product. They had the prestige. They had the space. What they didn't have was a digital presence that matched any of it. We fixed that in 60 days.
+  </p>
+
+  <div class="stat-strip fade-up fade-up-delay-2">
+    <div class="stat-item">
+      <div class="stat-num">100<span class="accent">K+</span></div>
+      <div class="stat-label">Niche-Targeted Reach</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">8<span class="accent">,000%</span></div>
+      <div class="stat-label">Reach Growth</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">10<span class="accent">K+</span></div>
+      <div class="stat-label">Engagements</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">60</div>
+      <div class="stat-label">Days to Build</div>
+    </div>
+  </div>
+</div>
+
+<!-- THE STORY -->
+<section>
+  <div class="section-tag">The Brief</div>
+  <h2 class="section-headline">THE SITUATION BEFORE WE ARRIVED</h2>
+
+  <div class="story-layout">
+    <div class="story-sidebar">
+      <div class="story-sidebar-title">Timeline</div>
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div>
+          <div class="timeline-label">Day 0</div>
+          <div class="timeline-text">Discovery. Scattered accounts. No brand identity. Broken website. Under 1,000 reach.</div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div>
+          <div class="timeline-label">Days 1–14</div>
+          <div class="timeline-text">Full audit. Identity system built. Technical foundation repaired.</div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div>
+          <div class="timeline-label">Days 15–30</div>
+          <div class="timeline-text">Content engine activated. Google Business verified. SEO keywords injected.</div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div>
+          <div class="timeline-label">Days 31–60</div>
+          <div class="timeline-text">Paid reach deployed. Lead pipeline live. 100,000+ hyper-targeted accounts reached.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="story-body">
+      <p>
+        MozartHaus — the Austrian-Pakistani Cultural Centre in Lahore — runs one of the most unique arts and music programs in the city. Piano. Dance. Vocals. Fine Art. A physical space that costs real money and delivers real value. But nobody knew it existed.
+      </p>
+      <p>
+        Their Instagram was a ghost. No visual system, no consistent voice, no strategy. Their website had broken links and gave no confidence to someone who landed on it. Their Google profile was unverified — meaning when a parent searched "music classes Lahore," MozartHaus didn't show up at all. The trust gap between their physical reputation and their digital footprint was enormous.
+      </p>
+      <p>
+        Every week without a proper presence was a week of lost enrollment inquiries. Lost revenue. Premium families choosing competitors that looked more put-together online, even if MozartHaus had the better product.
+      </p>
+      <p>
+        <strong>That's the problem we came in to fix.</strong> Not just make it look better. Build an institution-grade digital system from the ground up — and point it at exactly the right people.
+      </p>
+      <p>
+        The reach numbers in this case study are not inflated by generic audiences. We didn't spray ads at all of Lahore. Every campaign, every post, every targeting decision was built around one question: <strong>who actually enrolls their child in a premium arts programme?</strong> Parents in DHA and Gulberg. Families with disposable income. People already searching for music, dance, and fine art instruction. That is the only audience we built for. 100,000 people reached — and every single one of them qualified.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- BEFORE / AFTER -->
+<section>
+  <div class="section-tag">Diagnosis</div>
+  <h2 class="section-headline">WHAT WAS BROKEN.<br>WHAT WE FIXED.</h2>
+
+  <div class="problem-grid">
+    <div class="problem-block">
+      <div class="block-title red">BEFORE NEROZARB</div>
+      <ul class="problem-list">
+        <li>Under 1,000 Instagram reach. No paid amplification strategy.</li>
+        <li>No visual identity — no color code, no logo guidelines, no consistent aesthetic.</li>
+        <li>Broken website with no clear CTA or trust signals.</li>
+        <li>Google Business Profile unverified. Zero presence in local search.</li>
+        <li>No lead management system. Inquiries came in and disappeared.</li>
+        <li>No content strategy. Posts were random, inconsistent, unprofessional.</li>
+        <li>No secure asset storage. Photos and graphics were scattered and unarchived.</li>
+        <li>No student enrollment pipeline built into the digital system.</li>
+      </ul>
+    </div>
+    <div class="problem-block solution-block">
+      <div class="block-title green">AFTER 60 DAYS</div>
+      <ul class="problem-list solution-list">
+        <li>100,000+ hyper-targeted accounts reached in 30 days. An 8,000%+ increase — every single one inside the arts, music, and premium family niche.</li>
+        <li>Full brand identity built: Austrian Red & White, Montserrat, strict usage guidelines.</li>
+        <li>Website audited, fixed, and converted into a lead-generating asset.</li>
+        <li>Google Business verified with 5-star reviews and high-intent keywords injected.</li>
+        <li>Full Lead Management System tracking WhatsApp, Google, and paid ad inquiries.</li>
+        <li>Content framework created — they now know exactly what to post, always.</li>
+        <li>Secure Google Drive archive with every photo, video, and graphic ever created.</li>
+        <li>Student walk-ins being tracked and attributed directly to digital campaigns.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- DELIVERABLES -->
+<section>
+  <div class="section-tag">What We Built</div>
+  <h2 class="section-headline">SIX SYSTEMS.<br>ONE 60-DAY SPRINT.</h2>
+  <p class="section-body">We didn't post content. We built the infrastructure that posts, converts, and compounds — permanently.</p>
+
+  <div class="deliverable-grid">
+    <div class="deliverable-card">
+      <div class="d-number">01</div>
+      <div class="d-icon">BRAND IDENTITY</div>
+      <div class="d-title">The Visual Institution</div>
+      <div class="d-body">Complete brand identity built from scratch. Austrian Red and White color system. Typography rules. Logo usage guidelines. When someone lands on MozartHaus now, they don't see a small business. They see a cultural institution.</div>
+    </div>
+    <div class="deliverable-card">
+      <div class="d-number">02</div>
+      <div class="d-icon">INSTAGRAM SYSTEM</div>
+      <div class="d-title">The Content Engine</div>
+      <div class="d-body">Rebuilt the entire Instagram presence. Bio engineered as a conversion funnel with direct WhatsApp CTA, directions, and service highlights. Content pillars defined. Posts scheduled. Zero guesswork left for the team.</div>
+    </div>
+    <div class="deliverable-card">
+      <div class="d-number">03</div>
+      <div class="d-icon">LOCAL SEO</div>
+      <div class="d-title">Google Dominance</div>
+      <div class="d-body">Google Business Profile verified from scratch. High-intent keywords (Piano, Dance, Vocals, Art Classes Lahore) injected into the backend. 5-star reviews published. MozartHaus now appears where parents are actively searching.</div>
+    </div>
+    <div class="deliverable-card">
+      <div class="d-number">04</div>
+      <div class="d-icon">PERFORMANCE MARKETING</div>
+      <div class="d-title">Paid Reach Campaigns</div>
+      <div class="d-body">Designed and deployed paid campaigns targeting premium Lahore families inside the arts, music, and cultural education niche. Reached 100,000+ accounts in the first 30 days — zero generic audience bloat. Every person reached was a qualified, niche-matched prospect for MozartHaus services.</div>
+    </div>
+    <div class="deliverable-card">
+      <div class="d-number">05</div>
+      <div class="d-icon">LEAD SYSTEM</div>
+      <div class="d-title">The Enrollment Pipeline</div>
+      <div class="d-body">Built a lead management system to track every inquiry from WhatsApp, Google, and paid ads. No high-value lead goes untracked. Student walk-ins are now being directly attributed to specific digital campaigns.</div>
+    </div>
+    <div class="deliverable-card">
+      <div class="d-number">06</div>
+      <div class="d-icon">ASSET VAULT</div>
+      <div class="d-title">Permanent Digital Archive</div>
+      <div class="d-body">Every photo, video, graphic, and brand asset archived in a secure Google Drive library with institutional-grade password management via Bitwarden. MozartHaus owns its digital infrastructure in perpetuity.</div>
+    </div>
+  </div>
+</section>
+
+<!-- METRICS -->
+<section>
+  <div class="section-tag">The Numbers</div>
+  <h2 class="section-headline">RESULTS THAT<br>DON'T NEED CONTEXT.</h2>
+
+  <div class="metrics-large">
+    <div class="metric-hero">
+      <div class="metric-big">100<span class="plus">K+</span></div>
+      <div class="metric-context">HYPER-NICHE ACCOUNTS REACHED — 30 DAYS</div>
+      <div class="metric-desc">
+        Before NEROZARB, MozartHaus was reaching under 1,000 people. After the system went live, 100,000+ accounts saw the brand in a single month. None of it was generic. Every person reached was inside the arts education, music, and premium Lahore family niche — the exact audience that buys what MozartHaus sells.
+      </div>
+    </div>
+
+    <div class="metrics-secondary">
+      <div class="metric-row">
+        <div class="metric-row-label">Reach Before</div>
+        <div class="metric-row-val">&lt;1<span class="accent">,000</span></div>
+      </div>
+      <div class="metric-row">
+        <div class="metric-row-label">Niche-Targeted Reach (30 days)</div>
+        <div class="metric-row-val">100<span class="accent">,000+</span></div>
+      </div>
+      <div class="metric-row">
+        <div class="metric-row-label">Reach Growth</div>
+        <div class="metric-row-val">8,000<span class="accent">%+</span></div>
+      </div>
+      <div class="metric-row">
+        <div class="metric-row-label">High-Intent Profile Visits</div>
+        <div class="metric-row-val">5,000<span class="accent">+</span></div>
+      </div>
+      <div class="metric-row">
+        <div class="metric-row-label">Total Engagements</div>
+        <div class="metric-row-val">10<span class="accent">K+</span></div>
+      </div>
+      <div class="metric-row">
+        <div class="metric-row-label">Google Reviews Live</div>
+        <div class="metric-row-val">5<span class="accent">★</span></div>
+      </div>
+      <div class="metric-row">
+        <div class="metric-row-label">Systems Delivered</div>
+        <div class="metric-row-val">6<span class="accent"> full</span></div>
+      </div>
+      <div class="metric-row">
+        <div class="metric-row-label">Total Sprint Duration</div>
+        <div class="metric-row-val">60<span class="accent"> days</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PULL QUOTE -->
+<div class="quote-section">
+  <div class="quote-text">
+    "100,000 people reached. Every single one of them exactly who MozartHaus needed to reach. Not a number — a room full of buyers."
+  </div>
+  <div class="quote-sub">NEROZARB — Performance Report, March 2026</div>
+</div>
+
+<!-- WHAT THIS MEANS FOR YOU -->
+<section>
+  <div class="section-tag">Why This Matters</div>
+  <h2 class="section-headline">WHAT THIS PROVES<br>FOR YOUR BRAND.</h2>
+  <div class="story-body" style="max-width: 680px; margin-top: 28px;">
+    <p>
+      MozartHaus is not a startup. It's a cultural institution. They had no marketing team, no content budget, and no digital strategy when we arrived. What they had was a genuinely good product and zero digital credibility to match it.
+    </p>
+    <p>
+      In 60 days, we built everything from scratch — brand identity, content engine, SEO presence, paid campaigns, and an enrollment pipeline — and handed it over as a system they own permanently.
+    </p>
+    <p>
+      The 100,000 reach figure is not a vanity number. Most agencies inflate reach by blasting ads at broad, irrelevant audiences. We didn't do that. We built audience profiles around arts-interested families, premium-income households in DHA and Gulberg, and parents already actively researching music and dance classes. <strong>Every person in that 100,000 was a real candidate for MozartHaus.</strong> That's why the engagement rate held at 10,000+. The audience was real. It was matched.
+    </p>
+    <p>
+      <strong>This is the NEROZARB model.</strong> We don't buy reach. We engineer it — for the exact niche your business lives in. Then we build the infrastructure around it that converts that reach into students, clients, and revenue.
+    </p>
+    <p>
+      If your brand has a gap between the quality of what you do and how you look online, that gap is costing you right now. The fix is not more posts. It's the right system, pointed at the right people.
+    </p>
+  </div>
+</section>
+
+<!-- FOOTER CTA -->
+<div class="case-footer">
+  <div class="footer-left">
+    <div class="label">NEXT STEP</div>
+    <div class="footer-cta-head">YOUR BRAND.<br>60 DAYS.<br>ONE SYSTEM.</div>
+    <div class="footer-cta-sub">We take three clients per sprint cycle. Spots are qualified by revenue.</div>
+    <a class="cta-btn" href="#">WHATSAPP US TO QUALIFY</a>
+  </div>
+  <div class="nerozarb-sig">
+    <div class="sig-logo">NEROZARB</div>
+    <div class="sig-sub">THE DIGITAL ATELIER · LAHORE</div>
+  </div>
+</div>
+
+</body>
+</html>

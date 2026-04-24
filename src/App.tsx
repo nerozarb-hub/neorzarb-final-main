@@ -4,6 +4,8 @@ import Navbar from './components/Navbar';
 import HomePage from './pages/HomePage';
 import AboutPage from './pages/AboutPage';
 import NotFoundPage from './pages/NotFound';
+import MozartCaseStudy from './pages/MozartCaseStudy';
+import HamadCaseStudy from './pages/HamadCaseStudy';
 import WhatsAppFloat from './components/WhatsAppFloat';
 
 const App: React.FC = () => {
@@ -14,6 +16,8 @@ const App: React.FC = () => {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/about" element={<AboutPage />} />
+          <Route path="/portfolio/mozart-haus" element={<MozartCaseStudy />} />
+          <Route path="/portfolio/hamad-foundation" element={<HamadCaseStudy />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
         <WhatsAppFloat />

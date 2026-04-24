@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
 import { FloatingOrb, CountUp } from './ui/animations';
 
 interface Project {
@@ -9,6 +10,7 @@ interface Project {
   image: string;
   stats: { label: string; value: string }[];
   description: string;
+  link?: string;
 }
 
 const projects: Project[] = [
@@ -22,17 +24,19 @@ const projects: Project[] = [
       { label: 'Followers', value: '45k+' },
     ],
     description: 'Complete brand identity, AI-driven content strategy, and digital presence that tripled event bookings.',
+    link: '/portfolio/mozart-haus',
   },
   {
     id: 2,
-    title: 'Lumina Skincare',
-    category: 'E-Commerce / Beauty',
-    image: 'https://images.unsplash.com/photo-1616683693504-3ea7e9ad6fec?auto=format&fit=crop&q=75&w=800',
+    title: 'Hamad Foundation',
+    category: 'NGO / Education',
+    image: 'https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&q=75&w=800',
     stats: [
-      { label: 'Monthly Revenue', value: '+280%' },
-      { label: 'ROAS', value: '4.2x' },
+      { label: 'Brands Built', value: '2' },
+      { label: 'Time', value: '1 Sprint' },
     ],
-    description: 'Full Nero Engine deployment: brand system, AI-optimised e-commerce, and paid ads funnel delivering 4.2x ROAS.',
+    description: 'Two separate visual identities built from scratch. Digital presence constructed for parent company and child NGO.',
+    link: '/portfolio/hamad-foundation',
   },
   {
     id: 3,
@@ -62,6 +66,7 @@ const WHATSAPP_CASES = 'https://wa.me/923XXXXXXXXXX?text=Hi%20NEROZARB%2C%20I%20
 
 const Portfolio: React.FC = () => {
   const [selectedImage, setSelectedImage] = React.useState<string | null>(null);
+  const navigate = useNavigate();
 
   return (
     <section className="relative border-b border-white/5 bg-[#070707]" id="work">
@@ -169,7 +174,13 @@ const Portfolio: React.FC = () => {
                 transition={{ duration: 0.6, delay: index * 0.08, ease: [0.16, 1, 0.3, 1] }}
                 viewport={{ once: true }}
                 className="group relative aspect-square border-b border-r border-zinc-700 overflow-hidden cursor-pointer"
-                onClick={() => setSelectedImage(project.image)}
+                onClick={() => {
+                  if (project.link) {
+                    navigate(project.link);
+                  } else {
+                    setSelectedImage(project.image);
+                  }
+                }}
               >
                 {/* Background image */}
                 <div
