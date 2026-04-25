@@ -1,0 +1,17 @@
+---
+source_file: "src/components/ui/sheet.tsx"
+type: "code"
+community: "Sheet Components"
+location: "L104"
+tags:
+  - graphify/code
+  - graphify/EXTRACTED
+  - community/Sheet_Components
+---
+
+# SheetTitle()
+
+## Connections
+- [[sheet.tsx]] - `contains` [EXTRACTED]
+
+#graphify/code #graphify/EXTRACTED #community/Sheet_Components
