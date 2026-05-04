@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import { FloatingOrb, CountUp } from './ui/animations';
 
 interface Project {
@@ -235,15 +236,13 @@ const Portfolio: React.FC = () => {
                 <span className="text-primary">Let's talk.</span>
               </p>
             </div>
-            <a
-              href={WHATSAPP_CASES}
-              target="_blank"
-              rel="noopener noreferrer"
+            <Link
+              to="/case-studies"
               className="text-xs font-bold uppercase tracking-widest text-white hover:text-primary transition-colors flex items-center gap-2 group/link hover:translate-x-[5px] transition-transform duration-300"
             >
               View All Case Studies
               <i className="fas fa-arrow-right text-sm animate-bounce-x" />
-            </a>
+            </Link>
           </motion.div>
         </div>
       </div>

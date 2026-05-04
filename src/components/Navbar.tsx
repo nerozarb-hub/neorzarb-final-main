@@ -42,8 +42,11 @@ const Navbar: React.FC = () => {
     };
   }, []);
 
+  const isCaseStudiesPage = location.pathname === '/case-studies';
+
   const navLinks = [
     { href: isAboutPage ? '/#protocol' : '#protocol', label: 'How it Works' },
+    { href: '/case-studies', label: 'Case Studies', isRoute: true },
     { href: isAboutPage ? '/#offers' : '#offers', label: 'Pricing' },
     { href: '/about', label: 'About', isRoute: true },
     { href: isAboutPage ? '/#faq' : '#faq', label: 'FAQ' },
@@ -88,7 +91,7 @@ const Navbar: React.FC = () => {
                     key={link.href}
                     to={link.href}
                     className={`relative text-sm font-medium uppercase tracking-wider transition-colors group py-2 ${
-                      isAboutPage ? 'text-primary' : 'text-gray-400 hover:text-white'
+                      location.pathname === link.href ? 'text-primary' : 'text-gray-400 hover:text-white'
                     }`}
                   >
                     <span className="opacity-0 -ml-2 group-hover:opacity-100 group-hover:ml-0 transition-all text-primary duration-300 mr-1">[</span>
@@ -178,7 +181,7 @@ const Navbar: React.FC = () => {
                     <Link
                       to={link.href}
                       className={`text-4xl font-black uppercase tracking-tight hover:text-primary transition-colors ${
-                        isAboutPage ? 'text-primary' : 'text-white'
+                        location.pathname === link.href ? 'text-primary' : 'text-white'
                       }`}
                       onClick={() => setMobileMenuOpen(false)}
                     >

@@ -1,10 +1,13 @@
-import React from 'react';
+import React, { lazy, Suspense } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import HomePage from './pages/HomePage';
 import AboutPage from './pages/AboutPage';
 import NotFoundPage from './pages/NotFound';
 import WhatsAppFloat from './components/WhatsAppFloat';
+import { GenericSectionSkeleton } from './components/ui/SkeletonLoader';
+
+const CaseStudyPage = lazy(() => import('./pages/CaseStudyPage'));
 
 const App: React.FC = () => {
   return (
@@ -14,6 +17,14 @@ const App: React.FC = () => {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/about" element={<AboutPage />} />
+          <Route
+            path="/case-studies"
+            element={
+              <Suspense fallback={<GenericSectionSkeleton minHeight="600px" />}>
+                <CaseStudyPage />
+              </Suspense>
+            }
+          />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
         <WhatsAppFloat />
