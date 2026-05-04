@@ -1,0 +1,993 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HAMAD FOUNDATION × NEROZARB — Case Study</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&family=Inter:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --onyx: #0A0A0A;
+    --white: #FFFFFF;
+    --olive: #3F6A24;
+    --olive-mist: rgba(63,106,36,0.10);
+    --olive-glow: rgba(63,106,36,0.30);
+    --platinum: #C0C0C0;
+    --sage: #A8C69F;
+    --border: rgba(255,255,255,0.07);
+    --dim: rgba(255,255,255,0.06);
+  }
+
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--onyx);
+    color: var(--white);
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    line-height: 1.75;
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    bottom: -20%;
+    right: -10%;
+    width: 65vw;
+    height: 65vw;
+    background: radial-gradient(ellipse, rgba(63,106,36,0.06) 0%, transparent 65%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* HEADER */
+  header {
+    position: relative;
+    padding: 80px 80px 60px;
+    border-bottom: 1px solid var(--border);
+    z-index: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+
+  .logo-tag {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    color: var(--olive);
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+
+  .agency-name {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+    font-weight: 900;
+    letter-spacing: 0.25em;
+    color: var(--platinum);
+    text-transform: uppercase;
+  }
+
+  .header-sector {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    color: rgba(255,255,255,0.3);
+    text-transform: uppercase;
+    text-align: right;
+  }
+
+  /* HERO */
+  .hero {
+    position: relative;
+    padding: 100px 80px 80px;
+    z-index: 1;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .case-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: var(--olive);
+    text-transform: uppercase;
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .case-label::before {
+    content: '';
+    width: 32px;
+    height: 1px;
+    background: var(--olive);
+  }
+
+  .hero-title {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: clamp(46px, 6.5vw, 88px);
+    line-height: 0.95;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+    max-width: 860px;
+    margin-bottom: 40px;
+  }
+
+  .hero-title span.accent { color: var(--olive); }
+
+  .hero-sub {
+    font-size: 17px;
+    font-weight: 400;
+    color: var(--platinum);
+    max-width: 580px;
+    line-height: 1.65;
+    margin-bottom: 60px;
+  }
+
+  /* DUAL ENTITY BADGE */
+  .entity-pair {
+    display: flex;
+    gap: 1px;
+    max-width: 640px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    margin-bottom: 52px;
+  }
+
+  .entity-card {
+    background: var(--onyx);
+    padding: 24px 28px;
+    flex: 1;
+    transition: background 0.2s;
+  }
+
+  .entity-card:hover { background: var(--dim); }
+
+  .entity-role {
+    font-family: 'Space Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    color: var(--olive);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  .entity-name {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 15px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-bottom: 6px;
+  }
+
+  .entity-desc {
+    font-size: 12px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.5);
+    line-height: 1.5;
+  }
+
+  /* STAT STRIP */
+  .stat-strip {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    max-width: 860px;
+  }
+
+  .stat-item {
+    background: var(--onyx);
+    padding: 32px 28px;
+    transition: background 0.25s;
+  }
+
+  .stat-item:hover { background: rgba(63,106,36,0.05); }
+
+  .stat-num {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 36px;
+    color: var(--white);
+    line-height: 1;
+    margin-bottom: 6px;
+    letter-spacing: -0.02em;
+  }
+
+  .stat-num .accent { color: var(--olive); }
+
+  .stat-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    color: var(--platinum);
+    text-transform: uppercase;
+  }
+
+  /* SECTION */
+  section {
+    position: relative;
+    padding: 80px 80px;
+    border-bottom: 1px solid var(--border);
+    z-index: 1;
+  }
+
+  .section-tag {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    color: var(--olive);
+    text-transform: uppercase;
+    margin-bottom: 40px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .section-tag::after {
+    content: '';
+    flex: 1;
+    max-width: 40px;
+    height: 1px;
+    background: var(--olive);
+  }
+
+  .section-headline {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: clamp(26px, 3.2vw, 42px);
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+    line-height: 1.05;
+    margin-bottom: 28px;
+    max-width: 700px;
+  }
+
+  .section-body {
+    font-size: 16px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.7);
+    max-width: 600px;
+    line-height: 1.8;
+  }
+
+  /* CONTEXT BLOCK */
+  .context-layout {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 60px;
+    margin-top: 48px;
+    align-items: start;
+  }
+
+  .context-body p {
+    font-size: 16px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.75);
+    line-height: 1.85;
+    margin-bottom: 24px;
+  }
+
+  .context-body strong { color: var(--white); font-weight: 500; }
+
+  .context-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+  }
+
+  .sidebar-row {
+    background: var(--onyx);
+    padding: 20px 22px;
+  }
+
+  .sidebar-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.15em;
+    color: var(--olive);
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+
+  .sidebar-val {
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--white);
+  }
+
+  /* DELIVERABLES GRID */
+  .deliverable-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--border);
+    margin-top: 52px;
+    border: 1px solid var(--border);
+  }
+
+  .deliverable-card {
+    background: var(--onyx);
+    padding: 40px 32px;
+    position: relative;
+    overflow: hidden;
+    transition: background 0.25s;
+  }
+
+  .deliverable-card:hover { background: rgba(63,106,36,0.05); }
+
+  .d-number {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 56px;
+    color: rgba(63,106,36,0.13);
+    line-height: 1;
+    position: absolute;
+    top: 18px;
+    right: 22px;
+    letter-spacing: -0.04em;
+  }
+
+  .d-icon {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    color: var(--olive);
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+
+  .d-title {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 17px;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    margin-bottom: 12px;
+    line-height: 1.2;
+  }
+
+  .d-body {
+    font-size: 14px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.62);
+    line-height: 1.7;
+  }
+
+  /* DUAL BRAND SECTION */
+  .dual-brand {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    margin-top: 52px;
+  }
+
+  .brand-panel {
+    background: var(--onyx);
+    padding: 48px 40px;
+    position: relative;
+    overflow: hidden;
+    transition: background 0.2s;
+  }
+
+  .brand-panel:hover { background: rgba(63,106,36,0.04); }
+
+  .brand-panel::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 3px;
+    background: var(--olive);
+    opacity: 0.5;
+  }
+
+  .brand-panel-tag {
+    font-family: 'Space Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    color: var(--olive);
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+
+  .brand-panel-name {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 22px;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    margin-bottom: 20px;
+    line-height: 1.15;
+  }
+
+  .brand-panel-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .brand-panel-list li {
+    font-size: 14px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.68);
+    padding-left: 18px;
+    position: relative;
+    line-height: 1.5;
+  }
+
+  .brand-panel-list li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--sage);
+  }
+
+  /* PHASE 2 BANNER */
+  .phase-banner {
+    background: rgba(63,106,36,0.05);
+    border: 1px solid rgba(63,106,36,0.25);
+    padding: 52px 60px;
+    margin-top: 52px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .phase-banner::before {
+    content: 'PHASE 2';
+    position: absolute;
+    right: -20px;
+    top: 50%;
+    transform: translateY(-50%) rotate(90deg);
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 80px;
+    color: rgba(63,106,36,0.07);
+    letter-spacing: 0.1em;
+    pointer-events: none;
+  }
+
+  .phase-tag {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    color: var(--olive);
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .phase-tag::before {
+    content: '';
+    width: 8px;
+    height: 8px;
+    background: var(--olive);
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+
+  .phase-headline {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: clamp(22px, 2.8vw, 36px);
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+    line-height: 1.1;
+    margin-bottom: 20px;
+    max-width: 600px;
+  }
+
+  .phase-body {
+    font-size: 15px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.68);
+    max-width: 620px;
+    line-height: 1.8;
+    margin-bottom: 32px;
+  }
+
+  .phase-items {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    max-width: 700px;
+  }
+
+  .phase-item {
+    background: var(--onyx);
+    padding: 22px 24px;
+  }
+
+  .phase-item-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.14em;
+    color: var(--olive);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  .phase-item-val {
+    font-size: 13px;
+    font-weight: 400;
+    color: rgba(255,255,255,0.75);
+  }
+
+  /* QUOTE */
+  .quote-section {
+    background: rgba(63,106,36,0.04);
+    border-left: 3px solid var(--olive);
+    padding: 52px 80px;
+  }
+
+  .quote-text {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: clamp(18px, 2.2vw, 28px);
+    text-transform: uppercase;
+    line-height: 1.25;
+    max-width: 760px;
+    letter-spacing: -0.01em;
+    margin-bottom: 20px;
+  }
+
+  .quote-sub {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    color: var(--platinum);
+    text-transform: uppercase;
+  }
+
+  /* IMPACT SECTION */
+  .impact-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+    margin-top: 48px;
+  }
+
+  .impact-block {
+    padding: 40px 36px;
+    border: 1px solid var(--border);
+    position: relative;
+  }
+
+  .impact-block::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 3px; height: 100%;
+    background: var(--olive);
+    opacity: 0.6;
+  }
+
+  .impact-num {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 48px;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    margin-bottom: 8px;
+  }
+
+  .impact-num .accent { color: var(--olive); }
+
+  .impact-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    color: var(--platinum);
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+
+  .impact-desc {
+    font-size: 14px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.6);
+    line-height: 1.7;
+  }
+
+  /* FOOTER */
+  .case-footer {
+    padding: 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 40px;
+  }
+
+  .footer-left .label {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    color: var(--olive);
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+
+  .footer-cta-head {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: clamp(22px, 2.8vw, 38px);
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+    line-height: 1.1;
+    max-width: 460px;
+    margin-bottom: 20px;
+  }
+
+  .footer-cta-sub {
+    font-size: 14px;
+    font-weight: 300;
+    color: var(--platinum);
+  }
+
+  .cta-btn {
+    display: inline-block;
+    padding: 18px 36px;
+    background: var(--olive);
+    color: var(--white);
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.15s;
+    margin-top: 28px;
+  }
+
+  .cta-btn:hover { background: #4d8a2c; transform: translateY(-2px); }
+
+  .nerozarb-sig { text-align: right; }
+
+  .sig-logo {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 26px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--white);
+  }
+
+  .sig-sub {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    color: var(--olive);
+    text-transform: uppercase;
+    margin-top: 6px;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(22px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .fade-up { animation: fadeUp 0.7s ease forwards; }
+  .fade-up-delay { animation-delay: 0.15s; opacity: 0; }
+  .fade-up-delay-2 { animation-delay: 0.3s; opacity: 0; }
+
+  @media (max-width: 900px) {
+    header, .hero, section, .case-footer { padding: 48px 28px; }
+    .stat-strip, .dual-brand, .impact-grid { grid-template-columns: 1fr 1fr; }
+    .deliverable-grid, .context-layout { grid-template-columns: 1fr; }
+    .phase-items { grid-template-columns: 1fr; }
+    .case-footer { flex-direction: column; align-items: flex-start; }
+    .nerozarb-sig { text-align: left; }
+    .quote-section { padding: 48px 28px; }
+    header { flex-direction: column; align-items: flex-start; gap: 16px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div>
+    <div class="logo-tag">CASE STUDY — 002</div>
+    <div class="agency-name">NEROZARB × HAMAD FOUNDATION</div>
+  </div>
+  <div class="header-sector">NGO · EDUCATION · LAHORE</div>
+</header>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="case-label fade-up">Non-Profit · Education Sector · Brand Build</div>
+  <h1 class="hero-title fade-up fade-up-delay">
+    TWO BRANDS.<br>BUILT FROM<br><span class="accent">NOTHING.</span>
+  </h1>
+  <p class="hero-sub fade-up fade-up-delay-2">
+    Hamad Foundation sponsors children's education. YC Educational Services runs the operation. Neither had a brand, a website, or a digital presence. We built both — from logo to live — in a single sprint.
+  </p>
+
+  <!-- DUAL ENTITY BADGES -->
+  <div class="entity-pair fade-up fade-up-delay-2">
+    <div class="entity-card">
+      <div class="entity-role">PARENT COMPANY</div>
+      <div class="entity-name">YC Educational Services</div>
+      <div class="entity-desc">Educational operations. Programme delivery. Administrative infrastructure.</div>
+    </div>
+    <div class="entity-card">
+      <div class="entity-role">CHILD NGO</div>
+      <div class="entity-name">Hamad Foundation</div>
+      <div class="entity-desc">Children's education sponsorship. Donations. Community outreach. Social impact.</div>
+    </div>
+  </div>
+
+  <div class="stat-strip fade-up fade-up-delay-2">
+    <div class="stat-item">
+      <div class="stat-num">2<span class="accent"> brands</span></div>
+      <div class="stat-label">Identities Built</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">2<span class="accent"> sites</span></div>
+      <div class="stat-label">Websites Delivered</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">2<span class="accent"> logos</span></div>
+      <div class="stat-label">Logos Designed</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">1<span class="accent"> sprint</span></div>
+      <div class="stat-label">To Build All of It</div>
+    </div>
+  </div>
+</div>
+
+<!-- CONTEXT -->
+<section>
+  <div class="section-tag">The Starting Point</div>
+  <h2 class="section-headline">AN NGO WITH<br>NO DIGITAL IDENTITY.</h2>
+
+  <div class="context-layout">
+    <div class="context-body">
+      <p>
+        Hamad Foundation does real work. They fund children's education. They connect donors with students who need support. The mission is clear and the need is real — but none of that matters if the people who could donate or partner with them have no way to find them, trust them, or give.
+      </p>
+      <p>
+        When they came to NEROZARB, neither entity — not Hamad Foundation, not YC Educational Services — had a logo, a website, or any digital presence at all. No brand to communicate their credibility. No website to collect donations or register programme interest. No social media to build an audience around their cause.
+      </p>
+      <p>
+        <strong>For an NGO, trust is the product.</strong> Donors don't give to organisations that look unfinished. They give to causes that look institutional, credible, and permanent. That's what we were hired to build — and that's exactly what we delivered.
+      </p>
+      <p>
+        We also had to handle the complexity of building for two connected but distinct entities. YC Educational Services needed a professional, operational face. Hamad Foundation needed warmth, mission clarity, and a donation pathway. Different audiences. Different jobs. One sprint.
+      </p>
+    </div>
+
+    <div class="context-sidebar">
+      <div class="sidebar-row">
+        <div class="sidebar-label">Sector</div>
+        <div class="sidebar-val">NGO / Education</div>
+      </div>
+      <div class="sidebar-row">
+        <div class="sidebar-label">Location</div>
+        <div class="sidebar-val">Lahore, Pakistan</div>
+      </div>
+      <div class="sidebar-row">
+        <div class="sidebar-label">Entities</div>
+        <div class="sidebar-val">2 (Parent + Child NGO)</div>
+      </div>
+      <div class="sidebar-row">
+        <div class="sidebar-label">Starting State</div>
+        <div class="sidebar-val">Zero — no brand, no web, no presence</div>
+      </div>
+      <div class="sidebar-row">
+        <div class="sidebar-label">Deliverable Type</div>
+        <div class="sidebar-val">Full brand + web build</div>
+      </div>
+      <div class="sidebar-row">
+        <div class="sidebar-label">Audience</div>
+        <div class="sidebar-val">Donors, sponsors, partner orgs</div>
+      </div>
+      <div class="sidebar-row">
+        <div class="sidebar-label">Phase 2 Status</div>
+        <div class="sidebar-val">Campaign in deployment</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DUAL BRAND WORK -->
+<section>
+  <div class="section-tag">Brand Architecture</div>
+  <h2 class="section-headline">ONE FAMILY.<br>TWO DISTINCT IDENTITIES.</h2>
+  <p class="section-body">Two organisations. Two audiences. Two jobs to do. We built each one from scratch while keeping them coherent as a connected brand family.</p>
+
+  <div class="dual-brand">
+    <div class="brand-panel">
+      <div class="brand-panel-tag">PARENT COMPANY</div>
+      <div class="brand-panel-name">YC Educational<br>Services</div>
+      <ul class="brand-panel-list">
+        <li>Logo designed and finalised — marks the operational entity with professional authority.</li>
+        <li>Brand identity system built: colour codes, typography, usage rules, spacing guidelines.</li>
+        <li>Website built from scratch — programme information, team structure, contact and inquiry flow.</li>
+        <li>Social media profile set up — consistent handle, optimised bio, branded visual templates.</li>
+        <li>Google Business Profile created and configured for local search visibility.</li>
+      </ul>
+    </div>
+    <div class="brand-panel">
+      <div class="brand-panel-tag">CHILD NGO</div>
+      <div class="brand-panel-name">Hamad<br>Foundation</div>
+      <ul class="brand-panel-list">
+        <li>Logo designed and finalised — communicates trust, warmth, and mission without corporate coldness.</li>
+        <li>Separate brand identity system — distinct from YC but coherent within the same family.</li>
+        <li>Dedicated website built — donation pathway, cause storytelling, sponsorship registration.</li>
+        <li>Instagram profile created and set up — cause-led content architecture, donor-facing copy.</li>
+        <li>Full asset library delivered — every brand file archived and handed over as owned IP.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- DELIVERABLES -->
+<section>
+  <div class="section-tag">What We Built</div>
+  <h2 class="section-headline">EVERY SYSTEM.<br>ONE SPRINT.</h2>
+  <p class="section-body">From nothing to fully operational. Here's exactly what was built, delivered, and handed over.</p>
+
+  <div class="deliverable-grid">
+    <div class="deliverable-card">
+      <div class="d-number">01</div>
+      <div class="d-icon">BRAND IDENTITY × 2</div>
+      <div class="d-title">Two Logos. Two Systems.</div>
+      <div class="d-body">Designed both logos from scratch. Built complete brand systems for each entity — colour codes, typography, logo usage rules. Both organisations now have institutional-grade visual identities that hold up across every format.</div>
+    </div>
+    <div class="deliverable-card">
+      <div class="d-number">02</div>
+      <div class="d-icon">WEBSITE × 2</div>
+      <div class="d-title">Two Sites. Two Jobs.</div>
+      <div class="d-body">Built two separate websites. YC Educational Services: operational credibility, programme details, inquiry pathway. Hamad Foundation: cause-led design, donation flow, sponsorship registration. Both fully functional and handed over.</div>
+    </div>
+    <div class="deliverable-card">
+      <div class="d-number">03</div>
+      <div class="d-icon">SOCIAL MEDIA SETUP</div>
+      <div class="d-title">Platforms Built to Convert.</div>
+      <div class="d-body">Instagram profiles created and configured for both entities. Bios engineered for trust and action. Branded visual frameworks built so every post reinforces the identity. Foundation for organic and paid growth now in place.</div>
+    </div>
+    <div class="deliverable-card">
+      <div class="d-number">04</div>
+      <div class="d-icon">LOCAL SEO</div>
+      <div class="d-title">Google Presence Established.</div>
+      <div class="d-body">Google Business Profile created and optimised. Search keywords mapped to the education and NGO sector. When donors, parents, or partner organisations search for what Hamad Foundation does, they find them. That infrastructure didn't exist before.</div>
+    </div>
+    <div class="deliverable-card">
+      <div class="d-number">05</div>
+      <div class="d-icon">DONATION ARCHITECTURE</div>
+      <div class="d-title">The Giving Pathway.</div>
+      <div class="d-body">Built the website infrastructure for donation collection and student sponsorship registration. A donor who lands on the site now has a clear, frictionless path from intent to action. No broken links. No confusion. A system built to convert belief into giving.</div>
+    </div>
+    <div class="deliverable-card">
+      <div class="d-number">06</div>
+      <div class="d-icon">ASSET VAULT</div>
+      <div class="d-title">Full Ownership. Permanently.</div>
+      <div class="d-body">Every brand file, logo variant, website asset, and content template archived and handed over. Both entities own their entire digital infrastructure outright. No dependency on NEROZARB for the basics — everything they need to operate independently is theirs.</div>
+    </div>
+  </div>
+</section>
+
+<!-- IMPACT NUMBERS -->
+<section>
+  <div class="section-tag">What Was Delivered</div>
+  <h2 class="section-headline">THE SCOPE<br>IN NUMBERS.</h2>
+
+  <div class="impact-grid">
+    <div class="impact-block">
+      <div class="impact-num">2<span class="accent"> logos</span></div>
+      <div class="impact-label">Designed from scratch</div>
+      <div class="impact-desc">Both entities now have professional, institutional-grade logos. Neither had anything before. The visual credibility gap between "small NGO" and "established organisation" is closed.</div>
+    </div>
+    <div class="impact-block">
+      <div class="impact-num">2<span class="accent"> sites</span></div>
+      <div class="impact-label">Fully built and live</div>
+      <div class="impact-desc">Two separate websites, each built for its specific audience. YC Educational Services for operational credibility. Hamad Foundation for donor conversion. Both functional. Both handed over.</div>
+    </div>
+    <div class="impact-block">
+      <div class="impact-num">2<span class="accent"> brands</span></div>
+      <div class="impact-label">Complete identity systems</div>
+      <div class="impact-desc">Not just logos — full brand systems. Colour codes, typography rules, usage guidelines, asset libraries. Both organisations can now grow without the brand falling apart as they scale.</div>
+    </div>
+    <div class="impact-block">
+      <div class="impact-num">1<span class="accent"> sprint</span></div>
+      <div class="impact-label">To build all of it</div>
+      <div class="impact-desc">Two complete brand ecosystems delivered in a single sprint. Most agencies would quote this as a three to four month engagement. We shipped it fast because the infrastructure we build is systematic, not improvised.</div>
+    </div>
+  </div>
+</section>
+
+<!-- PHASE 2 BANNER -->
+<section>
+  <div class="section-tag">What's Next</div>
+  <h2 class="section-headline">PHASE 2:<br>THE CAMPAIGN IS LIVE.</h2>
+  <p class="section-body">The foundation is built. Phase 2 is the activation — a full donation campaign designed to put Hamad Foundation in front of the right donors at scale.</p>
+
+  <div class="phase-banner">
+    <div class="phase-tag">CURRENTLY IN DEPLOYMENT</div>
+    <div class="phase-headline">DESIGNED. PLANNED.<br>READY TO SCALE.</div>
+    <div class="phase-body">
+      A full campaign strategy has been structured and is in deployment. The campaign includes a video asset, a paid social strategy targeting donation-intent audiences, and a complete funnel from impression to contribution. Every touchpoint routes back to the donation infrastructure we built in Phase 1.
+    </div>
+    <div class="phase-items">
+      <div class="phase-item">
+        <div class="phase-item-label">Campaign Format</div>
+        <div class="phase-item-val">Video + Paid Social</div>
+      </div>
+      <div class="phase-item">
+        <div class="phase-item-label">Funnel End</div>
+        <div class="phase-item-val">Donation & Sponsorship</div>
+      </div>
+      <div class="phase-item">
+        <div class="phase-item-label">Target Audience</div>
+        <div class="phase-item-val">Education-focused donors, Lahore</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PULL QUOTE -->
+<div class="quote-section">
+  <div class="quote-text">
+    "For a donor to give, they first have to trust. For them to trust, the brand has to look like it deserves it. Hamad Foundation now looks the part — because we built it that way."
+  </div>
+  <div class="quote-sub">NEROZARB — Brand Build Report, 2026</div>
+</div>
+
+<!-- WHY THIS MATTERS -->
+<section>
+  <div class="section-tag">Why This Matters</div>
+  <h2 class="section-headline">WHAT THIS PROVES<br>FOR YOUR ORGANISATION.</h2>
+  <div style="max-width: 680px; margin-top: 28px;">
+    <p style="font-size: 16px; font-weight: 300; color: rgba(255,255,255,0.75); line-height: 1.85; margin-bottom: 24px;">
+      Hamad Foundation didn't need a marketing campaign. They needed credibility infrastructure first. A logo that communicates permanence. A website that handles donations without confusion. A digital presence that tells a donor: this organisation is real, it's serious, and your money will go somewhere accountable.
+    </p>
+    <p style="font-size: 16px; font-weight: 300; color: rgba(255,255,255,0.75); line-height: 1.85; margin-bottom: 24px;">
+      We built all of that — for two entities, simultaneously — in a single sprint. Not because we cut corners. Because we have a system. Brand architecture is one of our six core deliverables. We've done it enough times that we've removed the guesswork entirely.
+    </p>
+    <p style="font-size: 16px; font-weight: 300; color: rgba(255,255,255,0.75); line-height: 1.85; margin-bottom: 24px;">
+      <strong style="color: #fff; font-weight: 500;">The result:</strong> Two organisations that went from zero presence to institutional credibility, with websites live, brands in hand, and a campaign in motion — all before most agencies would have finished the briefing document.
+    </p>
+    <p style="font-size: 16px; font-weight: 300; color: rgba(255,255,255,0.75); line-height: 1.85;">
+      This is what NEROZARB does for organisations that are serious about their mission but behind on their digital infrastructure. We don't theorise. We build. Then we hand it over.
+    </p>
+  </div>
+</section>
+
+<!-- FOOTER CTA -->
+<div class="case-footer">
+  <div class="footer-left">
+    <div class="label">NEXT STEP</div>
+    <div class="footer-cta-head">BRAND BUILT.<br>SYSTEM READY.<br>YOUR TURN.</div>
+    <div class="footer-cta-sub">We qualify by revenue and readiness. Three sprint slots per cycle.</div>
+    <a class="cta-btn" href="#">WHATSAPP US TO QUALIFY</a>
+  </div>
+  <div class="nerozarb-sig">
+    <div class="sig-logo">NEROZARB</div>
+    <div class="sig-sub">THE DIGITAL ATELIER · LAHORE</div>
+  </div>
+</div>
+
+</body>
+</html>

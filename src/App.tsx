@@ -4,6 +4,8 @@ import Navbar from './components/Navbar';
 import HomePage from './pages/HomePage';
 import AboutPage from './pages/AboutPage';
 import NotFoundPage from './pages/NotFound';
+import MozartCaseStudy from './pages/MozartCaseStudy';
+import HamadCaseStudy from './pages/HamadCaseStudy';
 import WhatsAppFloat from './components/WhatsAppFloat';
 import { GenericSectionSkeleton } from './components/ui/SkeletonLoader';
 
@@ -25,6 +27,8 @@ const App: React.FC = () => {
               </Suspense>
             }
           />
+          <Route path="/portfolio/mozart-haus" element={<MozartCaseStudy />} />
+          <Route path="/portfolio/hamad-foundation" element={<HamadCaseStudy />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
         <WhatsAppFloat />
