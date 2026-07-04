@@ -2,107 +2,200 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { BorderTrail } from './ui/border-trail';
 import BentoButton from './ui/BentoButton';
+import { buildContactHref, getExternalLinkProps, primaryContactLabel } from '@/lib/conversion';
+
+type FeatureGroup = {
+  label?: string;
+  items: string[];
+};
+
+type PricingOffer = {
+  tier: string;
+  title: string;
+  icon: string;
+  pkr: string;
+  usd: string;
+  cadence: string;
+  bestFor: string;
+  description: string;
+  outcome: string;
+  features: FeatureGroup[];
+  buttonText: string;
+  message: string;
+  isPrimary?: boolean;
+};
+
+const offers: PricingOffer[] = [
+  {
+    tier: 'Tier 1',
+    title: 'Active Presence',
+    icon: 'fa-bolt',
+    pkr: 'PKR 140,000',
+    usd: '$500/mo',
+    cadence: 'Monthly retainer',
+    bestFor: 'Brands that already have an offer and need consistent visibility.',
+    description: 'A lean content and reporting system for staying visible without hiring an internal marketing team.',
+    outcome: 'Your brand looks active, current, and easy to contact every week.',
+    features: [
+      {
+        items: [
+          '15+ AI-assisted short-form content pieces per month',
+          'Cross-platform publishing rhythm',
+          'Light community and inquiry routing',
+          'Monthly performance snapshot',
+        ],
+      },
+    ],
+    buttonText: 'Start Presence',
+    message: "Hi NEROZARB, I'm interested in the Active Presence plan.",
+  },
+  {
+    tier: 'Tier 2',
+    title: '60-Day Sprint',
+    icon: 'fa-rocket',
+    pkr: 'PKR 700,000',
+    usd: '$2,500',
+    cadence: 'One-time sprint',
+    bestFor: 'Founders who need the full growth system built fast.',
+    description: 'The main NEROZARB transformation offer: brand, page, content, ads setup, analytics, and conversion routing in one focused sprint.',
+    outcome: 'You leave with a working acquisition foundation, not scattered marketing assets.',
+    features: [
+      {
+        label: 'Foundation',
+        items: [
+          'Brand identity direction, visual rules, and core messaging',
+          'High-converting landing page or website conversion upgrade',
+        ],
+      },
+      {
+        label: 'Content Machine',
+        items: [
+          '30 short-form video assets planned, scripted, and edited',
+          '10 static or carousel assets for proof and education',
+        ],
+      },
+      {
+        label: 'Growth System',
+        items: [
+          'Meta ads setup, pixel routing, campaign structure, and launch support',
+          'Simple analytics dashboard and weekly sprint checkpointing',
+        ],
+      },
+    ],
+    buttonText: 'Book Sprint Audit',
+    message: "Hi NEROZARB, I'm interested in the 60-Day Sprint.",
+    isPrimary: true,
+  },
+  {
+    tier: 'Tier 3',
+    title: 'Scale Protocol',
+    icon: 'fa-crown',
+    pkr: 'PKR 1,400,000+',
+    usd: '$5,000+/mo',
+    cadence: 'Monthly scale engagement',
+    bestFor: 'Brands with validated demand that need aggressive execution.',
+    description: 'A deeper execution layer for production, custom funnels, paid creative volume, and ongoing optimization.',
+    outcome: 'Your team gets senior growth execution without stitching together five vendors.',
+    features: [
+      {
+        items: [
+          'High-end production planning and creative direction',
+          'Custom funnel, web app, or automation buildouts when needed',
+          'Paid creative testing across 50+ angles and variants',
+          'Weekly strategy calls and priority execution queue',
+        ],
+      },
+    ],
+    buttonText: 'Apply For Scale',
+    message: "Hi NEROZARB, I'm interested in the Scale Protocol.",
+  },
+];
 
 const Pricing: React.FC = () => {
-
-  const PricingCard = ({
-    tier,
-    icon,
-    title,
-    price,
-    priceLabel,
-    description,
-    features,
-    buttonText,
-    isPrimary = false,
-    originalPrice,
-    index,
-    href
-  }: {
-    tier: string;
-    icon: string;
-    title: string;
-    price: string;
-    priceLabel: string;
-    description: string;
-    features: { label?: string; items: string[] }[];
-    buttonText: string;
-    isPrimary?: boolean;
-    originalPrice?: string;
-    index: number;
-    href: string;
-  }) => {
+  const PricingCard = ({ offer, index }: { offer: PricingOffer; index: number }) => {
+    const href = buildContactHref(offer.message, `${offer.title} inquiry`);
+    const isPrimary = Boolean(offer.isPrimary);
 
     return (
-      <motion.div
-        initial={{ opacity: 0, y: 40 }}
+      <motion.article
+        initial={{ opacity: 0, y: 32 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-50px" }}
-        transition={{ duration: 0.5, delay: index * 0.15 }}
+        viewport={{ once: true, margin: '-50px' }}
+        transition={{ duration: 0.5, delay: index * 0.1 }}
         className="h-full"
       >
         <div
-          className={`relative bg-[#0a0a0a] border-2 ${isPrimary ? 'border-primary/60 shadow-[0_0_30px_rgba(63,106,36,0.15)]' : 'border-zinc-800 hover:border-white/20'} p-8 md:p-10 lg:p-12 flex flex-col overflow-visible h-full group hover:-translate-y-1 transition-all duration-300`}
+          className={`relative flex h-full flex-col overflow-hidden border-2 bg-[#0a0a0a] p-6 transition-all duration-300 md:p-8 ${
+            isPrimary
+              ? 'border-primary/70 shadow-[0_0_40px_rgba(63,106,36,0.18)]'
+              : 'border-zinc-800 hover:border-white/25'
+          }`}
         >
-          {/* Non-primary hover glow — CSS only */}
-          {!isPrimary && (
-            <div
-              className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-50 transition-opacity duration-300"
-              style={{
-                background: 'radial-gradient(circle at 50% 50%, rgba(63, 106, 36, 0.1) 0%, transparent 70%)',
-              }}
-            />
-          )}
-
           {isPrimary && (
             <>
-              <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-primary text-white text-[10px] font-black px-5 py-1.5 uppercase tracking-[0.2em] shadow-lg z-20 whitespace-nowrap">
-                Most Popular
+              <div className="absolute left-6 top-0 z-20 -translate-y-1/2 bg-primary px-4 py-2 text-[10px] font-black uppercase text-white">
+                Best conversion path
               </div>
               <BorderTrail
                 style={{
-                  boxShadow: '0px 0px 60px 30px rgba(63, 106, 36, 0.3), 0 0 100px 60px rgba(63, 106, 36, 0.15)',
+                  boxShadow: '0 0 60px 28px rgba(63, 106, 36, 0.32), 0 0 100px 54px rgba(63, 106, 36, 0.14)',
                 }}
-                size={80}
+                size={86}
               />
             </>
           )}
 
-          <div className="flex items-center gap-3 mb-6 relative z-10">
-            <i className={`fas ${icon} ${isPrimary ? 'text-primary' : 'text-gray-500'} text-xl group-hover:scale-110 transition-transform duration-300`} />
-            <span className={`text-xs ${isPrimary ? 'text-primary' : 'text-gray-400'} font-mono uppercase tracking-widest font-bold`}>{tier}</span>
-          </div>
-
-          <h3 className="text-xl md:text-2xl font-black uppercase mb-3 relative z-10">{title}</h3>
-
-          {originalPrice && (
-            <div className="mb-1 relative z-10">
-              <span className="text-sm text-gray-500 line-through decoration-red-500/50">{originalPrice}</span>
+          <div className="relative z-10 mb-7 flex items-center justify-between gap-4 border-b border-white/10 pb-5">
+            <div>
+              <span className={`mb-2 block text-[11px] font-mono uppercase ${isPrimary ? 'text-primary' : 'text-gray-500'}`}>
+                {offer.tier}
+              </span>
+              <h3 className="text-xl font-black uppercase leading-tight text-white md:text-2xl">
+                {offer.title}
+              </h3>
             </div>
-          )}
-          <div className="flex items-baseline gap-3 mb-5 relative z-10">
-            <span className="text-3xl md:text-4xl font-black text-white leading-none">{price}</span>
-            <span className="text-xs text-gray-500 font-mono uppercase tracking-wider border-l border-zinc-700 pl-3">{priceLabel}</span>
+            <div className={`flex h-11 w-11 shrink-0 items-center justify-center border ${isPrimary ? 'border-primary/50 bg-primary/10 text-primary' : 'border-zinc-700 text-gray-500'}`}>
+              <i className={`fas ${offer.icon}`} />
+            </div>
           </div>
 
-          {isPrimary && (
-            <p className="text-xs text-primary font-bold uppercase tracking-[0.1em] mb-4 md:mb-6 relative z-10 bg-primary/10 inline-block px-3 py-1 border border-primary/20 self-start">Complete Nero Engine Deployment</p>
-          )}
+          <div className="relative z-10 mb-6">
+            <div className="text-3xl font-black leading-none text-white md:text-4xl">
+              {offer.pkr}
+            </div>
+            <div className="mt-3 flex flex-wrap items-center gap-2 text-xs text-gray-400">
+              <span className="border border-white/10 px-2.5 py-1 font-mono uppercase text-gray-300">
+                {offer.usd}
+              </span>
+              <span className="font-mono uppercase">{offer.cadence}</span>
+            </div>
+          </div>
 
-          <p className={`text-sm ${isPrimary ? 'text-gray-300' : 'text-gray-400'} mb-6 leading-relaxed relative z-10`}>
-            {description}
+          <div className="relative z-10 mb-6 border border-white/10 bg-white/[0.03] p-4">
+            <p className="mb-2 text-[11px] font-bold uppercase text-primary">Best for</p>
+            <p className="text-sm leading-relaxed text-gray-200">{offer.bestFor}</p>
+          </div>
+
+          <p className="relative z-10 mb-5 text-sm leading-relaxed text-gray-400">
+            {offer.description}
           </p>
 
-          <div className="space-y-5 flex-grow relative z-10">
-            {features.map((group, groupIndex) => (
+          <p className="relative z-10 mb-7 text-sm font-medium leading-relaxed text-white">
+            {offer.outcome}
+          </p>
+
+          <div className="relative z-10 flex-grow space-y-5">
+            {offer.features.map((group, groupIndex) => (
               <div key={groupIndex}>
                 {group.label && (
-                  <span className="text-[11px] font-bold text-white uppercase tracking-wider block mb-3 border-b border-zinc-800 pb-2">{group.label}</span>
+                  <span className="mb-3 block border-b border-zinc-800 pb-2 text-[11px] font-bold uppercase text-white">
+                    {group.label}
+                  </span>
                 )}
-                <ul className="space-y-2.5">
-                  {group.items.map((item, itemIndex) => (
-                    <li key={itemIndex} className="flex items-start gap-3 text-sm text-gray-300">
-                      <i className="fas fa-check text-primary text-xs flex-shrink-0 mt-1" />
+                <ul className="space-y-3">
+                  {group.items.map((item) => (
+                    <li key={item} className="flex items-start gap-3 text-sm leading-relaxed text-gray-300">
+                      <i className="fas fa-check mt-1 text-xs text-primary" />
                       <span>{item}</span>
                     </li>
                   ))}
@@ -111,118 +204,63 @@ const Pricing: React.FC = () => {
             ))}
           </div>
 
-          {/* Separator + Button pinned to bottom */}
-          <div className="mt-auto pt-8 relative z-10">
-            <div className="border-t border-zinc-800 mb-6" />
-            <BentoButton href={href} variant={isPrimary ? 'primary' : 'secondary'}>
-              {buttonText}
+          <div className="relative z-10 mt-8 border-t border-white/10 pt-6">
+            <BentoButton href={href} variant={isPrimary ? 'primary' : 'secondary'} {...getExternalLinkProps()}>
+              {offer.buttonText}
             </BentoButton>
           </div>
         </div>
-      </motion.div>
+      </motion.article>
     );
   };
 
   return (
-    <section className="relative py-24 bg-[#070707] overflow-hidden" id="offers">
-      <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-primary/10 rounded-none blur-[100px] pointer-events-none" />
-      <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-primary/5 rounded-none blur-[80px] pointer-events-none" />
-
-      <div className="mx-auto w-full max-w-6xl px-6 lg:px-12 relative z-10">
+    <section className="relative overflow-hidden bg-[#070707] py-24" id="offers">
+      <div className="mx-auto w-full max-w-6xl px-6 lg:px-12">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="mx-auto max-w-2xl space-y-4 text-center mb-16"
+          className="mx-auto mb-14 max-w-2xl space-y-4 text-center"
         >
-          <span className="text-primary text-[10px] font-bold tracking-[0.2em] uppercase">
+          <span className="text-[10px] font-bold uppercase text-primary">
             Investment Tiers
           </span>
-          <h2 className="text-2xl md:text-3xl lg:text-4xl font-black uppercase tracking-tightest leading-none">
-            <span className="block">Simple Pricing.</span>
-            <span className="block">Real Results.</span>
+          <h2 className="text-2xl font-black uppercase leading-none md:text-3xl lg:text-4xl">
+            PKR-first pricing for serious growth work.
           </h2>
-          <p className="text-gray-400 text-base max-w-md mx-auto">
-            Start with visibility, scale to market dominance. Most business owners choose the 60-Day Sprint — it is where the transformation happens.
+          <p className="mx-auto max-w-xl text-base leading-relaxed text-gray-400">
+            Most clients start with the 60-Day Sprint. USD references are included for international buyers; final scope is confirmed after the free audit.
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 items-stretch">
-          <PricingCard
-            index={0}
-            tier="Tier 1"
-            icon="fa-bolt"
-            title="Active Presence"
-            price="From $500"
-            priceLabel="/ Month"
-            description="Stay visible every day. AI-powered content keeps your brand in front of your audience consistently."
-            features={[{ items: ["15+ AI-Enhanced Reels/Month", "Cross-Platform Posting", "Community Management", "Monthly Performance Report"] }]}
-            buttonText="Start Growing"
-            href={`https://wa.me/923XXXXXXXXXX?text=${encodeURIComponent("Hi, I'm interested in the Active Presence plan")}`}
-          />
-
-          <PricingCard
-            index={1}
-            tier="Tier 2"
-            icon="fa-rocket"
-            title="60-Day Sprint"
-            price="From $2,500"
-            priceLabel="One-time"
-            originalPrice="$5,000+ value"
-            description="Your complete digital growth system — brand, content, ads, automation — built from zero in 60 days."
-            features={[
-              { label: "Phase 1: Brand & Foundation", items: ["Brand Identity (Logo, Palette, Guidelines)", "High-Converting Landing Page"] },
-              { label: "Phase 2: Content Machine", items: ["30 Short-Form Videos (Scripted + Edited)", "10 Static/Carousel Posts"] },
-              { label: "Phase 3: Growth Systems", items: ["Meta Ads Setup (Pixel, Campaign, Optimization)", "AI-Powered Analytics Dashboard"] }
-            ]}
-            buttonText="Start The Sprint"
-            isPrimary
-            href={`https://wa.me/923XXXXXXXXXX?text=${encodeURIComponent("Hi, I'm interested in the 60-Day Sprint")}`}
-          />
-
-          <PricingCard
-            index={2}
-            tier="Tier 3"
-            icon="fa-crown"
-            title="Scale Protocol"
-            price="From $5,000"
-            priceLabel="/ Month"
-            description="For brands ready to dominate their market. Full-stack execution, custom development, and aggressive scaling."
-            features={[{ items: ["On-Site Production (High-End)", "Custom Web App / SaaS Development", "Aggressive Ad Scaling (50+ Creatives)", "Dedicated Account Manager", "Weekly Strategy Calls"] }]}
-            buttonText="Apply For Scale"
-            href={`https://wa.me/923XXXXXXXXXX?text=${encodeURIComponent("Hi, I'm interested in the Scale Protocol")}`}
-          />
+        <div className="grid grid-cols-1 items-stretch gap-6 lg:grid-cols-3">
+          {offers.map((offer, index) => (
+            <PricingCard key={offer.title} offer={offer} index={index} />
+          ))}
         </div>
 
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 18 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
+          transition={{ duration: 0.55, delay: 0.15 }}
           viewport={{ once: true }}
-          className="mt-10 border-2 border-primary/30 bg-primary/5 p-6 flex items-center gap-4"
+          className="mt-8 grid gap-4 border border-white/10 bg-white/[0.03] p-5 md:grid-cols-[1fr_auto] md:items-center md:p-6"
         >
-          <i className="fas fa-lock text-primary text-xl mt-0.5 flex-shrink-0" />
           <div>
-            <p className="text-white font-bold uppercase tracking-wider text-sm mb-1">60-Day Delivery Guarantee</p>
-            <p className="text-gray-400 text-sm leading-relaxed">
-              If we do not deliver your complete system on time, we work at no additional cost until it is done. <span className="text-primary font-medium">No excuses. No extra charges.</span>
+            <p className="mb-1 text-sm font-bold uppercase text-white">No fake security promise.</p>
+            <p className="text-sm leading-relaxed text-gray-400">
+              Security insurance is not listed because it is not live yet. The current offer relies on clear scope, documented delivery checkpoints, and direct WhatsApp communication.
             </p>
           </div>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          viewport={{ once: true }}
-          className="flex flex-col items-center justify-center gap-4 mt-8"
-        >
-          <div className="flex items-center gap-2 text-sm text-gray-500">
-            <span className="w-1.5 h-1.5 bg-primary animate-pulse" />
-            <span>All packages include free strategy call + onboarding</span>
-          </div>
-          <p className="text-sm text-gray-400">Not sure which package fits? <a href={`https://wa.me/923XXXXXXXXXX?text=${encodeURIComponent("Hi NEROZARB, I want to find the right package for my business")}`} target="_blank" rel="noopener noreferrer" className="text-primary hover:underline transition-colors">Let's talk</a> — free consultation, zero pressure.</p>
+          <a
+            href={buildContactHref('Hi NEROZARB, I want to confirm the right package and payment currency.', 'Package and currency inquiry')}
+            {...getExternalLinkProps()}
+            className="inline-flex min-h-11 items-center justify-center border border-primary/50 px-5 text-center text-xs font-bold uppercase text-primary transition-colors hover:bg-primary hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-[#070707]"
+          >
+            Ask on {primaryContactLabel}
+          </a>
         </motion.div>
       </div>
     </section>

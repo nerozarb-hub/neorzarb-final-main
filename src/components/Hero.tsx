@@ -2,8 +2,9 @@ import React, { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import BentoButton from './ui/BentoButton';
 import { FloatingOrb, CountUp, MagneticButton, PulseGrid } from './ui/animations';
+import { buildContactHref, getExternalLinkProps } from '@/lib/conversion';
 
-const WHATSAPP_AUDIT = 'https://wa.me/923XXXXXXXXXX?text=Hi%20NEROZARB%2C%20I%20want%20to%20book%20a%20free%20growth%20audit';
+const AUDIT_MESSAGE = 'Hi NEROZARB, I want to book a free growth audit.';
 
 const Hero: React.FC = () => {
   const [typewriterText, setTypewriterText] = useState('');
@@ -164,7 +165,8 @@ const Hero: React.FC = () => {
         >
           <MagneticButton strength={0.3}>
             <BentoButton
-              href={WHATSAPP_AUDIT}
+              href={buildContactHref(AUDIT_MESSAGE, 'Free NEROZARB growth audit')}
+              {...getExternalLinkProps()}
               icon={<i className="fas fa-bolt text-sm" />}
             >
               Get Your Free Growth Audit

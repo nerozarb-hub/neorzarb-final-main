@@ -95,8 +95,8 @@ const PainPoints: React.FC = () => {
               <motion.span className="block" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.3 }}>Is Not Working.</motion.span>
             </h2>
           </div>
-          <div className="hidden lg:flex w-10 h-10 border-2 border-zinc-700 items-center justify-center mt-auto animate-bounce-x hover:border-primary transition-colors">
-            <i className="fas fa-arrow-right text-white text-base" />
+          <div className="hidden lg:flex w-10 h-10 border-2 border-zinc-700 items-center justify-center mt-auto hover:border-primary transition-colors group/arrow">
+            <i className="fas fa-arrow-right text-white text-base group-hover/arrow:translate-x-1 transition-transform duration-300" />
           </div>
         </motion.div>
 

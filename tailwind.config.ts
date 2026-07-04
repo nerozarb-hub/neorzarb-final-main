@@ -67,16 +67,15 @@ export default {
 				'text-dim': '#888888',
 			},
 			fontFamily: {
-				display: ['Inter', 'sans-serif'],
-				body: ['Inter', 'sans-serif'],
-				'noto-sans': ['Noto Sans', 'sans-serif'],
+				display: ['Archivo', 'sans-serif'],
+				body: ['Atkinson Hyperlegible', 'sans-serif'],
 			},
 			boxShadow: {
 				'gloss-green': 'inset 0 1px 1px 0 rgba(255, 255, 255, 0.3), 0 0 15px rgba(63, 106, 36, 0.4)',
 				'glow-card': '0 0 30px rgba(63, 106, 36, 0.15)',
 			},
 			letterSpacing: {
-				tightest: '-0.05em',
+				tightest: '0',
 				'widest-2': '0.2em',
 			},
 			borderRadius: {

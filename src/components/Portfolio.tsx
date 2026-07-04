@@ -7,9 +7,10 @@ interface Project {
   id: number;
   title: string;
   category: string;
-  image: string;
+  status: string;
   stats: { label: string; value: string }[];
   description: string;
+  mechanisms: string[];
   link?: string;
 }
 
@@ -18,51 +19,29 @@ const projects: Project[] = [
     id: 1,
     title: 'Mozart Haus',
     category: 'Culture / Events',
-    image: 'https://images.unsplash.com/photo-1514525253440-b393452e8d26?auto=format&fit=crop&q=75&w=800',
+    status: 'Full case study live',
     stats: [
-      { label: 'Event Bookings', value: '3x' },
-      { label: 'Followers', value: '45k+' },
+      { label: 'Matched Reach', value: '100k+' },
+      { label: 'Engagement', value: '10k+' },
     ],
-    description: 'Complete brand identity, AI-driven content strategy, and digital presence that tripled event bookings.',
+    description: 'Austrian-Pakistani cultural centre repositioned with brand identity, local SEO, content architecture, paid reach, and a permanent asset vault.',
+    mechanisms: ['Brand system', 'Google profile', 'Paid reach', 'Asset vault'],
     link: '/portfolio/mozart-haus',
   },
   {
     id: 2,
     title: 'Hamad Foundation',
     category: 'NGO / Education',
-    image: 'https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&q=75&w=800',
+    status: 'Full case study live',
     stats: [
-      { label: 'Brands Built', value: '2' },
-      { label: 'Time', value: '1 Sprint' },
+      { label: 'Websites Built', value: '2' },
+      { label: 'Identities', value: '2' },
     ],
-    description: 'Two separate visual identities built from scratch. Digital presence constructed for parent company and child NGO.',
+    description: 'YC Educational Services and Hamad Foundation received separate credibility systems, websites, donation pathways, and local SEO foundations.',
+    mechanisms: ['Two brands', 'Two websites', 'Donation flow', 'SEO base'],
     link: '/portfolio/hamad-foundation',
   },
-  {
-    id: 3,
-    title: 'Urban Threads',
-    category: 'Fashion / Retail',
-    image: 'https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&q=75&w=800',
-    stats: [
-      { label: 'Online Sales', value: '5x' },
-      { label: 'Cost/Lead', value: '-60%' },
-    ],
-    description: 'From zero online presence to 6-figure monthly revenue using AI-powered content and automated ad optimisation.',
-  },
-  {
-    id: 4,
-    title: 'Apex Dental',
-    category: 'Healthcare / Services',
-    image: 'https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&q=75&w=800',
-    stats: [
-      { label: 'Patient Bookings', value: '+150%' },
-      { label: 'Google Rank', value: '#1' },
-    ],
-    description: 'AI-driven local SEO domination and smart booking system for a multi-location dental practice.',
-  },
 ];
-
-const WHATSAPP_CASES = 'https://wa.me/923XXXXXXXXXX?text=Hi%20NEROZARB%2C%20I%20want%20to%20see%20more%20case%20studies';
 
 const Portfolio: React.FC = () => {
   const [selectedImage, setSelectedImage] = React.useState<string | null>(null);
@@ -138,9 +117,9 @@ const Portfolio: React.FC = () => {
 
           <div className="space-y-4 mb-8">
             {[
-              { value: 50, suffix: '+', label: 'Projects Delivered' },
-              { value: 3, suffix: 'x', label: 'Average ROI' },
-              { value: 60, suffix: '', label: 'Days to Launch' },
+              { value: 2, suffix: '', label: 'Published Case Studies' },
+              { value: 4, suffix: '', label: 'Web / Brand Systems' },
+              { value: 60, suffix: '', label: 'Sprint Timeline' },
             ].map((stat, index) => (
               <motion.div
                 key={index}
@@ -173,23 +152,16 @@ const Portfolio: React.FC = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.08, ease: [0.16, 1, 0.3, 1] }}
                 viewport={{ once: true }}
-                className="group relative aspect-square border-b border-r border-zinc-700 overflow-hidden cursor-pointer"
+                className="group relative min-h-[520px] border-b border-r border-zinc-700 overflow-hidden cursor-pointer bg-[#090909]"
                 onClick={() => {
                   if (project.link) {
                     navigate(project.link);
-                  } else {
-                    setSelectedImage(project.image);
                   }
                 }}
               >
-                {/* Background image */}
-                <div
-                  className="absolute inset-0 bg-cover bg-center grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700 will-change-transform"
-                  style={{ backgroundImage: `url('${project.image}')` }}
-                />
-                {/* Overlays */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent group-hover:from-black/70 group-hover:via-black/30 transition-all duration-500" />
-                <div className="absolute inset-0 bg-primary/0 group-hover:bg-primary/5 transition-colors duration-300" />
+                <div className="absolute inset-0 opacity-[0.22] bg-grid-pattern" />
+                <div className="absolute -right-24 -bottom-24 w-72 h-72 border border-primary/20 rotate-45 group-hover:rotate-[50deg] group-hover:border-primary/40 transition-all duration-700" />
+                <div className="absolute left-8 top-24 h-px w-24 bg-primary/60 group-hover:w-36 transition-all duration-500" />
 
                 {/* Index badge */}
                 <div className="absolute top-4 right-4 z-10 opacity-70 group-hover:opacity-100 -translate-y-1 group-hover:translate-y-0 transition-all duration-300">
@@ -199,30 +171,41 @@ const Portfolio: React.FC = () => {
                 </div>
 
                 {/* Text content */}
-                <div className="absolute bottom-0 left-0 p-6 md:p-8 w-full z-10">
-                  <p className="text-xs text-primary font-bold uppercase tracking-widest mb-2 drop-shadow-md group-hover:translate-x-[5px] transition-transform duration-500">
+                <div className="absolute inset-0 p-6 md:p-8 w-full z-10 flex flex-col justify-end">
+                  <p className="text-xs text-primary font-bold uppercase tracking-widest mb-2 group-hover:translate-x-[5px] transition-transform duration-500">
                     {project.category}
                   </p>
-                  <h3 className="text-xl md:text-2xl font-bold uppercase mb-2 text-white drop-shadow-md group-hover:translate-x-[5px] transition-transform duration-500 delay-[50ms]">
+                  <h3 className="text-2xl md:text-3xl font-black uppercase mb-3 text-white group-hover:translate-x-[5px] transition-transform duration-500">
                     {project.title}
                   </h3>
-                  <p className="text-sm text-gray-300 mb-4 max-w-xs opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500">
+                  <p className="text-sm text-gray-300 mb-5 max-w-lg leading-relaxed">
                     {project.description}
                   </p>
 
-                  {/* Stats — replaced border-l stripe with full border box */}
-                  <div className="flex gap-4 opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 delay-100">
+                  <div className="flex flex-wrap gap-2 mb-6">
+                    {project.mechanisms.map((mechanism) => (
+                      <span key={mechanism} className="border border-zinc-700 bg-black/30 px-2 py-1 text-[10px] font-mono uppercase tracking-widest text-gray-400 group-hover:border-primary/40 group-hover:text-primary transition-colors duration-300">
+                        {mechanism}
+                      </span>
+                    ))}
+                  </div>
+
+                  <div className="flex gap-4 translate-y-1 group-hover:translate-y-0 transition-transform duration-500">
                     {project.stats.map((stat, i) => (
                       <div
                         key={i}
-                        className="border border-primary/40 px-2 py-1 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-500"
+                        className="border border-primary/40 bg-primary/5 px-3 py-2 transition-all duration-500"
                         style={{ transitionDelay: `${110 + i * 60}ms` }}
                       >
-                        <span className="block text-base font-black text-white">{stat.value}</span>
+                        <span className="block text-lg font-black text-white">{stat.value}</span>
                         <span className="text-[9px] text-gray-400 uppercase tracking-wider">{stat.label}</span>
                       </div>
                     ))}
                   </div>
+
+                  <p className="mt-6 text-[10px] font-bold uppercase tracking-[0.18em] text-primary">
+                    {project.status} <i className="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform inline-block" />
+                  </p>
                 </div>
 
                 {/* Border highlight */}
@@ -242,8 +225,8 @@ const Portfolio: React.FC = () => {
             <div className="flex items-center gap-3 hover:translate-x-[5px] transition-transform duration-300">
               <i className="fas fa-circle-check text-primary text-xl animate-pulse" />
               <p className="text-base text-gray-300">
-                All results verified. Want to see more?{' '}
-                <span className="text-primary">Let's talk.</span>
+                Published proof only. Want the operating notes behind it?{' '}
+                <span className="text-primary">Book the audit.</span>
               </p>
             </div>
             <Link
@@ -251,7 +234,7 @@ const Portfolio: React.FC = () => {
               className="text-xs font-bold uppercase tracking-widest text-white hover:text-primary transition-colors flex items-center gap-2 group/link hover:translate-x-[5px] transition-transform duration-300"
             >
               View All Case Studies
-              <i className="fas fa-arrow-right text-sm animate-bounce-x" />
+              <i className="fas fa-arrow-right text-sm group-hover/link:translate-x-1 transition-transform duration-300" />
             </Link>
           </motion.div>
         </div>

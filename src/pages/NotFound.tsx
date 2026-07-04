@@ -2,6 +2,9 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import { buildContactHref, getExternalLinkProps, hasWhatsAppNumber, primaryContactLabel } from '@/lib/conversion';
+
+const AUDIT_MESSAGE = 'Hi NEROZARB, I want to book a free audit.';
 
 const NotFoundPage: React.FC = () => {
     return (
@@ -64,13 +67,12 @@ const NotFoundPage: React.FC = () => {
                         Go Home
                     </Link>
                     <a
-                        href="https://wa.me/923XXXXXXXXXX?text=Hi%20NEROZARB%2C%20I%20want%20to%20book%20a%20free%20audit"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center gap-2 border border-white/20 hover:border-primary px-8 py-4 text-sm font-black uppercase tracking-widest text-white transition-all duration-300"
+                        href={buildContactHref(AUDIT_MESSAGE, 'Free NEROZARB growth audit')}
+                        {...getExternalLinkProps()}
+                        className="flex items-center gap-2 border border-white/20 hover:border-primary px-8 py-4 text-sm font-black uppercase tracking-widest text-white transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-[#030303]"
                     >
-                        <i className="fab fa-whatsapp" />
-                        WhatsApp Us
+                        <i className={hasWhatsAppNumber ? 'fab fa-whatsapp' : 'fas fa-envelope'} />
+                        {primaryContactLabel} Us
                     </a>
                 </motion.div>
             </motion.div>

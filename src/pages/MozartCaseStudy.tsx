@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
+import { buildContactHref, getExternalLinkProps } from '@/lib/conversion';
 
 const MozartCaseStudy: React.FC = () => {
   const navigate = useNavigate();
@@ -13,9 +14,14 @@ const MozartCaseStudy: React.FC = () => {
     hidden: { opacity: 0, y: 24 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] } }
   };
+  const sprintContactHref = buildContactHref(
+    "Hi NEROZARB, I'm interested in the 60-Day Sprint after seeing the Mozart Haus case study.",
+    'Mozart Haus sprint inquiry'
+  );
+  const externalLinkProps = getExternalLinkProps();
 
   return (
-    <div className="bg-onyx text-white font-inter font-light leading-relaxed relative overflow-x-hidden pt-10 px-4 md:px-0">
+    <div className="bg-onyx text-white font-body font-light leading-relaxed relative overflow-x-hidden pt-10 px-4 md:px-0">
       {/* Ambient background light */}
       <div className="fixed -top-[20%] -left-[10%] w-[70vw] h-[70vw] bg-[radial-gradient(ellipse,rgba(63,106,36,0.08)_0%,transparent_65%)] pointer-events-none z-0" />
 
@@ -31,7 +37,7 @@ const MozartCaseStudy: React.FC = () => {
         {/* HEADER */}
         <header className="relative p-10 md:p-[80px_80px_60px] border-b border-white/5">
           <div className="font-mono text-[11px] tracking-[0.18em] text-olive uppercase mb-1.5">CASE STUDY — 001</div>
-          <div className="font-montserrat text-[13px] font-black tracking-[0.25em] text-platinum uppercase hover:text-olive transition-colors cursor-pointer w-fit"><a href="#">NEROZARB × MOZARTHAUS</a></div>
+          <div className="font-display text-[13px] font-black text-platinum uppercase">NEROZARB × MOZARTHAUS</div>
         </header>
 
         {/* HERO */}
@@ -40,7 +46,7 @@ const MozartCaseStudy: React.FC = () => {
             <div className="w-8 h-[1px] bg-olive" />
             Cultural Institution · Lahore · 60-Day Sprint
           </motion.div>
-          <motion.h1 initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp} transition={{ delay: 0.15 }} className="font-montserrat font-black text-[clamp(52px,7vw,96px)] leading-[0.95] uppercase tracking-[-0.02em] max-w-[900px] mb-10">
+          <motion.h1 initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp} transition={{ delay: 0.15 }} className="font-display font-black text-[clamp(52px,7vw,96px)] leading-[0.95] uppercase tracking-normal max-w-[900px] mb-10">
             FROM<br/><span className="text-olive">INVISIBLE</span><br/>TO 100,000.
           </motion.h1>
           <motion.p initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp} transition={{ delay: 0.3 }} className="text-[17px] font-normal text-platinum max-w-[560px] leading-[1.65] mb-16 border-l-2 border-white/10 pl-6">
@@ -48,7 +54,7 @@ const MozartCaseStudy: React.FC = () => {
           </motion.p>
           
           <div className="mt-4 mb-10">
-             <a href="#" className="inline-block text-[10px] font-mono tracking-widest uppercase border border-olive text-olive px-4 py-2 hover:bg-olive hover:text-onyx transition-all">VISIT MOZART HAUS PAKISTAN</a>
+             <span className="inline-block text-[10px] font-mono uppercase border border-olive/60 text-olive px-4 py-2">SPRINT CASE STUDY</span>
           </div>
 
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp} transition={{ delay: 0.4 }} className="grid grid-cols-2 md:grid-cols-4 gap-[1px] bg-white/5 border border-white/5 max-w-[860px]">
@@ -59,23 +65,38 @@ const MozartCaseStudy: React.FC = () => {
               { num: '60', accent: '', label: 'Days to Build' },
             ].map((stat, i) => (
               <div key={i} className="bg-onyx p-6 md:px-7 md:py-8 transition-colors hover:bg-[rgba(63,106,36,0.06)] relative">
-                <div className="font-montserrat font-black text-[38px] text-white leading-none mb-1.5 tracking-[-0.02em]">
+                <div className="font-display font-black text-[38px] text-white leading-none mb-1.5 tracking-normal">
                   {stat.num}<span className="text-olive">{stat.accent}</span>
                 </div>
                 <div className="font-mono text-[10px] tracking-[0.14em] text-platinum uppercase">{stat.label}</div>
               </div>
             ))}
           </motion.div>
+
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp} transition={{ delay: 0.48 }} className="mt-6 grid max-w-[860px] grid-cols-1 gap-[1px] border border-olive/25 bg-olive/20 md:grid-cols-[1.2fr_1fr_1fr]">
+            <div className="bg-onyx p-5">
+              <div className="mb-1 font-mono text-[10px] uppercase text-olive">Project investment</div>
+              <div className="text-[14px] text-white/70">60-Day Sprint equivalent for a full brand, content, local search, and lead-system build.</div>
+            </div>
+            <div className="bg-onyx p-5">
+              <div className="mb-1 font-mono text-[10px] uppercase text-olive">Main price</div>
+              <div className="font-display text-[24px] font-black uppercase text-white">PKR 700,000</div>
+            </div>
+            <div className="bg-onyx p-5">
+              <div className="mb-1 font-mono text-[10px] uppercase text-olive">USD reference</div>
+              <div className="font-display text-[24px] font-black uppercase text-white">$2,500</div>
+            </div>
+          </motion.div>
         </div>
 
         {/* THE STORY */}
         <section className="relative p-10 md:p-20 border-b border-white/5">
           <div className="font-mono text-[10px] tracking-[0.2em] text-olive uppercase mb-10 flex items-center gap-2.5 after:content-[''] after:flex-1 after:max-w-10 after:h-[1px] after:bg-olive">The Brief</div>
-          <h2 className="font-montserrat font-black text-[clamp(28px,3.5vw,44px)] uppercase tracking-[-0.01em] leading-[1.05] mb-7 max-w-[700px]">THE SITUATION BEFORE WE ARRIVED</h2>
+          <h2 className="font-display font-black text-[clamp(28px,3.5vw,44px)] uppercase tracking-normal leading-[1.05] mb-7 max-w-[700px]">THE SITUATION BEFORE WE ARRIVED</h2>
           
           <div className="grid grid-cols-1 md:grid-cols-[1fr_2fr] gap-12 md:gap-20 mt-12 items-start">
             <div className="sticky top-10">
-              <div className="font-montserrat font-black text-[13px] uppercase tracking-[0.15em] text-platinum mb-5">Timeline</div>
+              <div className="font-display font-black text-[13px] uppercase tracking-[0.15em] text-platinum mb-5">Timeline</div>
               {[
                 { label: 'Day 0', text: 'Discovery. Scattered accounts. No brand identity. Broken website. Under 1,000 reach.' },
                 { label: 'Days 1–14', text: 'Full audit. Identity system built. Technical foundation repaired.' },
@@ -105,7 +126,7 @@ const MozartCaseStudy: React.FC = () => {
         {/* BEFORE / AFTER */}
         <section className="relative p-10 md:p-20 border-b border-white/5">
           <div className="font-mono text-[10px] tracking-[0.2em] text-olive uppercase mb-10 flex items-center gap-2.5 after:content-[''] after:flex-1 after:max-w-10 after:h-[1px] after:bg-olive">Diagnosis</div>
-          <h2 className="font-montserrat font-black text-[clamp(28px,3.5vw,44px)] uppercase tracking-[-0.01em] leading-[1.05] mb-7 max-w-[700px]">WHAT WAS BROKEN.<br/>WHAT WE FIXED.</h2>
+          <h2 className="font-display font-black text-[clamp(28px,3.5vw,44px)] uppercase tracking-normal leading-[1.05] mb-7 max-w-[700px]">WHAT WAS BROKEN.<br/>WHAT WE FIXED.</h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mt-12 bg-onyx/30">
             {/* Before block */}
@@ -150,7 +171,7 @@ const MozartCaseStudy: React.FC = () => {
         {/* DELIVERABLES */}
         <section className="relative p-10 md:p-20 border-b border-white/5">
           <div className="font-mono text-[10px] tracking-[0.2em] text-olive uppercase mb-10 flex items-center gap-2.5 after:content-[''] after:flex-1 after:max-w-10 after:h-[1px] after:bg-olive">What We Built</div>
-          <h2 className="font-montserrat font-black text-[clamp(28px,3.5vw,44px)] uppercase tracking-[-0.01em] leading-[1.05] mb-7 max-w-[700px]">SIX SYSTEMS.<br/>ONE 60-DAY SPRINT.</h2>
+          <h2 className="font-display font-black text-[clamp(28px,3.5vw,44px)] uppercase tracking-normal leading-[1.05] mb-7 max-w-[700px]">SIX SYSTEMS.<br/>ONE 60-DAY SPRINT.</h2>
           <p className="text-[16px] font-light text-white/75 max-w-[600px] leading-[1.8]">We didn't post content. We built the infrastructure that posts, converts, and compounds — permanently.</p>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-[1px] bg-white/5 border border-white/5 mt-12">
@@ -163,9 +184,9 @@ const MozartCaseStudy: React.FC = () => {
               { num: '06', icon: 'ASSET VAULT', title: 'Permanent Digital Archive', body: 'Every photo, video, graphic, and brand asset archived in a secure Google Drive library with institutional-grade password management via Bitwarden. MozartHaus owns its digital infrastructure in perpetuity.' },
             ].map((d, i) => (
                <div key={i} className="bg-onyx p-10 md:px-8 md:py-10 relative overflow-hidden transition-colors hover:bg-[rgba(63,106,36,0.05)]">
-                 <div className="font-montserrat font-black text-[60px] text-[rgba(63,106,36,0.15)] leading-none absolute top-5 right-6 tracking-[-0.04em]">{d.num}</div>
+                 <div className="font-display font-black text-[60px] text-[rgba(63,106,36,0.15)] leading-none absolute top-5 right-6 tracking-normal">{d.num}</div>
                  <div className="font-mono text-[11px] tracking-[0.15em] text-olive uppercase mb-4 relative z-10">{d.icon}</div>
-                 <div className="font-montserrat font-black text-[18px] uppercase tracking-[0.02em] mb-3.5 leading-[1.2] relative z-10">{d.title}</div>
+                 <div className="font-display font-black text-[18px] uppercase tracking-[0.02em] mb-3.5 leading-[1.2] relative z-10">{d.title}</div>
                  <div className="text-[14px] font-light text-white/65 leading-[1.7] relative z-10">{d.body}</div>
                </div>
             ))}
@@ -175,11 +196,11 @@ const MozartCaseStudy: React.FC = () => {
         {/* NUMBERS SECTION */}
         <section className="relative p-10 md:p-20 border-b border-white/5">
           <div className="font-mono text-[10px] tracking-[0.2em] text-olive uppercase mb-10 flex items-center gap-2.5 after:content-[''] after:flex-1 after:max-w-10 after:h-[1px] after:bg-olive">The Numbers</div>
-          <h2 className="font-montserrat font-black text-[clamp(28px,3.5vw,44px)] uppercase tracking-[-0.01em] leading-[1.05] mb-7 max-w-[700px]">RESULTS THAT<br/>DON'T NEED CONTEXT.</h2>
+          <h2 className="font-display font-black text-[clamp(28px,3.5vw,44px)] uppercase tracking-normal leading-[1.05] mb-7 max-w-[700px]">RESULTS THAT<br/>DON'T NEED CONTEXT.</h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mt-12">
             <div className="p-10 md:p-11 border border-[var(--olive-glow)] bg-[rgba(63,106,36,0.04)] relative overflow-hidden after:content-[''] after:absolute after:-bottom-[60px] after:-right-[60px] after:w-[180px] after:h-[180px] after:bg-[radial-gradient(circle,rgba(63,106,36,0.18),transparent_70%)] after:pointer-events-none">
-              <div className="font-montserrat font-black text-[72px] leading-none tracking-[-0.03em] mb-2.5 text-white">100<span className="text-olive">K+</span></div>
+              <div className="font-display font-black text-[72px] leading-none tracking-normal mb-2.5 text-white">100<span className="text-olive">K+</span></div>
               <div className="font-mono text-[11px] tracking-[0.05em] text-sage uppercase mb-5">HYPER-NICHE ACCOUNTS REACHED — 30 DAYS</div>
               <div className="text-[15px] font-light text-white/65 leading-[1.7]">
                 Before NEROZARB, MozartHaus was reaching under 1,000 people. After the system went live, 100,000+ accounts saw the brand in a single month. None of it was generic. Every person reached was inside the arts education, music, and premium Lahore family niche — the exact audience that buys what MozartHaus sells.
@@ -199,7 +220,7 @@ const MozartCaseStudy: React.FC = () => {
                ].map((m, i) => (
                  <div key={i} className="bg-onyx p-7 md:px-8 border-b border-white/5 flex items-center justify-between transition-colors hover:bg-[rgba(63,106,36,0.04)]">
                     <div className="text-[14px] font-normal text-platinum">{m.label}</div>
-                    <div className="font-montserrat font-black text-[24px] text-white tracking-[-0.01em]">{m.val}<span className="text-olive">{m.accent}</span></div>
+                    <div className="font-display font-black text-[24px] text-white tracking-normal">{m.val}<span className="text-olive">{m.accent}</span></div>
                  </div>
                ))}
             </div>
@@ -208,7 +229,7 @@ const MozartCaseStudy: React.FC = () => {
 
         {/* QUOTE BLOCK */}
         <div className="bg-[rgba(63,106,36,0.04)] border-l-[3px] border-olive p-10 md:p-[52px_80px]">
-          <div className="font-montserrat font-black text-[clamp(20px,2.5vw,30px)] uppercase leading-[1.25] max-w-[720px] tracking-[-0.01em] mb-6 text-white">
+          <div className="font-display font-black text-[clamp(20px,2.5vw,30px)] uppercase leading-[1.25] max-w-[720px] tracking-normal mb-6 text-white">
             "100,000 people reached. Every single one of them exactly who MozartHaus needed to reach. Not a number — a room full of buyers."
           </div>
           <div className="font-mono text-[14px] md:text-[14px] tracking-[0.1em] text-platinum uppercase">NEROZARB — Performance Report, March 2026</div>
@@ -217,7 +238,7 @@ const MozartCaseStudy: React.FC = () => {
         {/* WHAT THIS MEANS FOR YOU */}
         <section className="relative p-10 md:p-20 border-b border-white/5">
           <div className="font-mono text-[10px] tracking-[0.2em] text-olive uppercase mb-10 flex items-center gap-2.5 after:content-[''] after:flex-1 after:max-w-10 after:h-[1px] after:bg-olive">Why This Matters</div>
-          <h2 className="font-montserrat font-black text-[clamp(28px,3.5vw,44px)] uppercase tracking-[-0.01em] leading-[1.05] mb-7 max-w-[700px]">WHAT THIS PROVES<br/>FOR YOUR BRAND.</h2>
+          <h2 className="font-display font-black text-[clamp(28px,3.5vw,44px)] uppercase tracking-normal leading-[1.05] mb-7 max-w-[700px]">WHAT THIS PROVES<br/>FOR YOUR BRAND.</h2>
           <div className="max-w-[680px] mt-7 space-y-6 text-[16px] font-light text-white/75 leading-[1.85]">
             <p>MozartHaus is not a startup. It's a cultural institution. They had no marketing team, no content budget, and no digital strategy when we arrived. What they had was a genuinely good product and zero digital credibility to match it.</p>
             <p>In 60 days, we built everything from scratch — brand identity, content engine, SEO presence, paid campaigns, and an enrollment pipeline — and handed it over as a system they own permanently.</p>
@@ -231,14 +252,14 @@ const MozartCaseStudy: React.FC = () => {
          <div className="p-10 md:p-20 flex flex-col md:flex-row md:justify-between md:items-end gap-10 bg-onyx/50">
           <div>
             <div className="font-mono text-[10px] tracking-[0.2em] text-olive uppercase mb-4">NEXT STEP</div>
-            <div className="font-montserrat font-black text-[clamp(24px,3vw,40px)] uppercase tracking-[-0.01em] leading-[1.1] max-w-[480px] mb-6">YOUR BRAND.<br/>60 DAYS.<br/>ONE SYSTEM.</div>
+            <div className="font-display font-black text-[clamp(24px,3vw,40px)] uppercase tracking-normal leading-[1.1] max-w-[480px] mb-6">YOUR BRAND.<br/>60 DAYS.<br/>ONE SYSTEM.</div>
             <div className="text-[14px] font-light text-platinum mb-8">We take three clients per sprint cycle. Spots are qualified by revenue.</div>
-            <a href="https://wa.me/923000000000?text=Hi%20NEROZARB%2C%20I'm%20interested%20in%20the%20brand%20sprint" target="_blank" rel="noopener noreferrer" className="inline-block px-9 py-[18px] bg-olive text-white font-mono text-[11px] tracking-[0.18em] uppercase transition-all hover:bg-[#4d8a2c] hover:-translate-y-0.5">
+            <a href={sprintContactHref} {...externalLinkProps} className="inline-block px-9 py-[18px] bg-olive text-white font-mono text-[11px] uppercase transition-all hover:bg-[#4d8a2c] hover:-translate-y-0.5">
               WHATSAPP US TO QUALIFY
             </a>
           </div>
           <div className="md:text-right">
-            <div className="font-montserrat font-black text-[28px] tracking-[0.1em] uppercase text-white">NEROZARB</div>
+            <div className="font-display font-black text-[28px] tracking-[0.1em] uppercase text-white">NEROZARB</div>
             <div className="font-mono text-[10px] tracking-[0.14em] text-olive uppercase mt-1.5">THE DIGITAL ATELIER · LAHORE</div>
           </div>
         </div>

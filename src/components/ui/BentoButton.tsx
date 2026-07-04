@@ -58,7 +58,7 @@ const BentoButton: React.FC<BentoButtonProps> = ({
     return (
       <a
         href={href}
-        className="block w-full"
+        className="block w-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-[#050505]"
         target={target}
         rel={rel}
       >
@@ -68,7 +68,7 @@ const BentoButton: React.FC<BentoButtonProps> = ({
   }
 
   return (
-    <button onClick={onClick} className="block w-full">
+    <button onClick={onClick} className="block w-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-[#050505]">
       {content}
     </button>
   );

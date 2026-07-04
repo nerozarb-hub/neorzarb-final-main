@@ -2,10 +2,11 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import BentoButton from './ui/BentoButton';
 import { FloatingOrb, MagneticButton } from './ui/animations';
+import { buildContactHref, CONTACT_EMAIL, getExternalLinkProps, hasWhatsAppNumber, primaryContactLabel } from '@/lib/conversion';
 
-const WHATSAPP_BASE = 'https://wa.me/923XXXXXXXXXX';
-const WHATSAPP_CTA = `${WHATSAPP_BASE}?text=${encodeURIComponent('Hi NEROZARB, I want to book a free audit')}`;
-const WHATSAPP_EMAIL = 'mailto:hello@nerozarb.com';
+const AUDIT_MESSAGE = 'Hi NEROZARB, I want to book a free audit.';
+const CONTACT_HREF = buildContactHref(AUDIT_MESSAGE, 'Free NEROZARB growth audit');
+const EMAIL_HREF = `mailto:${CONTACT_EMAIL}`;
 
 const Footer: React.FC = () => {
   const linkVariants = {
@@ -65,12 +66,12 @@ const Footer: React.FC = () => {
               transition={{ duration: 0.5, delay: 0.4 }}
             >
               <MagneticButton strength={0.3}>
-                <BentoButton href={WHATSAPP_CTA} icon={<i className="fab fa-whatsapp text-lg" />}>
-                  WhatsApp Us
+                <BentoButton href={CONTACT_HREF} {...getExternalLinkProps()} icon={<i className={`${hasWhatsAppNumber ? 'fab fa-whatsapp' : 'fas fa-envelope'} text-lg`} />}>
+                  {primaryContactLabel} Us
                 </BentoButton>
               </MagneticButton>
               <MagneticButton strength={0.3}>
-                <BentoButton href={WHATSAPP_EMAIL} variant="secondary" icon={<i className="fas fa-envelope text-lg" />}>
+                <BentoButton href={EMAIL_HREF} variant="secondary" icon={<i className="fas fa-envelope text-lg" />}>
                   Email Us
                 </BentoButton>
               </MagneticButton>
@@ -86,7 +87,7 @@ const Footer: React.FC = () => {
                 { href: '#work', label: 'Case Studies' },
                 { href: '#protocol', label: 'Process' },
                 { href: '/about', label: 'About', isRoute: true },
-                { href: WHATSAPP_CTA, label: 'Contact', external: true },
+                { href: CONTACT_HREF, label: 'Contact', external: hasWhatsAppNumber },
               ].map((link, index) => (
                 link.isRoute ? (
                   <motion.a
@@ -138,9 +139,11 @@ const Footer: React.FC = () => {
               <a href="https://tiktok.com/@nerozarb" target="_blank" rel="noopener noreferrer" aria-label="TikTok" className="text-gray-500 hover:text-primary transition-colors duration-300 text-xl">
                 <i className="fab fa-tiktok" />
               </a>
-              <a href={WHATSAPP_BASE} target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" className="text-gray-500 hover:text-primary transition-colors duration-300 text-xl">
-                <i className="fab fa-whatsapp" />
-              </a>
+              {hasWhatsAppNumber && (
+                <a href={CONTACT_HREF} {...getExternalLinkProps()} aria-label="WhatsApp" className="text-gray-500 hover:text-primary transition-colors duration-300 text-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-[#050505]">
+                  <i className="fab fa-whatsapp" />
+                </a>
+              )}
             </motion.div>
 
             <motion.div

@@ -4,9 +4,9 @@ import { FloatingOrb, CountUp } from '../components/ui/animations';
 import CaseStudyBento from '../components/CaseStudyBento';
 import { CASE_STUDIES } from '../data/caseStudies';
 import Footer from '../components/Footer';
+import { buildContactHref, getExternalLinkProps, hasWhatsAppNumber } from '@/lib/conversion';
 
-const WHATSAPP_STRATEGY =
-  'https://wa.me/923XXXXXXXXXX?text=Hi%20NEROZARB%2C%20I%20want%20results%20like%20these';
+const STRATEGY_MESSAGE = 'Hi NEROZARB, I want results like these.';
 
 const CaseStudyPage: React.FC = () => {
   return (
@@ -63,9 +63,9 @@ const CaseStudyPage: React.FC = () => {
               className="mt-10 grid grid-cols-2 md:grid-cols-4 gap-0 border border-zinc-800 bg-[#0a0a0a]"
             >
               {[
-                { value: 50, suffix: '+', label: 'Projects Delivered' },
-                { value: 3, suffix: 'x', label: 'Average ROI' },
-                { value: 60, suffix: '', label: 'Days to Launch' },
+                { value: 2, suffix: '', label: 'Published Cases' },
+                { value: 4, suffix: '', label: 'Systems Shipped' },
+                { value: 60, suffix: '', label: 'Sprint Timeline' },
                 { value: 0, suffix: '', label: 'Zero Guesswork', isStatic: true },
               ].map((stat, i) => (
                 <div
@@ -123,12 +123,11 @@ const CaseStudyPage: React.FC = () => {
             </div>
 
             <a
-              href={WHATSAPP_STRATEGY}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-3 bg-primary hover:bg-primary/90 px-8 py-4 transition-all duration-300 group"
+              href={buildContactHref(STRATEGY_MESSAGE, 'NEROZARB case-study strategy call')}
+              {...getExternalLinkProps()}
+              className="inline-flex items-center gap-3 bg-primary hover:bg-primary/90 px-8 py-4 transition-all duration-300 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-[#050505]"
             >
-              <i className="fab fa-whatsapp text-white text-lg" />
+              <i className={`${hasWhatsAppNumber ? 'fab fa-whatsapp' : 'fas fa-envelope'} text-white text-lg`} />
               <span className="text-sm font-bold uppercase tracking-wider text-white">
                 Book Strategy Call
               </span>

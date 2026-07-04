@@ -14,25 +14,27 @@ const CaseStudyPage = lazy(() => import('./pages/CaseStudyPage'));
 const App: React.FC = () => {
   return (
     <BrowserRouter>
-      <main className="relative w-full flex flex-col pt-20 max-w-[1440px] mx-auto min-h-screen overflow-x-hidden">
+      <div className="relative w-full min-h-screen overflow-x-hidden">
         <Navbar />
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/about" element={<AboutPage />} />
-          <Route
-            path="/case-studies"
-            element={
-              <Suspense fallback={<GenericSectionSkeleton minHeight="600px" />}>
-                <CaseStudyPage />
-              </Suspense>
-            }
-          />
-          <Route path="/portfolio/mozart-haus" element={<MozartCaseStudy />} />
-          <Route path="/portfolio/hamad-foundation" element={<HamadCaseStudy />} />
-          <Route path="*" element={<NotFoundPage />} />
-        </Routes>
-        <WhatsAppFloat />
-      </main>
+        <main className="relative w-full flex flex-col pt-20 max-w-[1440px] mx-auto min-h-screen overflow-x-hidden">
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/about" element={<AboutPage />} />
+            <Route
+              path="/case-studies"
+              element={
+                <Suspense fallback={<GenericSectionSkeleton minHeight="600px" />}>
+                  <CaseStudyPage />
+                </Suspense>
+              }
+            />
+            <Route path="/portfolio/mozart-haus" element={<MozartCaseStudy />} />
+            <Route path="/portfolio/hamad-foundation" element={<HamadCaseStudy />} />
+            <Route path="*" element={<NotFoundPage />} />
+          </Routes>
+          <WhatsAppFloat />
+        </main>
+      </div>
     </BrowserRouter>
   );
 };

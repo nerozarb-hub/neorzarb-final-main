@@ -33,8 +33,8 @@ const faqData: FAQItem[] = [
     answer: 'We start every engagement with a free growth audit. We analyse your business, your market, and your competitors before we propose anything. If we do not think we can deliver results, we will say so. We only take on projects where we are confident we can make a real difference.',
   },
   {
-    question: 'Is there a guarantee?',
-    answer: 'We guarantee delivery of your complete digital system within 60 days. If we miss the deadline, we keep working at no additional cost until it is done. We do not promise viral posts or fake numbers — we promise a professional growth system that generates real leads and real sales.',
+    question: 'How do you handle delivery risk?',
+    answer: 'We define scope, sprint milestones, and approval checkpoints before work starts. The 60-day sprint is managed against a delivery board, so you always know what is shipped, what is pending, and what needs a decision. We do not promise viral posts or fake numbers. We build the professional growth system and show the work clearly.',
   },
 ];
 

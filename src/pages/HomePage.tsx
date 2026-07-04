@@ -13,6 +13,7 @@ const NeroEngine = lazy(() => import('../components/NeroEngine'));
 const Portfolio = lazy(() => import('../components/Portfolio'));
 const Process = lazy(() => import('../components/Process'));
 const Pricing = lazy(() => import('../components/Pricing'));
+const ConversionPath = lazy(() => import('../components/ConversionPath'));
 const AboutUs = lazy(() => import('../components/AboutUs'));
 const FAQ = lazy(() => import('../components/FAQ'));
 const Testimonials = lazy(() => import('../components/Testimonials'));
@@ -37,6 +38,9 @@ export function HomePage() {
       </Suspense>
       <Suspense fallback={<PricingSkeleton />}>
         <Pricing />
+      </Suspense>
+      <Suspense fallback={<GenericSectionSkeleton minHeight="360px" />}>
+        <ConversionPath />
       </Suspense>
       <Suspense fallback={<GenericSectionSkeleton minHeight="400px" />}>
         <AboutUs />

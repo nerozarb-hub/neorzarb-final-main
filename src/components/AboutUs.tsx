@@ -36,7 +36,7 @@ const AboutUs: React.FC = () => {
     {
       icon: "fa-bolt",
       title: "60 Days, Not 6 Months",
-      description: "We move fast because your revenue cannot wait. Complete brand + content + ads system delivered in 60 days. Guaranteed."
+      description: "We move fast because your revenue cannot wait. Complete brand + content + ads system delivered through a focused 60-day sprint with clear checkpoints."
     }
   ];
 

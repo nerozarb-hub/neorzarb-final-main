@@ -1,8 +1,9 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import BentoButton from './ui/BentoButton';
+import { buildContactHref, getExternalLinkProps } from '@/lib/conversion';
 
-const WHATSAPP_AUDIT = 'https://wa.me/923XXXXXXXXXX?text=Hi%20NEROZARB%2C%20I%20want%20my%20free%20growth%20audit';
+const AUDIT_MESSAGE = 'Hi NEROZARB, I want my free growth audit.';
 
 // Corner bracket animation variants
 const bracketVariants = {
@@ -91,7 +92,8 @@ const CTA: React.FC = () => {
             >
               <div className="md:w-[260px]">
                 <BentoButton
-                  href={WHATSAPP_AUDIT}
+                  href={buildContactHref(AUDIT_MESSAGE, 'Free NEROZARB growth audit')}
+                  {...getExternalLinkProps()}
                   icon={<i className="fas fa-rocket" />}
                 >
                   Get My Free Audit

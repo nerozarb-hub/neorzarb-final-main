@@ -1,8 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link, useLocation } from 'react-router-dom';
+import { buildContactHref, getExternalLinkProps } from '@/lib/conversion';
 
-const WHATSAPP_STRATEGY = 'https://wa.me/923XXXXXXXXXX?text=Hi%20NEROZARB%2C%20I%20want%20to%20book%20a%20strategy%20call';
+const STRATEGY_MESSAGE = 'Hi NEROZARB, I want to book a strategy call.';
 
 const Navbar: React.FC = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -126,10 +127,9 @@ const Navbar: React.FC = () => {
           {/* CTA + Hamburger */}
           <div className="flex items-center px-6 md:px-8 border-l border-white/10 h-full bg-[#030303]/30">
             <a
-              href={WHATSAPP_STRATEGY}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 bg-primary hover:bg-primary/90 px-3 py-2 sm:px-5 sm:py-2.5 transition-all duration-300 group rounded-none"
+              href={buildContactHref(STRATEGY_MESSAGE, 'NEROZARB strategy call')}
+              {...getExternalLinkProps()}
+              className="flex items-center gap-2 bg-primary hover:bg-primary/90 px-3 py-2 sm:px-5 sm:py-2.5 transition-all duration-300 group rounded-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-[#030303]"
             >
               <i className="fas fa-crosshairs text-white/80 group-hover:text-white text-sm" />
               <span className="text-[10px] sm:text-xs font-bold tracking-wider text-white uppercase">
@@ -138,9 +138,10 @@ const Navbar: React.FC = () => {
             </a>
 
             <button
-              className="md:hidden ml-4 p-2 text-white hover:text-primary transition-colors"
+              className="md:hidden ml-4 p-2 text-white hover:text-primary transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-[#030303]"
               onClick={() => setMobileMenuOpen(true)}
               aria-label="Open navigation menu"
+              aria-expanded={mobileMenuOpen}
             >
               <i className="fas fa-bars text-xl" />
             </button>
@@ -162,7 +163,7 @@ const Navbar: React.FC = () => {
               <span className="font-display font-black tracking-tighter text-lg text-white">NEROZARB</span>
               <button
                 onClick={() => setMobileMenuOpen(false)}
-                className="p-2 border border-white/10 hover:bg-primary hover:border-primary hover:text-white transition-colors rounded-none"
+                className="p-2 border border-white/10 hover:bg-primary hover:border-primary hover:text-white transition-colors rounded-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-[#050505]"
                 aria-label="Close navigation menu"
               >
                 <i className="fas fa-times text-xl" />
@@ -210,11 +211,10 @@ const Navbar: React.FC = () => {
                 <span>Limited Sprint Slots This Month</span>
               </div>
               <a
-                href={WHATSAPP_STRATEGY}
-                target="_blank"
-                rel="noopener noreferrer"
+                href={buildContactHref(STRATEGY_MESSAGE, 'NEROZARB strategy call')}
+                {...getExternalLinkProps()}
                 onClick={() => setMobileMenuOpen(false)}
-                className="flex items-center justify-center gap-2 w-full bg-primary hover:bg-primary/90 px-6 py-4 transition-all duration-300 rounded-none group"
+                className="flex items-center justify-center gap-2 w-full bg-primary hover:bg-primary/90 px-6 py-4 transition-all duration-300 rounded-none group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a0a0a]"
               >
                 <span className="text-sm font-bold tracking-wider text-white uppercase">
                   Book Strategy Call

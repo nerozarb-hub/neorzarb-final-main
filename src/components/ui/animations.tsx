@@ -77,18 +77,25 @@ export const CountUp = memo(function CountUp({
   className
 }: CountUpProps) {
   const ref = useRef<HTMLSpanElement>(null);
-  const [count, setCount] = useState(0);
+  const [count, setCount] = useState(end);
   const hasStartedRef = useRef(false);
 
   useEffect(() => {
     const element = ref.current;
     if (!element) return;
 
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReducedMotion) {
+      setCount(end);
+      return;
+    }
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting && !hasStartedRef.current) {
           hasStartedRef.current = true;
           observer.unobserve(element);
+          setCount(0);
 
           const startTime = performance.now();
           const durationMs = duration * 1000;

@@ -47,16 +47,16 @@ export const CASE_STUDIES: CaseStudy[] = [
     badge: 'T2 Sprint',
 
     cure: {
-      headline: 'Tripled event bookings in 60 days.',
+      headline: '100,000 matched accounts reached in 30 days.',
       outcome:
-        'A cultural institution with zero digital presence now fills every seat through AI-driven content and targeted ads.',
+        'A Lahore cultural institution moved from weak digital visibility to a complete brand, SEO, content, and paid reach system.',
     },
 
     math: [
-      { value: '3x', label: 'Event Bookings' },
-      { value: '45K+', label: 'Social Followers' },
-      { value: '4.1x', label: 'ROAS' },
-      { value: '-55%', label: 'Cost Per Lead' },
+      { value: '100K+', label: 'Matched Reach' },
+      { value: '10K+', label: 'Engagement' },
+      { value: '60', label: 'Days' },
+      { value: '1', label: 'Asset Vault' },
     ],
 
     mechanism: [
@@ -71,48 +71,48 @@ export const CASE_STUDIES: CaseStudy[] = [
         step: 2,
         label: 'Atomization',
         detail:
-          'Brand identity rebuild. AI-generated content calendar. 12 posts/week across pillars.',
+        'Brand identity rebuild, content rules, and a permanent visual system for the cultural centre.',
         icon: 'fa-atom',
       },
       {
         step: 3,
         label: 'Activation',
         detail:
-          'Signal Stack deployed: cold → warm → retargeting funnel with WhatsApp close loop.',
+        'Paid campaigns targeted arts-interested Lahore families instead of broad vanity reach.',
         icon: 'fa-bolt',
       },
       {
         step: 4,
         label: 'Scale',
         detail:
-          'Budget scaling +20% every 48h while ROAS held above 3.0. Automated optimization.',
+        'Google Business Profile, review base, and keyword mapping established for local discovery.',
         icon: 'fa-chart-line',
       },
     ],
 
     friction:
-      'Zero digital presence. Offline-only audience. No existing ad account or analytics.',
+      'Premium offline institution with weak digital trust, unverified local presence, and no consistent content system.',
     scale:
-      'Next: Pan-city event syndication and Gulf cultural partnership pipeline.',
+      'Next: Pan-city event syndication and partnership pipeline.',
   },
 
   {
     id: 'hamad-foundation',
     client: 'Hamad Foundation',
     category: 'Non-Profit / Education',
-    badge: 'T3 Dominance',
+    badge: 'T2 Sprint',
 
     cure: {
-      headline: 'Donor acquisition cost cut by 62%.',
+      headline: 'Two connected education brands built from zero.',
       outcome:
-        'A regional education foundation now generates qualified donor leads at scale through AI content and precision ad targeting.',
+        'YC Educational Services and Hamad Foundation received separate identities, websites, local SEO, and donor/inquiry pathways.',
     },
 
     math: [
-      { value: '-62%', label: 'Donor Acq. Cost' },
-      { value: '8.2x', label: 'Content Reach' },
-      { value: '3.4x', label: 'ROAS' },
-      { value: '+210%', label: 'Qualified Leads' },
+      { value: '2', label: 'Websites' },
+      { value: '2', label: 'Brand Identities' },
+      { value: '1', label: 'Donation Flow' },
+      { value: '1', label: 'SEO Base' },
     ],
 
     mechanism: [
@@ -120,35 +120,35 @@ export const CASE_STUDIES: CaseStudy[] = [
         step: 1,
         label: 'Voice Map',
         detail:
-          'Mapped donor psychology: status protection trigger for Gulf, loss aversion for Pakistan.',
+        'Separated operational credibility from donor-facing mission clarity.',
         icon: 'fa-compass',
       },
       {
         step: 2,
         label: 'Content Engine',
         detail:
-          'Story-driven proof system: impact reports → social proof → cause-and-effect pillars.',
+        'Built two distinct brand systems for YC Educational Services and Hamad Foundation.',
         icon: 'fa-newspaper',
       },
       {
         step: 3,
         label: 'Signal Stack',
         detail:
-          'Multi-geo ad funnel: Kuwait primary, Qatar secondary. WhatsApp close loop for pledges.',
+        'Delivered two functional websites with inquiry, programme, donation, and sponsorship pathways.',
         icon: 'fa-satellite-dish',
       },
       {
         step: 4,
         label: 'Retention',
         detail:
-          'Automated donor nurture sequences. Quarterly impact dashboards. LTV:CAC ≥ 3:1 maintained.',
+        'Created the foundation for local search, donor trust, and Phase 2 campaign activation.',
         icon: 'fa-rotate',
       },
     ],
 
     friction:
-      'Fragmented donor base across Pakistan and Gulf. No CRM. Manual outreach only.',
+      'No logo, website, digital presence, or donation trust pathway for either entity.',
     scale:
-      'Next: Azerbaijan expansion and corporate partnership acquisition engine.',
+      'Next: donor acquisition campaign and corporate partnership activation.',
   },
 ];
