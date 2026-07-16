@@ -97,9 +97,9 @@ const Navbar: React.FC = () => {
                       location.pathname === link.href || location.pathname.startsWith(`${link.href}/`) ? 'text-primary' : 'text-gray-400 hover:text-white'
                     }`}
                   >
-                    <span className="opacity-0 -ml-2 group-hover:opacity-100 group-hover:ml-0 transition-all text-primary duration-300 mr-1">[</span>
+                    <span aria-hidden="true" className="opacity-0 -ml-2 group-hover:opacity-100 group-hover:ml-0 transition-all text-primary duration-300 mr-1">[</span>
                     {link.label}
-                    <span className="opacity-0 -mr-2 group-hover:opacity-100 group-hover:mr-0 transition-all text-primary duration-300 ml-1">]</span>
+                    <span aria-hidden="true" className="opacity-0 -mr-2 group-hover:opacity-100 group-hover:mr-0 transition-all text-primary duration-300 ml-1">]</span>
                   </Link>
                 ) : (
                   <a
@@ -107,9 +107,9 @@ const Navbar: React.FC = () => {
                     href={link.href}
                     className="relative text-sm font-medium text-gray-400 hover:text-white uppercase tracking-wider transition-colors group py-2"
                   >
-                    <span className="opacity-0 -ml-2 group-hover:opacity-100 group-hover:ml-0 transition-all text-primary duration-300 mr-1">[</span>
+                    <span aria-hidden="true" className="opacity-0 -ml-2 group-hover:opacity-100 group-hover:ml-0 transition-all text-primary duration-300 mr-1">[</span>
                     {link.label}
-                    <span className="opacity-0 -mr-2 group-hover:opacity-100 group-hover:mr-0 transition-all text-primary duration-300 ml-1">]</span>
+                    <span aria-hidden="true" className="opacity-0 -mr-2 group-hover:opacity-100 group-hover:mr-0 transition-all text-primary duration-300 ml-1">]</span>
                   </a>
                 )
               ))}
