@@ -13,6 +13,13 @@
   --surface-raised: oklch(0.16 0.008 132);
   --line-subtle: oklch(0.98 0.004 132 / 0.1);
   --accent: oklch(0.48 0.1 132);
+  --brand-canvas: #030303;
+  --brand-surface: #050505;
+  --brand-panel: #0a0a0a;
+  --brand-panel-raised: #0d0f0c;
+  --brand-border: rgb(255 255 255 / 0.1);
+  --brand-text: #f4f4f1;
+  --brand-muted: #9ca3af;
 }
 
 /* ─── Global Resets ──────────────────────────────────────────────────────── */

@@ -93,21 +93,21 @@ export default function ServiceLandingPage() {
         </div>
       </section>
 
-      <section className="bg-[#f0f1eb] px-6 py-20 text-[#11150f] lg:px-12 lg:py-28">
+      <section className="bg-[#0a0a0a] px-6 py-20 text-white lg:px-12 lg:py-28">
         <div className="mx-auto max-w-7xl">
-          <div className="grid gap-8 border-b border-[#11150f]/15 pb-12 lg:grid-cols-[0.7fr_1.3fr] lg:items-end">
+          <div className="grid gap-8 border-b border-white/10 pb-12 lg:grid-cols-[0.7fr_1.3fr] lg:items-end">
             <div>
-              <span className="text-[11px] font-bold uppercase text-[#3f6a24]">What the engagement connects</span>
+              <span className="text-[11px] font-bold uppercase text-primary">What the engagement connects</span>
               <h2 className="mt-4 font-display text-4xl font-black uppercase leading-[0.96] md:text-5xl">One service. Built as a working system.</h2>
             </div>
-            <p className="max-w-2xl text-base leading-7 text-[#465043]">The final scope depends on the business, existing assets and operational requirements. These are the core capability areas evaluated during diagnosis.</p>
+            <p className="max-w-2xl text-base leading-7 text-gray-400">The final scope depends on the business, existing assets and operational requirements. These are the core capability areas evaluated during diagnosis.</p>
           </div>
           <div className="grid lg:grid-cols-2">
             {service.capabilities.map((capability, index) => (
-              <motion.article key={capability.title} initial={{ opacity: 0, y: 22 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: '-30px' }} transition={{ duration: 0.5, delay: index * 0.06 }} className={`min-h-60 border-b border-[#11150f]/15 py-8 lg:p-10 ${index % 2 === 1 ? 'lg:border-l' : ''}`}>
-                <span className="font-mono text-[10px] text-[#3f6a24]">0{index + 1}</span>
+              <motion.article key={capability.title} initial={{ opacity: 0, y: 22 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: '-30px' }} transition={{ duration: 0.5, delay: index * 0.06 }} className={`min-h-60 border-b border-white/10 py-8 lg:p-10 ${index % 2 === 1 ? 'lg:border-l' : ''}`}>
+                <span className="font-mono text-[10px] text-primary">0{index + 1}</span>
                 <h3 className="mt-5 font-display text-2xl font-black uppercase">{capability.title}</h3>
-                <p className="mt-4 max-w-xl text-sm leading-7 text-[#465043]">{capability.detail}</p>
+                <p className="mt-4 max-w-xl text-sm leading-7 text-gray-400">{capability.detail}</p>
               </motion.article>
             ))}
           </div>

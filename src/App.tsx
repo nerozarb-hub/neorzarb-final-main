@@ -1,5 +1,5 @@
 import React, { lazy, Suspense } from 'react';
-import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import HomePage from './pages/HomePage';
 import NotFoundPage from './pages/NotFound';
@@ -15,13 +15,10 @@ const ServicesPage = lazy(() => import('./pages/ServicesPage'));
 const ServiceLandingPage = lazy(() => import('./pages/ServiceLandingPage'));
 
 const AppRoutes: React.FC = () => {
-  const location = useLocation();
-  const isWebsiteLanding = location.pathname === '/websites';
-
   return (
       <div className="relative min-h-screen w-full overflow-x-hidden">
-        {!isWebsiteLanding && <Navbar />}
-        <main className={`relative flex min-h-screen w-full flex-col overflow-x-hidden ${isWebsiteLanding ? '' : 'pt-20'}`}>
+        <Navbar />
+        <main className="relative flex min-h-screen w-full flex-col overflow-x-hidden pt-20">
           <Suspense fallback={<GenericSectionSkeleton minHeight="600px" />}>
             <Routes>
               <Route path="/" element={<HomePage />} />
@@ -35,7 +32,7 @@ const AppRoutes: React.FC = () => {
               <Route path="*" element={<NotFoundPage />} />
             </Routes>
           </Suspense>
-          {!isWebsiteLanding && <WhatsAppFloat />}
+          <WhatsAppFloat />
         </main>
       </div>
   );

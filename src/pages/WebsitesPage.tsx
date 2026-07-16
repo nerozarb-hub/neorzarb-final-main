@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { ArrowUpRight } from 'lucide-react';
-import WebsiteLandingHeader from '@/components/websites/WebsiteLandingHeader';
+import Footer from '@/components/Footer';
 import WebsiteHero from '@/components/websites/WebsiteHero';
 import {
   PareeroFeature,
@@ -128,7 +128,6 @@ export default function WebsitesPage() {
 
   return (
     <div className="min-h-screen bg-[#050605] font-body text-white">
-      <WebsiteLandingHeader />
       <main>
         <WebsiteHero />
         <WebsiteProblemSection />
@@ -143,24 +142,7 @@ export default function WebsitesPage() {
         <WebsiteLeadForm />
       </main>
 
-      <footer className="border-t border-white/10 bg-[#040504] px-5 pb-24 pt-10 sm:px-6 lg:px-10 lg:pb-10">
-        <div className="mx-auto flex max-w-[1360px] flex-col gap-8 sm:flex-row sm:items-end sm:justify-between">
-          <div>
-            <a href="/" className="inline-flex items-center gap-3 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary">
-              <img src="/logo.png" alt="" width="256" height="256" className="h-9 w-9 object-contain" />
-              <span className="font-display text-lg font-black">NEROZARB</span>
-            </a>
-            <p className="mt-3 text-xs uppercase text-white/35">Conversion strategy · Web design · Development · Growth systems</p>
-          </div>
-          <div className="flex flex-wrap gap-5 text-xs font-bold uppercase text-white/50">
-            <a href="#results" className="hover:text-white">Results</a>
-            <a href="#work" className="hover:text-white">Selected work</a>
-            <a href="#process" className="hover:text-white">Process</a>
-            <a href="mailto:hello@nerozarb.com" className="hover:text-white">Email</a>
-          </div>
-          <p className="text-[10px] uppercase text-white/25">© {new Date().getFullYear()} NEROZARB</p>
-        </div>
-      </footer>
+      <Footer />
 
       <a
         href="#website-plan"

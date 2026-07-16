@@ -31,12 +31,12 @@ import { trackWebsiteEvent } from '@/lib/analytics';
 
 const easing = [0.16, 1, 0.3, 1] as const;
 
-function SectionHeading({ eyebrow, title, copy, light = false }: { eyebrow: string; title: string; copy?: string; light?: boolean }) {
+function SectionHeading({ eyebrow, title, copy }: { eyebrow: string; title: string; copy?: string; light?: boolean }) {
   return (
     <div className="max-w-4xl">
-      <span className={`mb-4 block text-[11px] font-bold uppercase ${light ? 'text-[#3f6a24]' : 'text-primary'}`}>{eyebrow}</span>
-      <h2 className={`font-display text-[clamp(2rem,5vw,4.5rem)] font-black uppercase leading-[0.96] ${light ? 'text-[#11150f]' : 'text-white'}`}>{title}</h2>
-      {copy && <p className={`mt-6 max-w-3xl text-base leading-7 sm:text-lg ${light ? 'text-[#354032]' : 'text-white/60'}`}>{copy}</p>}
+      <span className="mb-4 block text-[11px] font-bold uppercase text-primary">{eyebrow}</span>
+      <h2 className="font-display text-[clamp(2rem,5vw,4.5rem)] font-black uppercase leading-[0.96] text-white">{title}</h2>
+      {copy && <p className="mt-6 max-w-3xl text-base leading-7 text-white/60 sm:text-lg">{copy}</p>}
     </div>
   );
 }
@@ -60,7 +60,7 @@ export function WebsiteProblemSection() {
   ];
 
   return (
-    <section className="bg-[#f0f1eb] px-5 py-20 sm:px-6 lg:px-10 lg:py-28">
+    <section className="bg-[#0a0a0a] px-5 py-20 sm:px-6 lg:px-10 lg:py-28">
       <div className="mx-auto grid max-w-[1360px] gap-14 lg:grid-cols-[0.85fr_1.15fr]">
         <SectionHeading
           light
@@ -68,7 +68,7 @@ export function WebsiteProblemSection() {
           title="Your website may look acceptable and still be costing you customers."
           copy="Underperforming websites rarely fail through one dramatic error. Smaller problems compound across the customer journey until attention disappears without action."
         />
-        <div className="border-y border-[#11150f]/20">
+        <div className="border-y border-white/10">
           {problems.map(([title, copy], index) => (
             <motion.div
               key={title}
@@ -76,16 +76,16 @@ export function WebsiteProblemSection() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, margin: '-40px' }}
               transition={{ duration: 0.45, delay: index * 0.04, ease: easing }}
-              className="grid gap-3 border-b border-[#11150f]/15 py-5 last:border-b-0 sm:grid-cols-[3rem_0.55fr_1fr] sm:items-start"
+              className="grid gap-3 border-b border-white/10 py-5 last:border-b-0 sm:grid-cols-[3rem_0.55fr_1fr] sm:items-start"
             >
-              <span className="font-display text-xl font-black text-[#3f6a24]">0{index + 1}</span>
-              <h3 className="font-display text-lg font-black uppercase text-[#11150f]">{title}</h3>
-              <p className="text-sm leading-6 text-[#465043]">{copy}</p>
+              <span className="font-display text-xl font-black text-primary">0{index + 1}</span>
+              <h3 className="font-display text-lg font-black uppercase text-white">{title}</h3>
+              <p className="text-sm leading-6 text-white/55">{copy}</p>
             </motion.div>
           ))}
         </div>
       </div>
-      <p className="mx-auto mt-14 max-w-[1360px] border-t border-[#11150f]/20 pt-6 font-display text-xl font-black uppercase leading-tight text-[#11150f] sm:text-2xl">
+      <p className="mx-auto mt-14 max-w-[1360px] border-t border-white/10 pt-6 font-display text-xl font-black uppercase leading-tight text-white sm:text-2xl">
         We identify where customers hesitate, lose trust, or leave, then rebuild the journey around clarity, credibility, and conversion.
       </p>
     </section>
@@ -127,10 +127,10 @@ export function PareeroFeature() {
         <div className="mt-14 grid gap-8 lg:grid-cols-[1.25fr_0.75fr]">
           <div className="relative min-h-[420px] overflow-hidden border border-white/15 bg-[#eaeadd] sm:min-h-[620px]">
             <img src="/websites/pareero-desktop.jpg" alt="PAREERO storefront desktop presentation" width="1000" height="764" loading="lazy" className="h-full w-full object-cover object-top" />
-            <div className="absolute bottom-4 right-4 w-[34%] overflow-hidden border border-[#11150f]/30 bg-[#11150f] shadow-2xl sm:bottom-7 sm:right-7">
+            <div className="absolute bottom-4 right-4 w-[34%] overflow-hidden border border-white/15 bg-[#030303] shadow-2xl sm:bottom-7 sm:right-7">
               <img src="/websites/pareero-product.jpg" alt="PAREERO mobile product page presentation" width="395" height="844" loading="lazy" className="aspect-[0.47/1] w-full object-cover object-top" />
             </div>
-            <span className="absolute left-4 top-4 bg-[#11150f] px-3 py-2 text-[9px] font-black uppercase text-white sm:left-7 sm:top-7">Actual project capture</span>
+            <span className="absolute left-4 top-4 bg-[#030303] px-3 py-2 text-[9px] font-black uppercase text-white sm:left-7 sm:top-7">Actual project capture</span>
           </div>
 
           <div className="border-y border-white/10 py-2">
@@ -166,23 +166,23 @@ export function PareeroFeature() {
 
 export function WebsiteIndustries() {
   return (
-    <section className="bg-[#f0f1eb] px-5 py-20 sm:px-6 lg:px-10 lg:py-28">
+    <section className="bg-[#0a0a0a] px-5 py-20 sm:px-6 lg:px-10 lg:py-28">
       <div className="mx-auto max-w-[1360px]">
         <SectionHeading light eyebrow="Industry relevance" title="Built around how your business actually converts." copy="Different industries require different trust signals and next actions. We design the journey around the commercial behavior that matters." />
-        <div className="mt-14 grid border-y border-[#11150f]/20 lg:grid-cols-5 lg:border-x">
+        <div className="mt-14 grid border-y border-white/10 lg:grid-cols-5 lg:border-x">
           {industries.map((industry, index) => (
             <button
               type="button"
               key={industry.id}
               onClick={() => trackWebsiteEvent('website_industry_select', { industry: industry.id })}
-              className={`group min-h-[330px] p-5 text-left transition-colors hover:bg-[#dfe5d8] focus-visible:z-10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3f6a24] sm:p-6 ${index > 0 ? 'border-t border-[#11150f]/15 lg:border-l lg:border-t-0' : ''}`}
+              className={`group min-h-[330px] p-5 text-left transition-colors hover:bg-white/[0.04] focus-visible:z-10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary sm:p-6 ${index > 0 ? 'border-t border-white/10 lg:border-l lg:border-t-0' : ''}`}
             >
-              <span className="font-display text-xl font-black text-[#3f6a24]">0{index + 1}</span>
-              <h3 className="mt-8 font-display text-xl font-black uppercase leading-tight text-[#11150f]">{industry.title}</h3>
-              <p className="mt-4 text-sm leading-6 text-[#465043]">{industry.copy}</p>
+              <span className="font-display text-xl font-black text-primary">0{index + 1}</span>
+              <h3 className="mt-8 font-display text-xl font-black uppercase leading-tight text-white">{industry.title}</h3>
+              <p className="mt-4 text-sm leading-6 text-white/55">{industry.copy}</p>
               <div className="mt-7 grid gap-2">
                 {industry.outcomes.map((outcome) => (
-                  <span key={outcome} className="flex items-center gap-2 text-[11px] font-bold uppercase text-[#11150f]/65">
+                  <span key={outcome} className="flex items-center gap-2 text-[11px] font-bold uppercase text-white/60">
                     <span className="h-1.5 w-1.5 bg-[#3f6a24]" />{outcome}
                   </span>
                 ))}
@@ -258,10 +258,10 @@ export function WebsitePortfolio() {
   const records = portfolioRecords.filter((record) => record.isPublic);
 
   return (
-    <section id="work" className="scroll-mt-20 bg-[#f0f1eb] px-5 py-20 sm:px-6 lg:px-10 lg:py-28">
+    <section id="work" className="scroll-mt-20 bg-[#0a0a0a] px-5 py-20 sm:px-6 lg:px-10 lg:py-28">
       <div className="mx-auto max-w-[1360px]">
-        <SectionHeading light eyebrow="Selected work" title="Different industries. The same commercial discipline." copy="Communicate the offer clearly, establish trust quickly, and make the next action easy. Proof status is shown on every record." />
-        <div className="mt-14 grid gap-px bg-[#11150f]/20 md:grid-cols-2">
+        <SectionHeading eyebrow="Selected website work" title="Live builds presented as business systems, not code samples." copy="Verified implementation facts are separated from conservative benchmark scenarios. Modeled ranges are directional placeholders until client analytics are approved." />
+        <div className="mt-14 grid gap-px bg-white/10 md:grid-cols-2">
           {records.map((record, index) => {
             const content = (
               <>
@@ -269,7 +269,7 @@ export function WebsitePortfolio() {
                   {record.image ? (
                     <img src={record.image} alt={record.imageAlt || ''} width="900" height="700" loading="lazy" className={`h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.025] ${record.slug === 'fomo' ? 'object-top' : 'object-center'}`} />
                   ) : (
-                    <div className="flex h-full items-center justify-center bg-grid-pattern text-xs font-bold uppercase text-white/25">Proof asset pending</div>
+                    <div className="flex h-full flex-col justify-end bg-grid-pattern p-6 sm:p-8"><span className="font-mono text-[10px] uppercase text-primary">Live website record</span><span className="mt-3 max-w-[12ch] font-display text-3xl font-black uppercase leading-none text-white sm:text-4xl">{record.name}</span></div>
                   )}
                   <div className="absolute left-4 top-4"><StatusBadge status={record.proofStatus} /></div>
                 </div>
@@ -279,35 +279,44 @@ export function WebsitePortfolio() {
                       <p className="text-[10px] font-bold uppercase text-primary">{record.industry}</p>
                       <h3 className="mt-2 font-display text-2xl font-black uppercase text-white">{record.name}</h3>
                     </div>
-                    {record.route && <ArrowRight aria-hidden="true" className="h-5 w-5 shrink-0 text-white/35 transition-transform group-hover:translate-x-1 group-hover:text-primary" />}
+                    <ExternalLink aria-hidden="true" className="h-5 w-5 shrink-0 text-white/35 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-primary" />
                   </div>
                   <p className="mt-5 text-sm font-bold uppercase text-white/75">{record.positioning}</p>
                   <p className="mt-3 text-sm leading-6 text-white/48">{record.objective}</p>
                   <div className="mt-6 flex flex-wrap gap-2">
                     {record.scope.map((item) => <span key={item} className="border border-white/10 px-2.5 py-1.5 text-[9px] uppercase text-white/45">{item}</span>)}
                   </div>
-                  {record.permissionStatus === 'pending' && <p className="mt-5 text-[10px] uppercase text-amber-200/65">Preview record / publication permission pending</p>}
+                  <div className="mt-7 border-t border-white/10 pt-5">
+                    <p className="text-[9px] font-black uppercase text-primary">Verified implementation</p>
+                    <ul className="mt-3 grid gap-2">{record.verifiedFacts.map((fact) => <li key={fact} className="flex gap-2 text-xs leading-5 text-white/55"><Check className="mt-0.5 h-3.5 w-3.5 shrink-0 text-primary" />{fact}</li>)}</ul>
+                  </div>
+                  <div className="mt-6 grid grid-cols-3 border border-amber-200/20">
+                    {record.modeledMetrics.map((metric, metricIndex) => <div key={metric.label} className={`min-w-0 p-3 ${metricIndex > 0 ? 'border-l border-amber-200/20' : ''}`}><p className="font-display text-lg font-black text-amber-100">{metric.value}</p><p className="mt-1 text-[8px] font-bold uppercase leading-3 text-amber-100/55">Modeled · {metric.label}</p></div>)}
+                  </div>
+                  {record.liveUrl && <span className="mt-6 inline-flex items-center gap-2 text-[10px] font-black uppercase text-primary">View live website <ExternalLink className="h-3.5 w-3.5" /></span>}
                 </div>
               </>
             );
 
-            return record.route ? (
-              <Link
+            return record.liveUrl ? (
+              <a
                 key={record.slug}
-                to={record.route}
+                href={record.liveUrl}
+                target="_blank"
+                rel="noopener noreferrer"
                 onClick={() => trackWebsiteEvent('website_portfolio_project_open', { project: record.slug })}
                 className={`group block focus-visible:z-10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary ${index === 0 ? 'md:col-span-2 md:grid md:grid-cols-[1.15fr_0.85fr]' : ''}`}
               >
                 {content}
-              </Link>
+              </a>
             ) : (
               <article key={record.slug} className={`group ${index === 0 ? 'md:col-span-2 md:grid md:grid-cols-[1.15fr_0.85fr]' : ''}`}>{content}</article>
             );
           })}
         </div>
-        <div className="mt-6 flex flex-wrap items-center justify-between gap-4 border-t border-[#11150f]/20 pt-5 text-xs text-[#354032]">
-          <span>Additional records for KOCO and YZ Education remain hidden until scope and permission are verified.</span>
-          <a href="#website-plan" className="font-black uppercase text-[#3f6a24] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3f6a24]">Discuss a similar project</a>
+        <div className="mt-6 flex flex-wrap items-center justify-between gap-4 border-t border-white/10 pt-5 text-xs text-white/60">
+          <span>Modeled ranges are benchmark scenarios, not reported client outcomes. Replace them with analytics after verification.</span>
+          <a href="#website-plan" className="font-black uppercase text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary">Discuss a similar project</a>
         </div>
       </div>
     </section>
@@ -349,14 +358,14 @@ export function WebsiteTimelinesAndResults() {
 
   return (
     <>
-      <section className="bg-[#f0f1eb] px-5 py-20 sm:px-6 lg:px-10 lg:py-28">
+      <section className="bg-[#0a0a0a] px-5 py-20 sm:px-6 lg:px-10 lg:py-28">
         <div className="mx-auto max-w-[1360px]">
           <SectionHeading light eyebrow="Typical timelines" title="Defined windows. Scope before promises." copy="Every engagement begins with a delivery plan. Timing depends on content availability, feedback speed, integrations, and final scope." />
-          <div className="mt-14 grid border-y border-[#11150f]/20 lg:grid-cols-5 lg:border-x">
+          <div className="mt-14 grid border-y border-white/10 lg:grid-cols-5 lg:border-x">
             {timelines.map(([title, duration], index) => (
-              <div key={title} className={`min-h-[210px] p-5 sm:p-6 ${index > 0 ? 'border-t border-[#11150f]/15 lg:border-l lg:border-t-0' : ''}`}>
-                <p className="font-display text-2xl font-black uppercase text-[#3f6a24]">{duration}</p>
-                <p className="mt-7 text-sm font-black uppercase leading-5 text-[#11150f]">{title}</p>
+              <div key={title} className={`min-h-[210px] p-5 sm:p-6 ${index > 0 ? 'border-t border-white/10 lg:border-l lg:border-t-0' : ''}`}>
+                <p className="font-display text-2xl font-black uppercase text-primary">{duration}</p>
+                <p className="mt-7 text-sm font-black uppercase leading-5 text-white">{title}</p>
               </div>
             ))}
           </div>

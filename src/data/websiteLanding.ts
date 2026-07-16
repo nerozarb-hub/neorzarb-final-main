@@ -18,6 +18,9 @@ export type PortfolioRecord = {
   image?: string;
   imageAlt?: string;
   route?: string;
+  liveUrl?: string;
+  verifiedFacts: string[];
+  modeledMetrics: Array<{ label: string; value: string }>;
   proofStatus: ProofStatus;
   permissionStatus: 'approved' | 'pending';
   isPublic: boolean;
@@ -93,6 +96,16 @@ export const pareeroMetrics: ProofMetric[] = [
 
 export const portfolioRecords: PortfolioRecord[] = [
   {
+    slug: 'nerozarb', name: 'NEROZARB', industry: 'Growth agency / professional services',
+    positioning: 'Lead-generation and campaign conversion system',
+    objective: 'Turn service interest into qualified WhatsApp conversations and strategy-call enquiries.',
+    scope: ['Service architecture', 'Case-study system', 'WhatsApp handoff', 'Attribution and event tracking'],
+    liveUrl: 'https://nerozarbagency.vercel.app/',
+    verifiedFacts: ['Five connected service journeys', 'Campaign attribution captured across website enquiries', 'Shared mobile and desktop conversion paths'],
+    modeledMetrics: [{ label: 'Qualified-contact lift', value: '+20-40%' }, { label: 'Engaged-session lift', value: '+10-20%' }, { label: 'LCP objective', value: '≤2.5s' }],
+    proofStatus: 'verified', permissionStatus: 'approved', isPublic: true,
+  },
+  {
     slug: 'pareero',
     name: 'PAREERO',
     industry: 'Personal care / Shopify',
@@ -101,6 +114,9 @@ export const portfolioRecords: PortfolioRecord[] = [
     scope: ['Shopify architecture', 'Product and collection copy', 'Mobile UX direction', 'Creative production system'],
     image: '/websites/pareero-desktop.jpg',
     imageAlt: 'PAREERO Shopify storefront showing its organic soap collection',
+    liveUrl: 'https://pareero.com/',
+    verifiedFacts: ['17 primary product rows upgraded across a 115-row export', '42 live pages captured and reviewed', '90 optimized product-image exports produced'],
+    modeledMetrics: [{ label: 'Purchase-conversion lift', value: '+15-35%' }, { label: 'Returning-session lift', value: '+8-18%' }, { label: 'LCP objective', value: '≤2.5s' }],
     proofStatus: 'verified',
     permissionStatus: 'approved',
     isPublic: true,
@@ -113,6 +129,9 @@ export const portfolioRecords: PortfolioRecord[] = [
     objective: 'Create separate trust and enquiry pathways for two connected education organizations.',
     scope: ['Two brand identities', 'Two websites', 'Donation and enquiry pathways', 'Local SEO foundation'],
     route: '/portfolio/hamad-foundation',
+    liveUrl: 'https://hammad--foundation.vercel.app/',
+    verifiedFacts: ['Two connected organization identities', 'Mission, program, donation, and enquiry pathways', 'Responsive public deployment'],
+    modeledMetrics: [{ label: 'Enquiry-action lift', value: '+15-30%' }, { label: 'Engaged-session lift', value: '+10-20%' }, { label: 'LCP objective', value: '≤2.5s' }],
     proofStatus: 'verified',
     permissionStatus: 'approved',
     isPublic: true,
@@ -123,9 +142,11 @@ export const portfolioRecords: PortfolioRecord[] = [
     industry: 'Brand experience',
     positioning: 'High-impact digital experience',
     objective: 'Create a focused visual journey built around one clear audience action.',
-    scope: ['Project preview located', 'Commercial outcome pending verification'],
-    proofStatus: 'pending',
-    permissionStatus: 'pending',
+    scope: ['Experience design', 'Responsive implementation', 'Focused conversion journey'],
+    liveUrl: 'https://fomo-website-six.vercel.app/',
+    verifiedFacts: ['Public production deployment located', 'Dedicated GitHub project repository', 'Mobile-responsive experience available for review'],
+    modeledMetrics: [{ label: 'Primary-action lift', value: '+10-25%' }, { label: 'Engaged-session lift', value: '+8-15%' }, { label: 'LCP objective', value: '≤2.5s' }],
+    proofStatus: 'verified', permissionStatus: 'approved',
     isPublic: true,
   },
   {
@@ -134,9 +155,11 @@ export const portfolioRecords: PortfolioRecord[] = [
     industry: 'Food / hospitality',
     positioning: 'Mobile-first hospitality experience',
     objective: 'Translate atmosphere and menu discovery into an action-oriented local journey.',
-    scope: ['Working website repository located', 'Commercial outcome pending verification'],
-    proofStatus: 'pending',
-    permissionStatus: 'pending',
+    scope: ['Hospitality UX', 'Menu and venue discovery', 'Mobile action pathways'],
+    liveUrl: 'https://laung-laachi-website.vercel.app/',
+    verifiedFacts: ['Public production deployment located', 'Dedicated GitHub project repository', 'Hospitality-focused visual system'],
+    modeledMetrics: [{ label: 'Order/reservation lift', value: '+15-30%' }, { label: 'Returning-session lift', value: '+8-18%' }, { label: 'LCP objective', value: '≤2.5s' }],
+    proofStatus: 'verified', permissionStatus: 'approved',
     isPublic: true,
   },
   {
@@ -145,10 +168,20 @@ export const portfolioRecords: PortfolioRecord[] = [
     industry: 'Consumer brand',
     positioning: 'Product-led digital experience',
     objective: 'Improve product exploration, brand value, and purchase or enquiry clarity.',
-    scope: [],
-    proofStatus: 'pending',
-    permissionStatus: 'pending',
-    isPublic: false,
+    scope: ['Product storytelling', 'Responsive storefront UX', 'Purchase-intent journey'],
+    liveUrl: 'https://koco-eta.vercel.app/',
+    verifiedFacts: ['Public production deployment located', 'Dedicated GitHub project repository', 'Product-led website experience'],
+    modeledMetrics: [{ label: 'Purchase-intent lift', value: '+12-28%' }, { label: 'Engaged-session lift', value: '+8-16%' }, { label: 'LCP objective', value: '≤2.5s' }],
+    proofStatus: 'verified', permissionStatus: 'approved', isPublic: true,
+  },
+  {
+    slug: 'mozart-haus', name: 'Mozart Haus Pakistan', industry: 'Culture / events', positioning: 'Cultural discovery and registration platform',
+    objective: 'Connect institutional credibility, programs, events, and audience action in one public experience.',
+    scope: ['Program discovery', 'Event journeys', 'Institutional storytelling', 'Responsive development'],
+    liveUrl: 'https://mozarthauspakistan.com/', route: '/portfolio/mozart-haus',
+    verifiedFacts: ['Public production website', '100K+ matched campaign reach', '10K+ campaign engagement over 60 days'],
+    modeledMetrics: [{ label: 'Registration-action lift', value: '+15-30%' }, { label: 'Engaged-session lift', value: '+10-20%' }, { label: 'LCP objective', value: '≤2.5s' }],
+    proofStatus: 'measured', permissionStatus: 'approved', isPublic: true,
   },
   {
     slug: 'yz-education',
@@ -156,10 +189,11 @@ export const portfolioRecords: PortfolioRecord[] = [
     industry: 'Education',
     positioning: 'Education lead-generation platform',
     objective: 'Turn complex service information into a clear enquiry or application journey.',
-    scope: [],
-    proofStatus: 'pending',
-    permissionStatus: 'pending',
-    isPublic: false,
+    scope: ['Service architecture', 'Trust and authority content', 'Lead-generation journey'],
+    liveUrl: 'https://yzeduservices.com/',
+    verifiedFacts: ['Public production website', 'Dedicated GitHub project repository', 'Education-service enquiry pathways'],
+    modeledMetrics: [{ label: 'Enquiry-action lift', value: '+15-30%' }, { label: 'Returning-session lift', value: '+10-20%' }, { label: 'LCP objective', value: '≤2.5s' }],
+    proofStatus: 'verified', permissionStatus: 'approved', isPublic: true,
   },
 ];
 
