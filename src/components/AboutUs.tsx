@@ -133,8 +133,8 @@ const AboutUs: React.FC = () => {
                   </div>
                   <div className="w-px h-10 bg-zinc-700" />
                   <div className="text-right">
-                    <p className="text-2xl font-black text-primary">50+</p>
-                    <p className="text-[10px] text-gray-500 uppercase tracking-wider">Brands Scaled</p>
+                    <p className="text-2xl font-black text-primary">02</p>
+                    <p className="text-[10px] text-gray-500 uppercase tracking-wider">Published Cases</p>
                   </div>
                 </div>
               </div>

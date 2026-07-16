@@ -112,7 +112,7 @@ const Portfolio: React.FC = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.3 }}
           >
-            Real results. Real businesses. Real growth numbers from the Nero Engine.
+            Documented work, named businesses, and outcomes you can inspect.
           </motion.p>
 
           <div className="space-y-4 mb-8">

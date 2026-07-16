@@ -206,8 +206,10 @@ export function AboutPage() {
                 <div className="lg:w-[40%] relative border-b lg:border-b-0 lg:border-r border-zinc-800">
                   <div className="aspect-[4/5] lg:aspect-auto lg:h-full bg-gradient-to-br from-zinc-900 to-black relative overflow-hidden">
                     <motion.img
-                      src="/ceo-photo.webp"
+                      src="/ceo-photo.jpg"
                       alt="Hamza - Lead System Architect"
+                      width="896"
+                      height="1200"
                       className="w-full h-full object-cover grayscale"
                       whileHover={{ scale: 1.05 }}
                       transition={{ duration: 0.5 }}
@@ -671,8 +673,10 @@ export function AboutPage() {
             <MagneticButton strength={0.2}>
               <Link to="/" className="flex items-center gap-3 group">
                 <motion.img
-                  src="/logo.webp"
+                  src="/logo.png"
                   alt="NEROZARB Logo"
+                  width="256"
+                  height="256"
                   className="w-8 h-8 object-contain"
                   whileHover={{ rotate: [0, -10, 10, 0] }}
                   transition={{ duration: 0.5 }}

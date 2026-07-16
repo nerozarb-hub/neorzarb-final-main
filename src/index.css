@@ -9,6 +9,10 @@
   --text-body: clamp(0.875rem, 0.8rem + 0.15vw, 1rem);
   --text-caption: clamp(0.625rem, 0.6rem + 0.1vw, 0.75rem);
   --space-section: clamp(4rem, 5vw + 2rem, 8rem);
+  --surface-page: oklch(0.125 0.006 132);
+  --surface-raised: oklch(0.16 0.008 132);
+  --line-subtle: oklch(0.98 0.004 132 / 0.1);
+  --accent: oklch(0.48 0.1 132);
 }
 
 /* ─── Global Resets ──────────────────────────────────────────────────────── */
@@ -20,6 +24,7 @@ html {
 
 body {
   overflow-x: hidden;
+  background: var(--surface-page);
 }
 
 /* ─── Scrollbar ─────────────────────────────────────────────────────────── */
@@ -140,9 +145,7 @@ body {
   animation: float 6s ease-in-out infinite;
 }
 
-.animate-float-slow {
-  animation: float-slow 20s ease-in-out infinite;
-}
+.ambient-orb { opacity: 0.8; }
 
 .animate-orbit {
   animation: orbit 20s linear infinite;
@@ -167,6 +170,12 @@ body {
 
 .animate-whatsapp-pulse {
   animation: whatsapp-pulse 2s ease-in-out infinite;
+}
+
+@media (min-width: 768px) and (prefers-reduced-motion: no-preference) {
+  .ambient-orb {
+    animation: float-slow 24s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+  }
 }
 
 /* ─── Glow Utilities ──────────────────────────────────────────────────────── */

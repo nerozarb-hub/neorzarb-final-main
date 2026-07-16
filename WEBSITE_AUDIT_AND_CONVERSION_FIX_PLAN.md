@@ -58,6 +58,11 @@ Top issues:
 - Rebuilt pricing cards with PKR as the primary price and USD as the secondary reference.
 - Added PKR/USD investment snapshots to Mozart Haus and Hamad Foundation case-study pages.
 - Removed public guarantee/security-insurance language because the real security insurance offer is not live yet.
+- Replaced unsupported hero metrics with defensible proof signals: two published case studies, visible PKR pricing, and the 60-day sprint system.
+- Added a five-field Revenue Gate qualification form that converts the answers into a structured WhatsApp brief without storing visitor data.
+- Reduced decorative hero effects, limited ambient animation to larger screens, and replaced the 1.7 MB navigation logo with a 68 KB correctly sized asset.
+- Tightened mobile navigation, touch targets, pricing-card overflow handling, and shared CTA icon rendering.
+- Split the About and detailed case-study routes out of the homepage entry bundle so visitors only download those pages when requested.
 - Replaced Inter with Archivo + Atkinson Hyperlegible and removed negative custom `tracking-tightest`.
 - Moved `Navbar` outside the `main` landmark.
 - Added focus-visible treatment to shared CTA buttons and main navbar controls.
@@ -127,8 +132,8 @@ Status: Not fully fixed in this pass.
 Location: whole site  
 Category: CRO / Backend  
 Impact: There is no native lead form, calendar, or CRM handoff. If WhatsApp/email friction is high, leads drop.  
-Recommendation: Add a short Revenue Gate form with name, company, website/social, market, problem, budget band, and preferred contact.  
-Status: Planned; not implemented because backend destination is not provided.
+Recommendation: Add a short Revenue Gate form with name, company, website/social, problem, budget band, and preferred contact.
+Status: Fixed with a privacy-preserving WhatsApp handoff. A CRM-backed version remains optional when a destination is available.
 
 ### [P2] Case Study Evidence Needs Assets
 
@@ -140,12 +145,12 @@ Status: Planned.
 
 ## Recommended Next Actions
 
-1. [P1] `/polish` — Run a full responsive and focus-state polish pass after this build.
-2. [P1] `/optimize` — Measure Lighthouse/Core Web Vitals on the deployed build and remove the most expensive visual effects.
-3. [P1] `/clarify` — Collect real WhatsApp number, final canonical domain, verified client proof, and approved testimonials.
-4. [P2] `/harden` — Add native lead form, spam protection, and delivery to email/CRM.
-5. [P2] `/animate` — Keep one signature hero motion and reduce decorative motion elsewhere.
-6. [P3] `/polish` — Final typography, spacing, and mobile copy pass.
+1. [DONE] Responsive, focus-state, touch-target, pricing, and mobile-navigation polish.
+2. [DONE] Initial-load optimization: route splitting, smaller image assets, and reduced ambient motion.
+3. [P1] Map and verify `nerozarb.com`; retain the Vercel URL until DNS resolves.
+4. [P1] Add dated proof screenshots and approved client quotes when the source assets are available.
+5. [P2] Measure field Core Web Vitals after the new deployment receives real traffic.
+6. [P2] Add CRM delivery and spam protection only when a persistent lead database is required.
 
 ## Deployment Checklist
 

@@ -148,15 +148,13 @@ export const FloatingOrb = memo(function FloatingOrb({
 }: FloatingOrbProps) {
   return (
     <div
-      className={cn('absolute blur-[100px] pointer-events-none animate-float-slow', className)}
+      className={cn('ambient-orb pointer-events-none absolute blur-[72px]', className)}
       style={{
         width: size,
         height: size,
         background: `radial-gradient(circle, ${color} 0%, transparent 70%)`,
         animationDelay: `${delay}s`,
         animationDuration: `${duration}s`,
-        contentVisibility: 'auto',
-        containIntrinsicSize: `${size}px`,
       }}
     />
   );

@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link, useLocation } from 'react-router-dom';
+import { Crosshair, Menu, X, Zap } from 'lucide-react';
 import { buildContactHref, getExternalLinkProps } from '@/lib/conversion';
 
 const STRATEGY_MESSAGE = 'Hi NEROZARB, I want to book a strategy call.';
@@ -43,8 +44,6 @@ const Navbar: React.FC = () => {
     };
   }, []);
 
-  const isCaseStudiesPage = location.pathname === '/case-studies';
-
   const navLinks = [
     { href: isAboutPage ? '/#protocol' : '#protocol', label: 'How it Works' },
     { href: '/case-studies', label: 'Case Studies', isRoute: true },
@@ -56,27 +55,29 @@ const Navbar: React.FC = () => {
   return (
     <>
       <header className="fixed top-0 left-0 right-0 z-50 bg-[#030303] border-b border-white/10 h-20">
-        <div className="max-w-[1440px] mx-auto h-full grid grid-cols-[auto_1fr_auto] relative">
+        <div className="relative mx-auto grid h-full max-w-[1440px] grid-cols-[minmax(0,1fr)_auto] md:grid-cols-[auto_1fr_auto]">
 
           {/* Logo */}
           <Link
             to="/"
-            className="flex items-center px-6 md:px-8 border-r border-white/10 h-full relative group cursor-pointer"
+            className="group relative flex h-full min-w-0 items-center border-r border-white/10 px-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-primary sm:px-6 md:px-8"
           >
             <div className="flex items-center gap-3">
-              <div className="relative w-9 h-9 flex items-center justify-center">
+              <div className="relative flex h-8 w-8 shrink-0 items-center justify-center sm:h-9 sm:w-9">
                 <img
-                  src="/logo.webp"
+                  src="/logo.png"
                   alt="NEROZARB Logo"
-                  className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300 will-change-transform"
+                  width="256"
+                  height="256"
+                  className="h-full w-full object-contain transition-transform duration-200 group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-primary/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </div>
               <div className="flex flex-col justify-center">
-                <span className="font-display font-black tracking-tighter text-lg leading-none text-white">
+                <span className="font-display text-base font-black leading-none text-white sm:text-lg">
                   NEROZARB
                 </span>
-                <span className="font-mono text-[10px] text-gray-500 tracking-widest uppercase leading-none mt-1 group-hover:text-primary transition-colors">
+                <span className="mt-1 hidden font-mono text-[10px] uppercase leading-none text-gray-500 transition-colors group-hover:text-primary sm:block">
                   Growth Engine
                 </span>
               </div>
@@ -125,25 +126,26 @@ const Navbar: React.FC = () => {
           </div>
 
           {/* CTA + Hamburger */}
-          <div className="flex items-center px-6 md:px-8 border-l border-white/10 h-full bg-[#030303]/30">
+          <div className="flex h-full items-center border-l border-white/10 bg-[#030303]/30 px-2 sm:px-4 md:px-8">
             <a
               href={buildContactHref(STRATEGY_MESSAGE, 'NEROZARB strategy call')}
               {...getExternalLinkProps()}
-              className="flex items-center gap-2 bg-primary hover:bg-primary/90 px-3 py-2 sm:px-5 sm:py-2.5 transition-all duration-300 group rounded-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-[#030303]"
+              aria-label="Book a NEROZARB strategy call"
+              className="group flex h-11 w-11 items-center justify-center bg-primary transition-colors duration-200 hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-[#030303] sm:w-auto sm:gap-2 sm:px-4 lg:px-5"
             >
-              <i className="fas fa-crosshairs text-white/80 group-hover:text-white text-sm" />
-              <span className="text-[10px] sm:text-xs font-bold tracking-wider text-white uppercase">
+              <Crosshair aria-hidden="true" className="h-4 w-4 text-white/80 group-hover:text-white" />
+              <span className="hidden text-[11px] font-bold uppercase text-white sm:inline lg:text-xs">
                 Book Strategy Call
               </span>
             </a>
 
             <button
-              className="md:hidden ml-4 p-2 text-white hover:text-primary transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-[#030303]"
+              className="ml-2 flex h-11 w-11 items-center justify-center text-white transition-colors hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-[#030303] md:hidden"
               onClick={() => setMobileMenuOpen(true)}
               aria-label="Open navigation menu"
               aria-expanded={mobileMenuOpen}
             >
-              <i className="fas fa-bars text-xl" />
+              <Menu aria-hidden="true" className="h-6 w-6" />
             </button>
           </div>
         </div>
@@ -163,10 +165,10 @@ const Navbar: React.FC = () => {
               <span className="font-display font-black tracking-tighter text-lg text-white">NEROZARB</span>
               <button
                 onClick={() => setMobileMenuOpen(false)}
-                className="p-2 border border-white/10 hover:bg-primary hover:border-primary hover:text-white transition-colors rounded-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-[#050505]"
+                className="flex h-11 w-11 items-center justify-center border border-white/10 transition-colors hover:border-primary hover:bg-primary hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-[#050505]"
                 aria-label="Close navigation menu"
               >
-                <i className="fas fa-times text-xl" />
+                <X aria-hidden="true" className="h-6 w-6" />
               </button>
             </div>
 
@@ -206,20 +208,19 @@ const Navbar: React.FC = () => {
             </div>
 
             <div className="mt-auto p-6 border-t border-white/10 bg-[#0a0a0a]">
-              <div className="flex items-center gap-2 mb-4 text-primary text-xs font-mono uppercase tracking-widest">
-                <i className="fas fa-bolt" />
+              <div className="mb-4 flex items-center gap-2 font-mono text-xs uppercase text-primary">
+                <Zap aria-hidden="true" className="h-4 w-4" />
                 <span>Limited Sprint Slots This Month</span>
               </div>
               <a
                 href={buildContactHref(STRATEGY_MESSAGE, 'NEROZARB strategy call')}
                 {...getExternalLinkProps()}
                 onClick={() => setMobileMenuOpen(false)}
-                className="flex items-center justify-center gap-2 w-full bg-primary hover:bg-primary/90 px-6 py-4 transition-all duration-300 rounded-none group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a0a0a]"
+                className="group flex min-h-12 w-full items-center justify-center gap-2 bg-primary px-6 py-4 transition-colors duration-200 hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a0a0a]"
               >
                 <span className="text-sm font-bold tracking-wider text-white uppercase">
                   Book Strategy Call
                 </span>
-                <i className="fas fa-arrow-right text-white group-hover:translate-x-1 transition-transform" />
               </a>
             </div>
           </motion.div>

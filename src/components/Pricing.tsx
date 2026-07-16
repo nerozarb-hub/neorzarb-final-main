@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { Bolt, Check, Crown, Rocket, type LucideIcon } from 'lucide-react';
 import { BorderTrail } from './ui/border-trail';
 import BentoButton from './ui/BentoButton';
 import { buildContactHref, getExternalLinkProps, primaryContactLabel } from '@/lib/conversion';
@@ -12,7 +13,7 @@ type FeatureGroup = {
 type PricingOffer = {
   tier: string;
   title: string;
-  icon: string;
+  icon: LucideIcon;
   pkr: string;
   usd: string;
   cadence: string;
@@ -29,7 +30,7 @@ const offers: PricingOffer[] = [
   {
     tier: 'Tier 1',
     title: 'Active Presence',
-    icon: 'fa-bolt',
+    icon: Bolt,
     pkr: 'PKR 140,000',
     usd: '$500/mo',
     cadence: 'Monthly retainer',
@@ -52,7 +53,7 @@ const offers: PricingOffer[] = [
   {
     tier: 'Tier 2',
     title: '60-Day Sprint',
-    icon: 'fa-rocket',
+    icon: Rocket,
     pkr: 'PKR 700,000',
     usd: '$2,500',
     cadence: 'One-time sprint',
@@ -89,7 +90,7 @@ const offers: PricingOffer[] = [
   {
     tier: 'Tier 3',
     title: 'Scale Protocol',
-    icon: 'fa-crown',
+    icon: Crown,
     pkr: 'PKR 1,400,000+',
     usd: '$5,000+/mo',
     cadence: 'Monthly scale engagement',
@@ -115,6 +116,7 @@ const Pricing: React.FC = () => {
   const PricingCard = ({ offer, index }: { offer: PricingOffer; index: number }) => {
     const href = buildContactHref(offer.message, `${offer.title} inquiry`);
     const isPrimary = Boolean(offer.isPrimary);
+    const OfferIcon = offer.icon;
 
     return (
       <motion.article
@@ -125,7 +127,7 @@ const Pricing: React.FC = () => {
         className="h-full"
       >
         <div
-          className={`relative flex h-full flex-col overflow-hidden border-2 bg-[#0a0a0a] p-6 transition-all duration-300 md:p-8 ${
+          className={`relative flex h-full flex-col overflow-hidden border-2 bg-[#0a0a0a] p-5 transition-colors duration-200 sm:p-6 md:p-8 ${
             isPrimary
               ? 'border-primary/70 shadow-[0_0_40px_rgba(63,106,36,0.18)]'
               : 'border-zinc-800 hover:border-white/25'
@@ -133,7 +135,7 @@ const Pricing: React.FC = () => {
         >
           {isPrimary && (
             <>
-              <div className="absolute left-6 top-0 z-20 -translate-y-1/2 bg-primary px-4 py-2 text-[10px] font-black uppercase text-white">
+              <div className="absolute right-0 top-0 z-20 bg-primary px-3 py-2 text-[10px] font-black uppercase text-white sm:px-4">
                 Best conversion path
               </div>
               <BorderTrail
@@ -155,12 +157,12 @@ const Pricing: React.FC = () => {
               </h3>
             </div>
             <div className={`flex h-11 w-11 shrink-0 items-center justify-center border ${isPrimary ? 'border-primary/50 bg-primary/10 text-primary' : 'border-zinc-700 text-gray-500'}`}>
-              <i className={`fas ${offer.icon}`} />
+              <OfferIcon aria-hidden="true" className="h-5 w-5" />
             </div>
           </div>
 
           <div className="relative z-10 mb-6">
-            <div className="text-3xl font-black leading-none text-white md:text-4xl">
+            <div className="break-words font-display text-[clamp(1.75rem,3vw,2.25rem)] font-black leading-none text-white">
               {offer.pkr}
             </div>
             <div className="mt-3 flex flex-wrap items-center gap-2 text-xs text-gray-400">
@@ -195,7 +197,7 @@ const Pricing: React.FC = () => {
                 <ul className="space-y-3">
                   {group.items.map((item) => (
                     <li key={item} className="flex items-start gap-3 text-sm leading-relaxed text-gray-300">
-                      <i className="fas fa-check mt-1 text-xs text-primary" />
+                      <Check aria-hidden="true" className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
                       <span>{item}</span>
                     </li>
                   ))}
@@ -249,9 +251,9 @@ const Pricing: React.FC = () => {
           className="mt-8 grid gap-4 border border-white/10 bg-white/[0.03] p-5 md:grid-cols-[1fr_auto] md:items-center md:p-6"
         >
           <div>
-            <p className="mb-1 text-sm font-bold uppercase text-white">No fake security promise.</p>
+            <p className="mb-1 text-sm font-bold uppercase text-white">Clear before you commit.</p>
             <p className="text-sm leading-relaxed text-gray-400">
-              Security insurance is not listed because it is not live yet. The current offer relies on clear scope, documented delivery checkpoints, and direct WhatsApp communication.
+              Your final scope, payment currency, delivery checkpoints, and ownership terms are confirmed in writing before work begins.
             </p>
           </div>
           <a

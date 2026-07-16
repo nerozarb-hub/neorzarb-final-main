@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Mail, MessageCircle } from 'lucide-react';
 import { buildContactHref, getExternalLinkProps, hasWhatsAppNumber, primaryContactLabel } from '@/lib/conversion';
 
 const CONTACT_MESSAGE = 'Hi NEROZARB, I want to book a free audit.';
@@ -12,7 +13,7 @@ const WhatsAppFloat: React.FC = () => {
             href={buildContactHref(CONTACT_MESSAGE, 'Free NEROZARB growth audit')}
             {...getExternalLinkProps()}
             aria-label={`Contact NEROZARB by ${primaryContactLabel}`}
-            className="fixed bottom-6 right-6 z-[200] flex items-center gap-3 group"
+            className="group fixed bottom-4 right-4 z-[200] flex min-h-12 min-w-12 items-center gap-3 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-[#030303] sm:bottom-6 sm:right-6"
             initial={{ opacity: 0, scale: 0.5 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.4, delay: 1.5, ease: [0.16, 1, 0.3, 1] }}
@@ -34,16 +35,20 @@ const WhatsAppFloat: React.FC = () => {
             </AnimatePresence>
 
             <motion.div
-                className={`relative w-14 h-14 ${hasWhatsAppNumber ? 'bg-[#25D366]' : 'bg-primary'} flex items-center justify-center shadow-lg rounded-none`}
-                whileHover={{ scale: 1.1 }}
+                className={`relative flex h-12 w-12 items-center justify-center shadow-lg sm:h-14 sm:w-14 ${hasWhatsAppNumber ? 'bg-[#25D366]' : 'bg-primary'}`}
+                whileHover={{ scale: 1.04 }}
                 whileTap={{ scale: 0.95 }}
-                transition={{ type: 'spring', stiffness: 300 }}
+                transition={{ duration: 0.18, ease: [0.16, 1, 0.3, 1] }}
             >
                 {/* Pulse ring — CSS only */}
                 <span
-                    className={`absolute inset-0 ${hasWhatsAppNumber ? 'bg-[#25D366]' : 'bg-primary'} opacity-40 rounded-none animate-whatsapp-pulse pointer-events-none`}
+                    className={`pointer-events-none absolute inset-0 opacity-30 ${hasWhatsAppNumber ? 'bg-[#25D366]' : 'bg-primary'} animate-whatsapp-pulse`}
                 />
-                <i className={`${hasWhatsAppNumber ? 'fab fa-whatsapp' : 'fas fa-envelope'} text-white text-2xl relative z-10`} />
+                {hasWhatsAppNumber ? (
+                    <MessageCircle aria-hidden="true" className="relative z-10 h-6 w-6 text-white" />
+                ) : (
+                    <Mail aria-hidden="true" className="relative z-10 h-6 w-6 text-white" />
+                )}
             </motion.div>
         </motion.a >
     );

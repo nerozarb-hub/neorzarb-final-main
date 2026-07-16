@@ -168,7 +168,7 @@ const Footer: React.FC = () => {
           viewport={{ once: true }}
           transition={{ duration: 1 }}
         >
-          <img src="/logo.webp" alt="" aria-hidden="true" className="w-[40vw] h-[40vw] object-contain" loading="lazy" />
+          <img src="/logo.png" alt="" aria-hidden="true" className="h-[40vw] w-[40vw] object-contain" loading="lazy" width="256" height="256" />
         </motion.div>
         <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-none select-none pointer-events-none">
           <motion.div
