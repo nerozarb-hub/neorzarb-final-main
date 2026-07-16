@@ -74,11 +74,11 @@ const Navbar: React.FC = () => {
                 />
                 <div className="absolute inset-0 bg-primary/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </div>
-              <div className="flex flex-col justify-center">
-                <span className="font-display text-base font-black leading-none text-white sm:text-lg">
+              <div className="flex min-w-0 flex-col justify-center">
+                <span className="whitespace-nowrap font-display text-base font-black leading-none text-white sm:text-lg">
                   NEROZARB
                 </span>
-                <span className="mt-1 hidden font-mono text-[10px] uppercase leading-none text-gray-500 transition-colors group-hover:text-primary sm:block">
+                <span className="mt-1.5 hidden whitespace-nowrap font-body text-[9px] font-semibold uppercase leading-none text-gray-500 transition-colors group-hover:text-primary sm:block">
                   Growth Engine
                 </span>
               </div>
@@ -87,29 +87,29 @@ const Navbar: React.FC = () => {
 
           {/* Desktop Nav */}
           <div className="hidden h-full items-center justify-between px-5 lg:flex xl:px-8">
-            <nav className="flex items-center gap-4 xl:gap-7">
+            <nav className="flex min-w-0 items-center gap-3 xl:gap-6">
               {navLinks.map((link) => (
                 link.isRoute ? (
                   <Link
                     key={link.href}
                     to={link.href}
-                    className={`relative text-sm font-medium uppercase tracking-wider transition-colors group py-2 ${
+                    className={`group relative inline-flex whitespace-nowrap py-2 text-xs font-medium uppercase transition-colors xl:text-sm ${
                       location.pathname === link.href || location.pathname.startsWith(`${link.href}/`) ? 'text-primary' : 'text-gray-400 hover:text-white'
                     }`}
                   >
-                    <span aria-hidden="true" className="opacity-0 -ml-2 group-hover:opacity-100 group-hover:ml-0 transition-all text-primary duration-300 mr-1">[</span>
+                    <span aria-hidden="true" className="mr-1 inline-block w-2 text-primary opacity-0 transition-opacity duration-200 group-hover:opacity-100">[</span>
                     {link.label}
-                    <span aria-hidden="true" className="opacity-0 -mr-2 group-hover:opacity-100 group-hover:mr-0 transition-all text-primary duration-300 ml-1">]</span>
+                    <span aria-hidden="true" className="ml-1 inline-block w-2 text-primary opacity-0 transition-opacity duration-200 group-hover:opacity-100">]</span>
                   </Link>
                 ) : (
                   <a
                     key={link.href}
                     href={link.href}
-                    className="relative text-sm font-medium text-gray-400 hover:text-white uppercase tracking-wider transition-colors group py-2"
+                    className="group relative inline-flex whitespace-nowrap py-2 text-xs font-medium uppercase text-gray-400 transition-colors hover:text-white xl:text-sm"
                   >
-                    <span aria-hidden="true" className="opacity-0 -ml-2 group-hover:opacity-100 group-hover:ml-0 transition-all text-primary duration-300 mr-1">[</span>
+                    <span aria-hidden="true" className="mr-1 inline-block w-2 text-primary opacity-0 transition-opacity duration-200 group-hover:opacity-100">[</span>
                     {link.label}
-                    <span aria-hidden="true" className="opacity-0 -mr-2 group-hover:opacity-100 group-hover:mr-0 transition-all text-primary duration-300 ml-1">]</span>
+                    <span aria-hidden="true" className="ml-1 inline-block w-2 text-primary opacity-0 transition-opacity duration-200 group-hover:opacity-100">]</span>
                   </a>
                 )
               ))}
