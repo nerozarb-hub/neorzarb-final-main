@@ -11,6 +11,8 @@ const AboutPage = lazy(() => import('./pages/AboutPage'));
 const MozartCaseStudy = lazy(() => import('./pages/MozartCaseStudy'));
 const HamadCaseStudy = lazy(() => import('./pages/HamadCaseStudy'));
 const WebsitesPage = lazy(() => import('./pages/WebsitesPage'));
+const ServicesPage = lazy(() => import('./pages/ServicesPage'));
+const ServiceLandingPage = lazy(() => import('./pages/ServiceLandingPage'));
 
 const AppRoutes: React.FC = () => {
   const location = useLocation();
@@ -24,6 +26,8 @@ const AppRoutes: React.FC = () => {
             <Routes>
               <Route path="/" element={<HomePage />} />
               <Route path="/websites" element={<WebsitesPage />} />
+              <Route path="/services" element={<ServicesPage />} />
+              <Route path="/services/:serviceSlug" element={<ServiceLandingPage />} />
               <Route path="/about" element={<AboutPage />} />
               <Route path="/case-studies" element={<CaseStudyPage />} />
               <Route path="/portfolio/mozart-haus" element={<MozartCaseStudy />} />

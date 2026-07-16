@@ -16,6 +16,31 @@
     <changefreq>monthly</changefreq>
   </url>
   <url>
+    <loc>https://nerozarb.com/services</loc>
+    <priority>0.9</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://nerozarb.com/services/brand-strategy</loc>
+    <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://nerozarb.com/services/content-creative</loc>
+    <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://nerozarb.com/services/paid-advertising</loc>
+    <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://nerozarb.com/services/automation</loc>
+    <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
     <loc>https://nerozarb.com/case-studies</loc>
     <priority>0.8</priority>
     <changefreq>monthly</changefreq>

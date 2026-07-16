@@ -10,7 +10,7 @@ const Navbar: React.FC = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [time, setTime] = useState('');
   const location = useLocation();
-  const isAboutPage = location.pathname === '/about';
+  const isHomePage = location.pathname === '/';
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
   useEffect(() => {
@@ -45,17 +45,18 @@ const Navbar: React.FC = () => {
   }, []);
 
   const navLinks = [
-    { href: isAboutPage ? '/#protocol' : '#protocol', label: 'How it Works' },
+    { href: isHomePage ? '#protocol' : '/#protocol', label: 'How it Works' },
+    { href: '/services', label: 'Services', isRoute: true },
     { href: '/case-studies', label: 'Case Studies', isRoute: true },
-    { href: isAboutPage ? '/#offers' : '#offers', label: 'Pricing' },
+    { href: isHomePage ? '#offers' : '/#offers', label: 'Pricing' },
     { href: '/about', label: 'About', isRoute: true },
-    { href: isAboutPage ? '/#faq' : '#faq', label: 'FAQ' },
+    { href: isHomePage ? '#faq' : '/#faq', label: 'FAQ' },
   ];
 
   return (
     <>
       <header className="fixed top-0 left-0 right-0 z-50 bg-[#030303] border-b border-white/10 h-20">
-        <div className="relative mx-auto grid h-full max-w-[1440px] grid-cols-[minmax(0,1fr)_auto] md:grid-cols-[auto_1fr_auto]">
+        <div className="relative mx-auto grid h-full max-w-[1440px] grid-cols-[minmax(0,1fr)_auto] lg:grid-cols-[auto_1fr_auto]">
 
           {/* Logo */}
           <Link
@@ -85,15 +86,15 @@ const Navbar: React.FC = () => {
           </Link>
 
           {/* Desktop Nav */}
-          <div className="hidden md:flex items-center justify-between px-8 h-full">
-            <nav className="flex items-center gap-6 lg:gap-8">
+          <div className="hidden h-full items-center justify-between px-5 lg:flex xl:px-8">
+            <nav className="flex items-center gap-4 xl:gap-7">
               {navLinks.map((link) => (
                 link.isRoute ? (
                   <Link
                     key={link.href}
                     to={link.href}
                     className={`relative text-sm font-medium uppercase tracking-wider transition-colors group py-2 ${
-                      location.pathname === link.href ? 'text-primary' : 'text-gray-400 hover:text-white'
+                      location.pathname === link.href || location.pathname.startsWith(`${link.href}/`) ? 'text-primary' : 'text-gray-400 hover:text-white'
                     }`}
                   >
                     <span className="opacity-0 -ml-2 group-hover:opacity-100 group-hover:ml-0 transition-all text-primary duration-300 mr-1">[</span>
@@ -115,7 +116,7 @@ const Navbar: React.FC = () => {
             </nav>
 
             {/* Status + Time */}
-            <div className="flex items-center gap-6 text-[10px] font-mono text-gray-500 uppercase tracking-widest hidden lg:flex">
+            <div className="hidden items-center gap-6 font-mono text-[10px] uppercase text-gray-500 2xl:flex">
               <div className="flex items-center gap-2">
                 <span className="w-1.5 h-1.5 bg-primary animate-pulse-glow" />
                 <span>System Online</span>
@@ -140,7 +141,7 @@ const Navbar: React.FC = () => {
             </a>
 
             <button
-              className="ml-2 flex h-11 w-11 items-center justify-center text-white transition-colors hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-[#030303] md:hidden"
+              className="ml-2 flex h-11 w-11 items-center justify-center text-white transition-colors hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-[#030303] lg:hidden"
               onClick={() => setMobileMenuOpen(true)}
               aria-label="Open navigation menu"
               aria-expanded={mobileMenuOpen}
@@ -184,7 +185,7 @@ const Navbar: React.FC = () => {
                     <Link
                       to={link.href}
                       className={`text-4xl font-black uppercase tracking-tight hover:text-primary transition-colors ${
-                        location.pathname === link.href ? 'text-primary' : 'text-white'
+                        location.pathname === link.href || location.pathname.startsWith(`${link.href}/`) ? 'text-primary' : 'text-white'
                       }`}
                       onClick={() => setMobileMenuOpen(false)}
                     >

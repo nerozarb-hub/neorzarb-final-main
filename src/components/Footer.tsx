@@ -82,10 +82,11 @@ const Footer: React.FC = () => {
             {/* Nav links — fixed Contact to go to WhatsApp */}
             <div className="grid grid-cols-2 gap-x-16 gap-y-4 text-base text-gray-400">
               {[
-                { href: '#manifesto', label: 'Home' },
-                { href: '#offers', label: 'Pricing' },
-                { href: '#work', label: 'Case Studies' },
-                { href: '#protocol', label: 'Process' },
+                { href: '/', label: 'Home', isRoute: true },
+                { href: '/services', label: 'Services', isRoute: true },
+                { href: '/case-studies', label: 'Case Studies', isRoute: true },
+                { href: '/#offers', label: 'Pricing' },
+                { href: '/#protocol', label: 'Process' },
                 { href: '/about', label: 'About', isRoute: true },
                 { href: CONTACT_HREF, label: 'Contact', external: hasWhatsAppNumber },
               ].map((link, index) => (
