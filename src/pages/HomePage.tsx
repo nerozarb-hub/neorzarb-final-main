@@ -10,6 +10,7 @@ import {
 // Lazy-load below-the-fold sections for faster initial load
 const PainPoints = lazy(() => import('../components/PainPoints'));
 const NeroEngine = lazy(() => import('../components/NeroEngine'));
+const WebsiteDevelopmentPromo = lazy(() => import('../components/WebsiteDevelopmentPromo'));
 const Portfolio = lazy(() => import('../components/Portfolio'));
 const Process = lazy(() => import('../components/Process'));
 const Pricing = lazy(() => import('../components/Pricing'));
@@ -29,6 +30,9 @@ export function HomePage() {
       </Suspense>
       <Suspense fallback={<GenericSectionSkeleton minHeight="400px" />}>
         <NeroEngine />
+      </Suspense>
+      <Suspense fallback={<GenericSectionSkeleton minHeight="520px" />}>
+        <WebsiteDevelopmentPromo />
       </Suspense>
       <Suspense fallback={<PortfolioSkeleton />}>
         <Portfolio />
