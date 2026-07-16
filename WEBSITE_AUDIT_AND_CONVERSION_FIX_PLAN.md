@@ -63,6 +63,7 @@ Top issues:
 - Reduced decorative hero effects, limited ambient animation to larger screens, and replaced the 1.7 MB navigation logo with a 68 KB correctly sized asset.
 - Tightened mobile navigation, touch targets, pricing-card overflow handling, and shared CTA icon rendering.
 - Split the About and detailed case-study routes out of the homepage entry bundle so visitors only download those pages when requested.
+- Added Vercel SPA rewrites so direct visits and search-engine links to About and portfolio routes no longer return 404.
 - Replaced Inter with Archivo + Atkinson Hyperlegible and removed negative custom `tracking-tightest`.
 - Moved `Navbar` outside the `main` landmark.
 - Added focus-visible treatment to shared CTA buttons and main navbar controls.
