@@ -3,15 +3,15 @@ import { ArrowUpRight } from 'lucide-react';
 import Footer from '@/components/Footer';
 import WebsiteHero from '@/components/websites/WebsiteHero';
 import {
-  PareeroFeature,
-  WebsiteEngagementOptions,
-  WebsiteIndustries,
-  WebsitePortfolio,
-  WebsiteProblemSection,
-  WebsiteProcess,
-  WebsiteSystemSection,
-  WebsiteTimelinesAndResults,
-} from '@/components/websites/WebsiteCoreSections';
+  WebsiteDelivery,
+  WebsiteDiagnosis,
+  WebsiteFlagshipCase,
+  WebsiteMechanism,
+  WebsiteMidCta,
+  WebsiteOffers,
+  WebsiteProofStrip,
+  WebsiteWork,
+} from '@/components/websites/WebsiteSalesSections';
 import WebsiteFAQ from '@/components/websites/WebsiteFAQ';
 import WebsiteLeadForm from '@/components/websites/WebsiteLeadForm';
 import { websiteFaqs } from '@/data/websiteLanding';
@@ -19,7 +19,7 @@ import { captureWebsiteAttribution, trackWebsiteEvent } from '@/lib/analytics';
 import { SITE_URL } from '@/lib/conversion';
 
 const title = 'Conversion-Focused Website Development | NEROZARB';
-const description = 'NEROZARB builds conversion-focused websites, Shopify stores and landing pages for service businesses, clinics, ecommerce brands and growing companies.';
+const description = 'NEROZARB builds conversion-focused websites, Shopify stores and landing pages designed to generate more enquiries, appointments and sales.';
 
 function setMeta(selector: string, value: string) {
   document.querySelector<HTMLMetaElement>(selector)?.setAttribute('content', value);
@@ -130,14 +130,14 @@ export default function WebsitesPage() {
     <div className="min-h-screen bg-[#050605] font-body text-white">
       <main>
         <WebsiteHero />
-        <WebsiteProblemSection />
-        <PareeroFeature />
-        <WebsiteIndustries />
-        <WebsiteSystemSection />
-        <WebsitePortfolio />
-        <WebsiteProcess />
-        <WebsiteTimelinesAndResults />
-        <WebsiteEngagementOptions />
+        <WebsiteProofStrip />
+        <WebsiteDiagnosis />
+        <WebsiteFlagshipCase />
+        <WebsiteMechanism />
+        <WebsiteWork />
+        <WebsiteMidCta />
+        <WebsiteDelivery />
+        <WebsiteOffers />
         <WebsiteFAQ />
         <WebsiteLeadForm />
       </main>

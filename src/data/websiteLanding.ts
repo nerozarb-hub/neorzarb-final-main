@@ -238,16 +238,14 @@ export const engagementOptions = [
 ];
 
 export const websiteFaqs = [
-  ['Can you redesign an existing website?', 'Yes. We can improve selected journeys, rebuild priority sections, or complete a full redesign depending on the condition of the current platform.'],
-  ['Do you work with Shopify?', 'Yes. Our verified PAREERO work includes Shopify storefront architecture, product and collection structure, conversion copy, campaign assets, and quality assurance.'],
-  ['Do you provide website copy?', 'Yes. Conversion-focused content structure and copy can be included. Clients confirm all factual, medical, legal, and product claims before publication.'],
-  ['Will the website work properly on mobile?', 'Mobile is treated as a primary customer journey, especially for prospects arriving through WhatsApp, social media, search, and advertising.'],
-  ['Can you connect WhatsApp, booking systems, and forms?', 'Yes. We can connect relevant forms, calendars, WhatsApp journeys, analytics, payments, and CRM tools according to the approved project scope.'],
-  ['How many revisions are included?', 'The proposal defines structured review stages. Additional directions or scope changes are handled through an approved change request.'],
-  ['Do you guarantee a conversion rate?', 'No responsible agency can guarantee a specific rate without controlling traffic quality, the offer, pricing, sales follow-up, and market conditions. We build the conversion environment, establish measurement, and improve it with evidence.'],
-  ['Who owns the completed website?', 'Ownership, source-code access, accounts, third-party licenses, and handover terms are defined clearly in the project agreement.'],
-  ['Do you provide maintenance?', 'Maintenance, campaign support, and continuous optimization can be scoped after launch when the website requires ongoing operational ownership.'],
-  ['What do you need from the client?', 'A decision-maker, accurate business information, available brand and product assets, timely feedback, and access to the platforms required by the approved scope.'],
+  ['Can you improve the website we already have?', 'Yes. We can repair the highest-impact pages or rebuild the whole site. The audit tells us which option makes commercial sense.'],
+  ['Do you build Shopify stores?', 'Yes. Our PAREERO work covered store structure, product and collection copy, mobile UX, campaign assets, and storefront quality assurance.'],
+  ['Do you write the copy?', 'Yes. We structure and write conversion-focused website copy. You approve every business, product, medical, and legal claim before launch.'],
+  ['Will it work properly on mobile?', 'Yes. We design the mobile journey first for customers arriving through WhatsApp, social media, search, and advertising.'],
+  ['Can you connect WhatsApp, bookings, forms, and payments?', 'Yes. We connect the tools your customer and team actually need, then test the full journey before launch.'],
+  ['Do you guarantee a conversion rate?', 'No. Traffic quality, pricing, the offer, and sales follow-up all affect conversion. We build the conversion environment, install measurement, and improve it with evidence.'],
+  ['Who owns the finished website?', 'Ownership, source code, accounts, licenses, and handover terms are written into the project agreement before work starts.'],
+  ['What do you need from us?', 'One decision-maker, accurate business information, available brand assets, platform access, and timely feedback at the agreed review points.'],
 ] as const;
 
 export const verificationChecklist = {

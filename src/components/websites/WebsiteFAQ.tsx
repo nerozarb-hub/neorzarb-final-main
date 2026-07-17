@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { ChevronDown } from 'lucide-react';
 import { websiteFaqs } from '@/data/websiteLanding';
 import { trackWebsiteEvent } from '@/lib/analytics';
+import { Reveal } from './WebsiteMotion';
 
 export default function WebsiteFAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
@@ -9,12 +10,12 @@ export default function WebsiteFAQ() {
   return (
     <section id="website-faq" className="scroll-mt-20 bg-[#0a0a0a] px-5 py-20 sm:px-6 lg:px-10 lg:py-28">
       <div className="mx-auto grid max-w-[1360px] gap-12 lg:grid-cols-[0.7fr_1.3fr]">
-        <div>
+        <Reveal>
           <span className="text-[11px] font-bold uppercase text-primary">Objection handling</span>
-          <h2 className="mt-4 font-display text-[clamp(2rem,5vw,4rem)] font-black uppercase leading-[0.96] text-white">Questions serious buyers ask before a build.</h2>
-          <p className="mt-6 max-w-lg text-base leading-7 text-white/55">Clear terms create better projects. These answers define the operating expectations before a proposal is written.</p>
-        </div>
-        <div className="border-y border-white/10">
+          <h2 className="mt-4 font-display text-[clamp(2rem,5vw,4rem)] font-black uppercase leading-[0.96] text-white">What you should know before we start.</h2>
+          <p className="mt-6 max-w-lg text-base leading-7 text-white/55">Straight answers on scope, ownership, revisions, mobile performance, and what we need from you.</p>
+        </Reveal>
+        <Reveal delay={0.08} className="border-y border-white/10">
           {websiteFaqs.map(([question, answer], index) => {
             const isOpen = openIndex === index;
             const panelId = `website-faq-panel-${index}`;
@@ -46,7 +47,7 @@ export default function WebsiteFAQ() {
               </div>
             );
           })}
-        </div>
+        </Reveal>
       </div>
     </section>
   );
