@@ -9,8 +9,8 @@ export default function WebsiteHero() {
   return (
     <section id="website-hero" className="relative overflow-hidden border-b border-white/10 bg-[#050605] px-5 py-16 sm:px-6 lg:px-10 lg:py-24">
       <div className="pointer-events-none absolute inset-0 bg-grid-pattern opacity-[0.025]" />
-      <div className="relative mx-auto grid max-w-[1360px] gap-14 lg:grid-cols-[0.88fr_1.12fr] lg:items-center">
-        <motion.div initial={{ opacity: 0, y: 28 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.72, ease }}>
+      <div className="relative mx-auto grid min-w-0 max-w-[1360px] gap-14 lg:grid-cols-[0.88fr_1.12fr] lg:items-center">
+        <motion.div initial={{ opacity: 0, y: 28 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.72, ease }} className="min-w-0">
           <span className="flex items-center gap-3 text-[10px] font-bold uppercase text-primary"><span className="h-2 w-2 bg-primary" />Conversion-focused website development</span>
           <h1 className="mt-7 max-w-[12ch] font-display text-[clamp(2.75rem,6.4vw,5.9rem)] font-black uppercase leading-[0.91] text-white">
             Turn more visits into customers.
@@ -34,8 +34,8 @@ export default function WebsiteHero() {
           </div>
         </motion.div>
 
-        <motion.div initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8, delay: 0.12, ease }} className="relative lg:pl-8">
-          <BrowserPreview src="/websites/pareero-desktop.jpg" alt="PAREERO ecommerce website shown in a browser frame" label="PAREERO / Shopify storefront" className="shadow-[0_28px_80px_rgba(0,0,0,0.35)]" />
+        <motion.div initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8, delay: 0.12, ease }} className="relative min-w-0 lg:pl-8">
+          <BrowserPreview src="/websites/pareero-live/home-desktop.jpg" alt="Current PAREERO ecommerce homepage shown in a browser frame" label="PAREERO / live Shopify storefront" className="shadow-[0_28px_80px_rgba(0,0,0,0.35)]" />
           <motion.div initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.45, ease }} className="ml-auto mt-4 w-[72%] border border-primary/35 bg-[#080a07] p-4 sm:absolute sm:-bottom-8 sm:right-0 sm:mt-0 sm:w-[48%]">
             <p className="text-[9px] font-black uppercase text-primary">Verified PAREERO scope</p>
             <div className="mt-3 grid grid-cols-3 gap-3">

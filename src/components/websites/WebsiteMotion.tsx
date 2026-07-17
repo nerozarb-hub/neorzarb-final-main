@@ -22,7 +22,7 @@ export function BrowserPreview({ src, alt, label, className = '' }: { src: strin
     <motion.figure
       whileHover={{ y: -4 }}
       transition={{ duration: 0.25, ease }}
-      className={`overflow-hidden border border-white/15 bg-[#0a0c09] ${className}`}
+      className={`w-full min-w-0 overflow-hidden border border-white/15 bg-[#0a0c09] ${className}`}
     >
       <div className="flex h-9 items-center justify-between border-b border-white/10 bg-[#0d0f0c] px-3">
         <div className="flex gap-1.5" aria-hidden="true"><span className="h-1.5 w-1.5 bg-primary" /><span className="h-1.5 w-1.5 bg-white/20" /><span className="h-1.5 w-1.5 bg-white/10" /></div>
@@ -30,7 +30,7 @@ export function BrowserPreview({ src, alt, label, className = '' }: { src: strin
         <span className="text-[8px] uppercase text-primary">Live</span>
       </div>
       <div className="aspect-[16/9] overflow-hidden bg-[#11130f]">
-        <img src={src} alt={alt} width="1430" height="807" loading="lazy" className="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.015]" />
+        <img src={src} alt={alt} width="1430" height="807" loading="lazy" className="block h-full w-full max-w-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.015]" />
       </div>
     </motion.figure>
   );

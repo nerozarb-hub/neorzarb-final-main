@@ -53,7 +53,17 @@ export function WebsiteFlagshipCase() {
       <div className="mx-auto max-w-[1360px]">
         <Heading eyebrow="Flagship ecommerce work" title="PAREERO needed a store customers could understand and use." copy="We worked on the parts that shape a buying decision: positioning, product organization, mobile shopping, copy, campaign creative, and quality assurance." />
         <div className="mt-14 grid gap-10 lg:grid-cols-[1.15fr_0.85fr] lg:items-start">
-          <Reveal><BrowserPreview src="/websites/pareero-desktop.jpg" alt="PAREERO Shopify storefront" label="pareero.com / desktop" /><div className="ml-auto mt-3 w-[42%] border border-white/15 bg-[#080a07] p-2"><img src="/websites/pareero-product.jpg" alt="PAREERO product page on mobile" width="395" height="844" loading="lazy" className="aspect-[0.47/1] w-full object-cover object-top" /></div></Reveal>
+          <Reveal>
+            <BrowserPreview src="/websites/pareero-live/home-desktop.jpg" alt="Current PAREERO Shopify homepage" label="pareero.com / current homepage" />
+            <div className="mt-4 grid gap-4 sm:grid-cols-[1fr_0.48fr] sm:items-stretch">
+              <BrowserPreview src="/websites/pareero-live/product-turmeric.jpg" alt="Current PAREERO Turmeric organic soap product page" label="live product decision page" />
+              <figure className="overflow-hidden border border-white/15 bg-[#0a0c09]">
+                <div className="flex h-9 items-center justify-between border-b border-white/10 bg-[#0d0f0c] px-3"><span className="text-[8px] font-bold uppercase text-white/35">Mobile journey</span><span className="text-[8px] uppercase text-primary">Live</span></div>
+                <div className="aspect-[0.62/1] overflow-hidden bg-[#11130f]"><img src="/websites/pareero-live/home-mobile.jpg" alt="Current PAREERO mobile homepage" width="390" height="844" loading="lazy" className="h-full w-full object-cover object-top" /></div>
+              </figure>
+            </div>
+            <p className="mt-4 text-[9px] font-bold uppercase tracking-[0.08em] text-white/35">Current production journey captured from pareero.com: discovery, product decision, and mobile entry.</p>
+          </Reveal>
           <Reveal delay={0.08} className="border-y border-white/10">
             {[
               ['Before', 'Inconsistent product taxonomy, weak collection structure, missing SEO fields, and an uneven mobile shopping journey.'],
@@ -88,11 +98,11 @@ export function WebsiteMechanism() {
 }
 
 const previewImages: Record<string, string> = {
-  nerozarb: '/websites/portfolio/nerozarb.jpg', pareero: '/websites/pareero-desktop.jpg', 'hamad-foundation': '/websites/portfolio/hammad.jpg', fomo: '/websites/portfolio/fomo.jpg', 'laung-laachi': '/websites/portfolio/laung-laachi.jpg', koco: '/websites/portfolio/koco.jpg', 'yz-education': '/websites/portfolio/yz-education.jpg',
+  nerozarb: '/websites/portfolio/nerozarb.jpg', pareero: '/websites/pareero-live/home-desktop.jpg', 'hamad-foundation': '/websites/portfolio/hammad.jpg', fomo: '/websites/portfolio/fomo.jpg', 'laung-laachi': '/websites/portfolio/laung-laachi.jpg', koco: '/websites/portfolio/koco.jpg', 'mozart-haus': '/websites/portfolio/mozart-haus.jpg', 'yz-education': '/websites/portfolio/yz-education.jpg',
 };
 
 export function WebsiteWork() {
-  const records = portfolioRecords.filter((record) => record.isPublic && record.slug !== 'mozart-haus');
+  const records = portfolioRecords.filter((record) => record.isPublic);
   return (
     <section id="work" className="scroll-mt-20 bg-[#050605] px-5 py-20 sm:px-6 lg:px-10 lg:py-28">
       <div className="mx-auto max-w-[1360px]">
@@ -107,7 +117,7 @@ export function WebsiteWork() {
             </a>
           </Reveal>)}
         </div>
-        <Reveal className="mt-8 flex flex-col gap-5 border-y border-white/10 py-7 sm:flex-row sm:items-center sm:justify-between"><p className="max-w-2xl text-sm leading-6 text-white/50">Need the deeper campaign story? Mozart Haus and Hammad Foundation have full case-study pages with scope, delivery, and proof.</p><div className="flex gap-5"><Link to="/portfolio/mozart-haus" className="text-xs font-black uppercase text-primary">Mozart case study</Link><Link to="/portfolio/hamad-foundation" className="text-xs font-black uppercase text-primary">Hammad case study</Link></div></Reveal>
+        <Reveal className="mt-8 flex flex-col gap-5 border-y border-white/10 py-7 sm:flex-row sm:items-center sm:justify-between"><p className="max-w-2xl text-sm leading-6 text-white/50">Go beyond the previews. Mozart Haus and Hammad Foundation have full case-study pages with scope, delivery, and proof.</p><div className="flex gap-5"><Link to="/portfolio/mozart-haus" className="text-xs font-black uppercase text-primary">Mozart case study</Link><Link to="/portfolio/hamad-foundation" className="text-xs font-black uppercase text-primary">Hammad case study</Link></div></Reveal>
       </div>
     </section>
   );

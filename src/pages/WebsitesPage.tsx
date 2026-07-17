@@ -30,7 +30,7 @@ export default function WebsitesPage() {
 
   useEffect(() => {
     const canonicalUrl = `${SITE_URL.replace(/\/$/, '')}/websites`;
-    const socialImageUrl = `${SITE_URL.replace(/\/$/, '')}/websites/pareero-desktop.jpg`;
+    const socialImageUrl = `${SITE_URL.replace(/\/$/, '')}/websites/pareero-live/home-desktop.jpg`;
     const previousTitle = document.title;
     const metaSelectors = [
       'meta[name="description"]',

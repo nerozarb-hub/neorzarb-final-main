@@ -82,7 +82,7 @@ export default function ServicesPage() {
                   </div>
                 </div>
                 <div className="relative min-h-[340px] overflow-hidden border-t border-white/10 bg-[#11130f] lg:min-h-[560px] lg:border-l lg:border-t-0">
-                  <img src="/websites/pareero-desktop.jpg" alt="PAREERO Shopify website shown as verified NEROZARB website work" width="1000" height="764" className="h-full w-full object-cover object-top" />
+                  <img src="/websites/pareero-live/home-desktop.jpg" alt="Current PAREERO Shopify website shown as verified NEROZARB website work" width="1440" height="900" className="h-full w-full object-cover object-top" />
                   <div className="absolute inset-x-0 bottom-0 bg-[#050605]/95 p-4 text-[10px] font-bold uppercase text-white/60">Verified PAREERO scope · Ecommerce website system</div>
                 </div>
               </div>
