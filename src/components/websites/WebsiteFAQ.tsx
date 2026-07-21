@@ -31,7 +31,10 @@ export default function WebsiteFAQ() {
                     onClick={() => {
                       const next = isOpen ? null : index;
                       setOpenIndex(next);
-                      if (next !== null) trackWebsiteEvent('website_faq_open', { question });
+                      if (next !== null) {
+                        trackWebsiteEvent('website_faq_open', { question });
+                        trackWebsiteEvent('website_pricing_faq_open', { question });
+                      }
                     }}
                     className="flex min-h-16 w-full items-center justify-between gap-6 py-4 text-left font-display text-base font-black uppercase text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary sm:text-lg"
                   >

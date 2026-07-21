@@ -237,13 +237,153 @@ export const engagementOptions = [
   },
 ];
 
+export type WebsitePackage = {
+  id: 'business-launch' | 'conversion-growth' | 'brand-revenue';
+  name: string;
+  priceLabel: string;
+  outcome: string;
+  bestFor: string[];
+  features: string[];
+  deliveryTimeline: string;
+  supportPeriod: string;
+  revisions: number;
+  primaryCta: string;
+  featured?: boolean;
+  paymentPlan: Array<{ milestone: string; percentage: number; amount: string }>;
+};
+
+export const websitePackages: WebsitePackage[] = [
+  {
+    id: 'business-launch',
+    name: 'Business Launch System',
+    priceLabel: 'PKR 120,000',
+    outcome: 'Establish a credible online presence and turn visitors into enquiries, consultations, or appointments.',
+    bestFor: ['Clinics and dentists', 'Consultants and professional firms', 'Education and cultural organizations', 'Local businesses building their first serious website'],
+    features: ['Business and competitor review', 'Conversion-focused website strategy', 'Up to five core pages', 'Custom responsive design', 'Basic copy refinement and technical SEO', 'WhatsApp, form, booking, and Maps integrations', 'Analytics setup and launch support', 'Two structured revision rounds'],
+    deliveryTimeline: '10–15 business days',
+    supportPeriod: '14 days post-launch technical support',
+    revisions: 2,
+    primaryCta: 'Start My Business Website',
+    paymentPlan: [
+      { milestone: 'Project start', percentage: 60, amount: 'PKR 72,000' },
+      { milestone: 'Before final launch', percentage: 40, amount: 'PKR 48,000' },
+    ],
+  },
+  {
+    id: 'conversion-growth',
+    name: 'Conversion Growth System',
+    priceLabel: 'PKR 150,000',
+    outcome: 'Build a complete lead-generation and conversion system designed to turn traffic into qualified business opportunities.',
+    bestFor: ['Clinics running advertisements', 'Dental and wellness practices', 'Established local brands', 'Businesses redesigning an outdated website', 'Teams that need better enquiry qualification'],
+    features: ['Everything in Business Launch', 'Up to eight to ten pages', 'Customer-journey, offer, and messaging refinement', 'Full conversion-focused website copy', 'One custom campaign landing page', 'Testimonials and case-study system', 'Lead qualification, bookings, and CRM or email integration', 'Meta Pixel, conversion events, Search Console, and Core Web Vitals review', 'Three structured revision rounds'],
+    deliveryTimeline: '15–20 business days',
+    supportPeriod: '30 days post-launch technical support',
+    revisions: 3,
+    primaryCta: 'Build My Conversion System',
+    featured: true,
+    paymentPlan: [
+      { milestone: 'Project start', percentage: 50, amount: 'PKR 75,000' },
+      { milestone: 'After design approval', percentage: 30, amount: 'PKR 45,000' },
+      { milestone: 'Before final launch', percentage: 20, amount: 'PKR 30,000' },
+    ],
+  },
+  {
+    id: 'brand-revenue',
+    name: 'Brand and Revenue Ecosystem',
+    priceLabel: 'PKR 200,000',
+    outcome: 'Create a complete digital growth foundation connecting your brand, website, campaigns, lead systems, and performance measurement.',
+    bestFor: ['Ecommerce and product brands', 'Multi-location clinics', 'New brands and repositioning projects', 'Businesses planning significant advertising campaigns', 'Teams with complex integrations'],
+    features: ['Everything in Conversion Growth', 'Up to twelve to fifteen pages', 'Advanced brand and positioning workshop', 'Complete website messaging system', 'Two custom campaign landing pages', 'Dedicated case-study and results pages', 'Ecommerce or Shopify and payment-gateway integration', 'CRM, automation, retargeting, and measurement dashboard', 'Launch creative direction, three statics, and one motion asset', 'Strategic post-launch optimization review'],
+    deliveryTimeline: '20–30 business days',
+    supportPeriod: '45 days post-launch technical support',
+    revisions: 3,
+    primaryCta: 'Build My Growth Ecosystem',
+    paymentPlan: [
+      { milestone: 'Project start', percentage: 50, amount: 'PKR 100,000' },
+      { milestone: 'After design approval', percentage: 30, amount: 'PKR 60,000' },
+      { milestone: 'Before final launch', percentage: 20, amount: 'PKR 40,000' },
+    ],
+  },
+];
+
+export const landingPageSprint = {
+  id: 'landing-page-sprint',
+  name: 'Landing Page Sprint',
+  priceLabel: 'From PKR 50,000',
+  outcome: 'Launch one focused conversion page for an advertisement, service, product, campaign, or event.',
+  features: ['Offer and page-structure strategy', 'Copy refinement', 'Responsive design and development', 'Form, WhatsApp, booking, analytics, and campaign-event setup', 'One structured revision round', 'Deployment and launch support'],
+  deliveryTimeline: '5–7 business days',
+  primaryCta: 'Launch My Landing Page',
+  paymentPlan: [
+    { milestone: 'Project start', percentage: 60, amount: '60% to begin' },
+    { milestone: 'Before final launch', percentage: 40, amount: '40% before launch' },
+  ],
+} as const;
+
+export const websiteComparisonRows = [
+  ['Investment', 'PKR 120,000', 'PKR 150,000', 'PKR 200,000'],
+  ['Core pages', 'Up to 5', 'Up to 8–10', 'Up to 12–15'],
+  ['Business strategy', 'Included', 'Advanced', 'Advanced'],
+  ['Full conversion copywriting', 'Limited refinement', 'Included', 'Included'],
+  ['Campaign landing pages', 'Not included', '1', '2'],
+  ['Testimonials and case studies', 'Basic', 'Advanced', 'Advanced'],
+  ['Lead qualification and booking', 'Basic', 'Advanced', 'Advanced'],
+  ['Analytics', 'Basic', 'Advanced', 'Dashboard'],
+  ['Meta Pixel and events', 'Optional', 'Included', 'Included'],
+  ['CRM integration', 'Optional', 'Included', 'Advanced'],
+  ['Ecommerce or Shopify', 'Not included', 'Optional or custom', 'Included'],
+  ['Launch creative', 'Not included', 'Not included', 'Included'],
+  ['Revision rounds', '2', '3', '3'],
+  ['Post-launch support', '14 days', '30 days', '45 days'],
+  ['Typical delivery', '10–15 days', '15–20 days', '20–30 days'],
+] as const;
+
+export const websiteAddOns = [
+  ['Additional landing page', 'From PKR 25,000'],
+  ['Additional website page', 'From PKR 10,000'],
+  ['Full copywriting upgrade', 'From PKR 30,000'],
+  ['Shopify product setup', 'PKR 2,000–4,000 per product'],
+  ['Booking or CRM integration', 'From PKR 20,000'],
+  ['Multilingual website', 'From PKR 35,000'],
+  ['Advanced SEO setup', 'From PKR 40,000'],
+  ['Static advertising pack', 'From PKR 30,000'],
+  ['Video advertising package', 'Custom quote'],
+  ['Custom API integration', 'Custom quote'],
+  ['Advanced automation', 'Custom quote'],
+] as const;
+
+export const websiteRetainers = [
+  {
+    name: 'Website Care Plan',
+    priceLabel: 'PKR 15,000 per month',
+    features: ['Website updates and backups', 'Security and uptime checks', 'Small content changes', 'Technical support and dependency review', 'Monthly health review'],
+  },
+  {
+    name: 'Growth Optimization Plan',
+    priceLabel: 'From PKR 30,000–50,000 per month',
+    features: ['Conversion review and analytics reporting', 'Landing-page and campaign-page improvements', 'Testing roadmap and funnel recommendations', 'Minor UX improvements', 'Optional creative support where scoped'],
+  },
+] as const;
+
+export const websitePackageExclusions = ['Domain and hosting fees', 'Paid themes, plugins, and software subscriptions', 'Unlimited revisions', 'Product photography or large-scale data entry', 'Advertising spend and ongoing campaign management', 'Ongoing content production', 'Complex custom applications or unlisted integrations', 'Legal or regulated-industry approvals'];
+
+export const websitePackageOptions = [...websitePackages.map((item) => ({ id: item.id, label: item.name })), { id: landingPageSprint.id, label: landingPageSprint.name }];
+
 export const websiteFaqs = [
+  ['How do I know which package is right for me?', 'We recommend the smallest package capable of achieving your business objective. The correct package depends on the number of pages, conversion goals, required integrations, content needs, and whether the website must connect to advertising, ecommerce, or CRM systems.'],
+  ['Can the package be customized?', 'Yes. The packages provide a clear starting structure. If your project requires a different number of pages, integrations, or deliverables, NEROZARB will provide a custom scope.'],
+  ['Are domain and hosting included?', 'Domain registration, hosting, paid themes, plugins, and third-party subscriptions are normally charged separately unless explicitly included in the proposal.'],
+  ['Do you offer payment plans?', 'Projects are divided into milestone-based payments. The exact schedule depends on the selected package and project scope.'],
+  ['Can I begin with a landing page and upgrade later?', 'Yes. A Landing Page Sprint can later be expanded into a complete business website or conversion system.'],
+  ['Does the price include copywriting?', 'Content structure and copy refinement are included in all packages. Full conversion copywriting is included in the Conversion Growth and Brand and Revenue packages. Large or regulated content requirements may require additional scope.'],
   ['Can you improve the website we already have?', 'Yes. We can repair the highest-impact pages or rebuild the whole site. The audit tells us which option makes commercial sense.'],
   ['Do you build Shopify stores?', 'Yes. Our PAREERO work covered store structure, product and collection copy, mobile UX, campaign assets, and storefront quality assurance.'],
   ['Do you write the copy?', 'Yes. We structure and write conversion-focused website copy. You approve every business, product, medical, and legal claim before launch.'],
   ['Will it work properly on mobile?', 'Yes. We design the mobile journey first for customers arriving through WhatsApp, social media, search, and advertising.'],
   ['Can you connect WhatsApp, bookings, forms, and payments?', 'Yes. We connect the tools your customer and team actually need, then test the full journey before launch.'],
   ['Do you guarantee a conversion rate?', 'No. Traffic quality, pricing, the offer, and sales follow-up all affect conversion. We build the conversion environment, install measurement, and improve it with evidence.'],
+  ['How many revisions are included?', 'Business Launch includes two structured revision rounds. Conversion Growth and Brand and Revenue include three. New directions or changes outside the approved scope may require additional investment.'],
+  ['What is not included?', 'Domain and hosting fees, paid subscriptions, unlimited revisions, product photography, large-scale data entry, advertising spend, ongoing campaign management, ongoing content production, complex custom applications, advanced multilingual content, legal approval, and unlisted integrations are scoped separately where needed.'],
   ['Who owns the finished website?', 'Ownership, source code, accounts, licenses, and handover terms are written into the project agreement before work starts.'],
   ['What do you need from us?', 'One decision-maker, accurate business information, available brand assets, platform access, and timely feedback at the agreed review points.'],
 ] as const;

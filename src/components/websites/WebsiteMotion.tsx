@@ -1,9 +1,9 @@
-import type { ReactNode } from 'react';
+import type { HTMLAttributes, ReactNode } from 'react';
 import { motion } from 'framer-motion';
 
 const ease = [0.16, 1, 0.3, 1] as const;
 
-export function Reveal({ children, delay = 0, className = '' }: { children: ReactNode; delay?: number; className?: string }) {
+export function Reveal({ children, delay = 0, className = '', ...props }: { children: ReactNode; delay?: number; className?: string } & HTMLAttributes<HTMLDivElement>) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 24 }}
@@ -11,6 +11,7 @@ export function Reveal({ children, delay = 0, className = '' }: { children: Reac
       viewport={{ once: true, margin: '-60px' }}
       transition={{ duration: 0.65, delay, ease }}
       className={className}
+      {...props}
     >
       {children}
     </motion.div>

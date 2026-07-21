@@ -12,7 +12,21 @@ export type WebsiteEventName =
   | 'website_whatsapp_click'
   | 'website_faq_open'
   | 'website_industry_select'
-  | 'website_package_view';
+  | 'website_package_view'
+  | 'website_pricing_view'
+  | 'website_package_expand'
+  | 'website_package_select'
+  | 'website_package_cta_click'
+  | 'website_comparison_view'
+  | 'website_payment_plan_view'
+  | 'website_addon_view'
+  | 'website_maintenance_view'
+  | 'website_pricing_faq_open'
+  | 'website_pricing_form_start'
+  | 'website_pricing_form_submit'
+  | 'website_pricing_form_error'
+  | 'website_pricing_whatsapp_click'
+  | 'website_pricing_calendar_click';
 
 type Attribution = {
   utm_source?: string;

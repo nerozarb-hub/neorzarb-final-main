@@ -14,6 +14,7 @@ import {
 } from '@/components/websites/WebsiteSalesSections';
 import WebsiteFAQ from '@/components/websites/WebsiteFAQ';
 import WebsiteLeadForm from '@/components/websites/WebsiteLeadForm';
+import WebsitePricing from '@/components/websites/WebsitePricing';
 import { websiteFaqs } from '@/data/websiteLanding';
 import { captureWebsiteAttribution, trackWebsiteEvent } from '@/lib/analytics';
 import { SITE_URL } from '@/lib/conversion';
@@ -135,6 +136,7 @@ export default function WebsitesPage() {
         <WebsiteFlagshipCase />
         <WebsiteMechanism />
         <WebsiteWork />
+        <WebsitePricing />
         <WebsiteMidCta />
         <WebsiteDelivery />
         <WebsiteOffers />
